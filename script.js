@@ -1,70 +1,16 @@
 /* ===================================================
-   WEB AUDIO API
-   =================================================== */
-let audioCtx = null;
-
-function initAudioContext() {
-  if (!audioCtx) {
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-  }
-  if (audioCtx.state === "suspended") {
-    audioCtx.resume();
-  }
-}
-
-function playTickSound() {
-  try {
-    initAudioContext();
-    const osc = audioCtx.createOscillator();
-    const gain = audioCtx.createGain();
-
-    osc.type = "sine";
-    osc.frequency.setValueAtTime(560, audioCtx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(120, audioCtx.currentTime + 0.035);
-
-    gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.035);
-
-    osc.connect(gain);
-    gain.connect(audioCtx.destination);
-
-    osc.start();
-    osc.stop(audioCtx.currentTime + 0.035);
-  } catch (e) {}
-}
-
-function playVictorySound() {
-  try {
-    initAudioContext();
-    const notes = [523.25, 659.25, 783.99, 1046.50];
-    notes.forEach((freq, idx) => {
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-
-      osc.type = "triangle";
-      osc.frequency.setValueAtTime(freq, audioCtx.currentTime + idx * 0.09);
-
-      gain.gain.setValueAtTime(0.18, audioCtx.currentTime + idx * 0.09);
-      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + idx * 0.09 + 0.35);
-
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-
-      osc.start(audioCtx.currentTime + idx * 0.09);
-      osc.stop(audioCtx.currentTime + idx * 0.09 + 0.35);
-    });
-  } catch (e) {}
-}
-
-/* ===================================================
    DATABASE: TỔNG HỢP 60+ MÓN ĂN & 60+ ĐỊA ĐIỂM HÀ NỘI
    =================================================== */
 const DATABASE = {
   food: {
     title: "Ăn Uống",
     categories: {
+      allFood: {
+        label: "🔥 TẤT CẢ (61 Món Ăn)",
+        items: [] // Tự động gộp toàn bộ bên dưới
+      },
       sangTrua: {
-        label: "🍜 Sáng & Trưa Chuẩn Vị",
+        label: "🍜 Sáng & Trưa (16)",
         items: [
           "Phở Bát Đàn (Phố Cổ)", "Phở Thìn Lò Đúc", "Phở Gà Châm Yên Ninh",
           "Bún Chả Hàng Quạt", "Bún Chả Hương Liên", "Bún Đậu Hàng Khay",
@@ -74,7 +20,7 @@ const DATABASE = {
         ]
       },
       toiDem: {
-        label: "🍲 Lẩu, Nướng & Đêm Muộn",
+        label: "🍲 Lẩu & Đêm Muộn (15)",
         items: [
           "Lẩu Ếch Phó Đức Chính", "Lẩu Riêu Cua Hàng Tre", "Lẩu Bò Nhúng Dấm 555",
           "Lẩu Ốc Bà Tảo Khương Thượng", "Nướng Ngói Gầm Cầu", "Chân Gà Nướng Bà Triệu",
@@ -84,7 +30,7 @@ const DATABASE = {
         ]
       },
       anVat: {
-        label: "🍢 Ăn Vặt Ngõ Phố",
+        label: "🍢 Ăn Vặt Chiều (15)",
         items: [
           "Nem Chua Rán Tạm Thương", "Bánh Gối Lý Quốc Sư", "Bánh Tôm Hồ Tây",
           "Nộm Bò Khô Bờ Hồ", "Nộm Chim Quay Hàm Long", "Tào Phớ Nghĩa Tân",
@@ -94,12 +40,12 @@ const DATABASE = {
         ]
       },
       doUong: {
-        label: "☕ Cà Phê & Trà Quán",
+        label: "☕ Cà Phê & Trà (15)",
         items: [
           "Cafe Trứng Giảng Nguyễn Hữu Huân", "Cafe Đinh Ngắm Hồ Gươm", "Yên Cafe Quán Thánh",
           "Loading T Chân Cầm", "Trà Chanh Chợ Gạo", "Trà Đào Cam Sả Hồ Tây",
           "Cafe Ban Công Đinh Liệt", "Cộng Cafe Nhà Thờ", "Trà Sen Tây Hồ",
-          "Chè Khúc Bạch Hàng Tre", "Sữa Chua Trân Châu Hạ Long", "Kem Bơ Cột Điện Bà Triệu",
+          "Chè Khúc Bạch Hàng Tre", "Sữa Chua Trân Châu", "Kem Bơ Cột Điện Bà Triệu",
           "Nước Mía Hàng Điếu", "Trà Sữa Oolong Đậm Vị", "Nước Sấu Đá Phố Cổ"
         ]
       }
@@ -108,8 +54,12 @@ const DATABASE = {
   places: {
     title: "Đi Chơi",
     categories: {
+      allPlaces: {
+        label: "🔥 TẤT CẢ (60 Điểm Chơi)",
+        items: [] // Tự động gộp toàn bộ bên dưới
+      },
       vanHoa: {
-        label: "🏛️ Check-in & Di Tích",
+        label: "🏛️ Check-in & Di Tích (15)",
         items: [
           "Di tích Nhà Tù Hỏa Lò", "Bảo tàng Dân tộc học", "Bảo tàng Mỹ thuật Việt Nam",
           "Hoàng thành Thăng Long", "Văn Miếu - Quốc Tử Giám", "Bảo tàng Lịch sử Quân sự VN",
@@ -119,7 +69,7 @@ const DATABASE = {
         ]
       },
       giaiTri: {
-        label: "🎯 Game & Trải Nghiệm",
+        label: "🎯 Game & Trải Nghiệm (15)",
         items: [
           "Đua xe Go-Kart (VS Racing)", "Bắn Cung Target Archery", "Leo Núi Nhân Tạo Vietclimb",
           "Tổ Hợp Board Game Phố Cổ", "Phòng Nhảy Bạt Nhún Jump Arena", "Sân Trượt Băng Royal City",
@@ -129,7 +79,7 @@ const DATABASE = {
         ]
       },
       chillPho: {
-        label: "🌿 Dạo Phố & Hẹn Hò",
+        label: "🌿 Dạo Phố & Hẹn Hò (15)",
         items: [
           "Ngắm Hoàng Hôn Bến Hàn Quốc", "Đạp Vịt Hồ Trúc Bạch", "Lượn Đường Phan Đình Phùng",
           "Dạo Quanh Hồ Gươm Cuối Tuần", "Ngồi Trà Chanh Ngắm Nhà Thờ", "Chill Cà Phê Ven Hồ Tây",
@@ -139,7 +89,7 @@ const DATABASE = {
         ]
       },
       nightlife: {
-        label: "🌙 Nightlife & Xuyên Đêm",
+        label: "🌙 Nightlife & Đêm (15)",
         items: [
           "Quẩy Xuyên Đêm Phố Bia Tạ Hiện", "Nghe Nhạc Jazz Bình Minh Jazz Club", "Thưởng Thức Acoustic Bar Phố Cổ",
           "Dạo Chợ Đêm Phố Cổ Đồng Xuân", "Hóng Gió Đêm Cầu Nhật Tân", "Food Tour Đêm Chợ Long Biên",
@@ -152,16 +102,37 @@ const DATABASE = {
   }
 };
 
+// Tự động gộp toàn bộ danh sách vào mục "TẤT CẢ"
+DATABASE.food.categories.allFood.items = [
+  ...DATABASE.food.categories.sangTrua.items,
+  ...DATABASE.food.categories.toiDem.items,
+  ...DATABASE.food.categories.anVat.items,
+  ...DATABASE.food.categories.doUong.items
+];
+
+DATABASE.places.categories.allPlaces.items = [
+  ...DATABASE.places.categories.vanHoa.items,
+  ...DATABASE.places.categories.giaiTri.items,
+  ...DATABASE.places.categories.chillPho.items,
+  ...DATABASE.places.categories.nightlife.items
+];
+
 const WHEEL_PALETTE = [
   "#d97706", "#dc2626", "#b45309", "#059669",
   "#9333ea", "#2563eb", "#ea580c", "#0891b2"
 ];
 
 /* ===================================================
-   STATE MANAGEMENT
+   TỰ ĐỘNG XÓA BỘ NHỚ ĐỆM CŨ ĐỂ KHÔNG BỊ KẸT 10 MÓN
    =================================================== */
-let currentMode = "food"; // "food" hoặc "places"
-let currentCategoryKey = "sangTrua";
+const APP_VERSION = "hanoi_full_v4";
+if (localStorage.getItem("hanoi_app_ver") !== APP_VERSION) {
+  localStorage.clear(); // Xóa sạch dữ liệu cũ lưu trong máy
+  localStorage.setItem("hanoi_app_ver", APP_VERSION);
+}
+
+let currentMode = "food";
+let currentCategoryKey = "allFood"; // Mặc định mở lên là nạp trọn bộ 61 món
 let options = [];
 let startAngle = 0;
 let isSpinning = false;
@@ -181,9 +152,6 @@ const resetAllBtn = document.getElementById("resetAllBtn");
 const modeBtns = document.querySelectorAll(".mode-btn");
 const presetGroup = document.getElementById("presetGroup");
 
-/* ===================================================
-   SWITCH MODE & BUILD PRESET BUTTONS
-   =================================================== */
 function setupPresets() {
   presetGroup.innerHTML = "";
   const categories = DATABASE[currentMode].categories;
@@ -221,14 +189,12 @@ modeBtns.forEach((btn) => {
     modeBtns.forEach((b) => b.classList.remove("active"));
     btn.classList.add("active");
     currentMode = btn.dataset.mode;
+    currentCategoryKey = currentMode === "food" ? "allFood" : "allPlaces";
     setupPresets();
     loadCategoryData();
   });
 });
 
-/* ===================================================
-   CANVAS DRAWING
-   =================================================== */
 function drawWheel() {
   const num = options.length;
   const cx = canvas.width / 2;
@@ -251,9 +217,11 @@ function drawWheel() {
 
   const arc = (2 * Math.PI) / num;
 
+  // Điều chỉnh font thông minh khi quay 60 món cùng lúc
   let fontSize = 13;
-  if (num > 10) fontSize = 11.5;
-  if (num > 14) fontSize = 10;
+  if (num > 15) fontSize = 10;
+  if (num > 35) fontSize = 8.5;
+  if (num > 50) fontSize = 7;
 
   for (let i = 0; i < num; i++) {
     const angle = startAngle + i * arc;
@@ -264,8 +232,8 @@ function drawWheel() {
     ctx.lineTo(cx, cy);
     ctx.fill();
 
-    ctx.strokeStyle = "rgba(0, 0, 0, 0.25)";
-    ctx.lineWidth = 1.2;
+    ctx.strokeStyle = "rgba(0, 0, 0, 0.2)";
+    ctx.lineWidth = 1;
     ctx.stroke();
 
     ctx.save();
@@ -275,15 +243,14 @@ function drawWheel() {
     ctx.rotate(angle + arc / 2);
     ctx.textAlign = "right";
 
-    const label = options[i].length > 19 ? options[i].substring(0, 17) + "..." : options[i];
-    ctx.fillText(label, radius - 16, 4);
+    // Cắt bớt chữ nếu danh sách quá nhiều nan
+    const maxLen = num > 40 ? 12 : 18;
+    const label = options[i].length > maxLen ? options[i].substring(0, maxLen - 2) + ".." : options[i];
+    ctx.fillText(label, radius - 14, 3);
     ctx.restore();
   }
 }
 
-/* ===================================================
-   RENDER LIST & LOCALSTORAGE
-   =================================================== */
 function renderList() {
   itemsWrapper.innerHTML = "";
   counterText.textContent = `Danh sách: ${options.length} lựa chọn`;
@@ -332,9 +299,6 @@ addForm.addEventListener("submit", (e) => {
   }
 });
 
-/* ===================================================
-   SPIN LOGIC
-   =================================================== */
 spinBtn.addEventListener("click", () => {
   if (isSpinning || options.length < 2) {
     if (options.length < 2) alert("Vui lòng có ít nhất 2 mục để bắt đầu quay!");
@@ -388,9 +352,6 @@ spinBtn.addEventListener("click", () => {
   requestAnimationFrame(animate);
 });
 
-/* ===================================================
-   RESULT ANNOUNCEMENT
-   =================================================== */
 function announceResult() {
   const num = options.length;
   const arc = (2 * Math.PI) / num;
@@ -411,6 +372,6 @@ function announceResult() {
   gmapLink.classList.remove("hidden");
 }
 
-// Khởi tạo ban đầu
+// Khởi chạy
 setupPresets();
 loadCategoryData();
