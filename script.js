@@ -1,4 +1,74 @@
 /* ===================================================
+   WEB AUDIO API (Bọc an toàn tránh đơ vòng quay)
+   =================================================== */
+let audioCtx = null;
+
+function getAudioContext() {
+  try {
+    if (!audioCtx) {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (AudioContextClass) {
+        audioCtx = new AudioContextClass();
+      }
+    }
+    if (audioCtx && audioCtx.state === "suspended") {
+      audioCtx.resume();
+    }
+    return audioCtx;
+  } catch (e) {
+    return null;
+  }
+}
+
+function playTickSound() {
+  try {
+    const ctxAudio = getAudioContext();
+    if (!ctxAudio) return;
+
+    const osc = ctxAudio.createOscillator();
+    const gain = ctxAudio.createGain();
+
+    osc.type = "sine";
+    osc.frequency.setValueAtTime(560, ctxAudio.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(120, ctxAudio.currentTime + 0.035);
+
+    gain.gain.setValueAtTime(0.12, ctxAudio.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctxAudio.currentTime + 0.035);
+
+    osc.connect(gain);
+    gain.connect(ctxAudio.destination);
+
+    osc.start();
+    osc.stop(ctxAudio.currentTime + 0.035);
+  } catch (e) {}
+}
+
+function playVictorySound() {
+  try {
+    const ctxAudio = getAudioContext();
+    if (!ctxAudio) return;
+
+    const notes = [523.25, 659.25, 783.99, 1046.50];
+    notes.forEach((freq, idx) => {
+      const osc = ctxAudio.createOscillator();
+      const gain = ctxAudio.createGain();
+
+      osc.type = "triangle";
+      osc.frequency.setValueAtTime(freq, ctxAudio.currentTime + idx * 0.09);
+
+      gain.gain.setValueAtTime(0.15, ctxAudio.currentTime + idx * 0.09);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctxAudio.currentTime + idx * 0.09 + 0.35);
+
+      osc.connect(gain);
+      gain.connect(ctxAudio.destination);
+
+      osc.start(ctxAudio.currentTime + idx * 0.09);
+      osc.stop(ctxAudio.currentTime + idx * 0.09 + 0.35);
+    });
+  } catch (e) {}
+}
+
+/* ===================================================
    DATABASE: TỔNG HỢP 60+ MÓN ĂN & 60+ ĐỊA ĐIỂM HÀ NỘI
    =================================================== */
 const DATABASE = {
@@ -7,7 +77,7 @@ const DATABASE = {
     categories: {
       allFood: {
         label: "🔥 TẤT CẢ (61 Món Ăn)",
-        items: [] // Tự động gộp toàn bộ bên dưới
+        items: []
       },
       sangTrua: {
         label: "🍜 Sáng & Trưa (16)",
@@ -56,7 +126,7 @@ const DATABASE = {
     categories: {
       allPlaces: {
         label: "🔥 TẤT CẢ (60 Điểm Chơi)",
-        items: [] // Tự động gộp toàn bộ bên dưới
+        items: []
       },
       vanHoa: {
         label: "🏛️ Check-in & Di Tích (15)",
@@ -102,7 +172,6 @@ const DATABASE = {
   }
 };
 
-// Tự động gộp toàn bộ danh sách vào mục "TẤT CẢ"
 DATABASE.food.categories.allFood.items = [
   ...DATABASE.food.categories.sangTrua.items,
   ...DATABASE.food.categories.toiDem.items,
@@ -123,16 +192,10 @@ const WHEEL_PALETTE = [
 ];
 
 /* ===================================================
-   TỰ ĐỘNG XÓA BỘ NHỚ ĐỆM CŨ ĐỂ KHÔNG BỊ KẸT 10 MÓN
+   STATE MANAGEMENT
    =================================================== */
-const APP_VERSION = "hanoi_full_v4";
-if (localStorage.getItem("hanoi_app_ver") !== APP_VERSION) {
-  localStorage.clear(); // Xóa sạch dữ liệu cũ lưu trong máy
-  localStorage.setItem("hanoi_app_ver", APP_VERSION);
-}
-
 let currentMode = "food";
-let currentCategoryKey = "allFood"; // Mặc định mở lên là nạp trọn bộ 61 món
+let currentCategoryKey = "allFood";
 let options = [];
 let startAngle = 0;
 let isSpinning = false;
@@ -156,7 +219,7 @@ function setupPresets() {
   presetGroup.innerHTML = "";
   const categories = DATABASE[currentMode].categories;
   const keys = Object.keys(categories);
-  
+
   if (!keys.includes(currentCategoryKey)) {
     currentCategoryKey = keys[0];
   }
@@ -217,7 +280,6 @@ function drawWheel() {
 
   const arc = (2 * Math.PI) / num;
 
-  // Điều chỉnh font thông minh khi quay 60 món cùng lúc
   let fontSize = 13;
   if (num > 15) fontSize = 10;
   if (num > 35) fontSize = 8.5;
@@ -243,7 +305,6 @@ function drawWheel() {
     ctx.rotate(angle + arc / 2);
     ctx.textAlign = "right";
 
-    // Cắt bớt chữ nếu danh sách quá nhiều nan
     const maxLen = num > 40 ? 12 : 18;
     const label = options[i].length > maxLen ? options[i].substring(0, maxLen - 2) + ".." : options[i];
     ctx.fillText(label, radius - 14, 3);
@@ -299,25 +360,28 @@ addForm.addEventListener("submit", (e) => {
   }
 });
 
+/* ===================================================
+   SPIN LOGIC (Sửa lỗi bấm không quay)
+   =================================================== */
 spinBtn.addEventListener("click", () => {
-  if (isSpinning || options.length < 2) {
-    if (options.length < 2) alert("Vui lòng có ít nhất 2 mục để bắt đầu quay!");
+  if (isSpinning) return;
+  if (!options || options.length < 2) {
+    alert("Vui lòng có ít nhất 2 mục để bắt đầu quay!");
     return;
   }
 
-  initAudioContext();
   isSpinning = true;
   spinBtn.disabled = true;
   resultTitle.textContent = "Đang quay chọn kèo...";
   resultAdvice.textContent = "Bánh xe đang lướt qua khắp các phố phường Hà Nội...";
   gmapLink.classList.add("hidden");
 
-  const totalRounds = 6 + Math.random() * 3;
+  const totalRounds = 5 + Math.random() * 3;
   const extraAngle = Math.random() * 2 * Math.PI;
   const targetRotation = totalRounds * 2 * Math.PI + extraAngle;
 
-  const duration = 4500;
-  const startTime = performance.now();
+  const duration = 4000;
+  let startTime = null;
   const initialAngle = startAngle;
 
   function easeOutCubic(t) {
@@ -325,6 +389,7 @@ spinBtn.addEventListener("click", () => {
   }
 
   function animate(now) {
+    if (!startTime) startTime = now;
     const elapsed = now - startTime;
     const progress = Math.min(elapsed / duration, 1);
     const easedProgress = easeOutCubic(progress);
@@ -332,12 +397,14 @@ spinBtn.addEventListener("click", () => {
     startAngle = initialAngle + targetRotation * easedProgress;
     drawWheel();
 
-    const arc = (2 * Math.PI) / options.length;
-    let norm = (startAngle % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
-    let currentSlice = Math.floor(norm / arc);
-    if (currentSlice !== lastTickIndex) {
-      playTickSound();
-      lastTickIndex = currentSlice;
+    if (options.length > 0) {
+      const arc = (2 * Math.PI) / options.length;
+      let norm = (startAngle % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
+      let currentSlice = Math.floor(norm / arc);
+      if (currentSlice !== lastTickIndex) {
+        playTickSound();
+        lastTickIndex = currentSlice;
+      }
     }
 
     if (progress < 1) {
@@ -354,8 +421,9 @@ spinBtn.addEventListener("click", () => {
 
 function announceResult() {
   const num = options.length;
-  const arc = (2 * Math.PI) / num;
+  if (num === 0) return;
 
+  const arc = (2 * Math.PI) / num;
   let normalizedAngle = (startAngle % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
   let arrowAngle = (1.5 * Math.PI - normalizedAngle + 2 * Math.PI) % (2 * Math.PI);
   const winningIndex = Math.floor(arrowAngle / arc);
@@ -367,7 +435,7 @@ function announceResult() {
   resultAdvice.textContent = currentMode === "food" 
     ? "Món ngon đã chốt, chuẩn bị lên phố lấp đầy chiếc bụng đói thôi!" 
     : "Điểm đến lý tưởng đã định, chuẩn bị đồ rồi lên đường quẩy thôi!";
-  
+
   gmapLink.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(selected + " Hà Nội")}`;
   gmapLink.classList.remove("hidden");
 }
