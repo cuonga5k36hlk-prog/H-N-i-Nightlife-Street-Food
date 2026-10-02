@@ -1,10 +1,10 @@
 :root {
-  --font-body: 'Plus Jakarta Sans', sans-serif;
-  --font-serif: 'Playfair Display', serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
   
   /* Bảng màu Retro Đêm Hà Nội */
   --bg-deep: #0e0d13;
-  --bg-card: rgba(26, 23, 34, 0.85);
+  --bg-card: rgba(26, 23, 34, 0.9);
   --border-neon: rgba(245, 158, 11, 0.25);
   --hanoi-gold: #f59e0b;
   --hanoi-brick: #ea580c;
@@ -34,11 +34,11 @@ body {
 
 .hanoi-layout {
   width: 100%;
-  max-width: 1060px;
+  max-width: 1080px;
   background: var(--bg-card);
   border: 1px solid var(--border-neon);
   border-radius: 28px;
-  padding: 36px 40px;
+  padding: 32px 38px;
   backdrop-filter: blur(16px);
   box-shadow: 0 30px 80px -15px rgba(0, 0, 0, 0.8), 0 0 40px rgba(245, 158, 11, 0.08);
 }
@@ -46,7 +46,7 @@ body {
 /* Header */
 .hanoi-header {
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 20px;
 }
 
 .header-tag {
@@ -59,14 +59,14 @@ body {
   border: 1px solid rgba(245, 158, 11, 0.3);
   padding: 4px 14px;
   border-radius: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .hanoi-header h1 {
   font-size: 2.1rem;
   font-weight: 800;
   letter-spacing: -0.5px;
-  background: linear-gradient(135deg, #fff 40%, var(--hanoi-yellow) 100%);
+  background: linear-gradient(135deg, #ffffff 40%, var(--hanoi-yellow) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -74,18 +74,53 @@ body {
 .subtitle {
   color: var(--text-muted);
   font-size: 0.95rem;
-  margin-top: 6px;
+  margin-top: 4px;
 }
 
-/* Main Layout */
+/* Bộ nút chuyển đổi Mode (Ăn Uống vs Đi Chơi) */
+.mode-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 26px;
+}
+
+.mode-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 12px 22px;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+}
+
+.mode-btn:hover {
+  color: #fff;
+  border-color: var(--hanoi-yellow);
+}
+
+.mode-btn.active {
+  background: linear-gradient(135deg, var(--hanoi-brick), var(--hanoi-gold));
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 18px var(--hanoi-glow);
+}
+
+/* Bố cục lưới */
 .main-grid {
   display: grid;
   grid-template-columns: 1.1fr 1fr;
-  gap: 40px;
+  gap: 38px;
   align-items: flex-start;
 }
 
-/* Wheel Column */
+/* Cột Vòng Quay */
 .wheel-column {
   display: flex;
   flex-direction: column;
@@ -154,7 +189,7 @@ body {
   transform: none;
 }
 
-/* Result Card */
+/* Hộp Kết Quả */
 .result-card {
   margin-top: 24px;
   background: rgba(245, 158, 11, 0.06);
@@ -171,7 +206,7 @@ body {
   text-transform: uppercase;
   color: var(--hanoi-yellow);
   letter-spacing: 1px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .result-card h2 {
@@ -208,7 +243,7 @@ body {
   display: none !important;
 }
 
-/* Config Column */
+/* Cột Thiết Lập & Danh Sách */
 .config-column {
   display: flex;
   flex-direction: column;
@@ -287,11 +322,6 @@ body {
   display: flex;
   align-items: center;
   gap: 4px;
-  transition: opacity 0.2s;
-}
-
-.submit-btn:hover {
-  opacity: 0.9;
 }
 
 .list-meta {
@@ -378,7 +408,7 @@ body {
   font-style: italic;
 }
 
-/* Responsive Điện Thoại */
+/* Tối ưu màn hình điện thoại di động */
 @media (max-width: 860px) {
   .hanoi-layout {
     padding: 20px 16px;
@@ -391,5 +421,8 @@ body {
   .wheel-box {
     width: 320px;
     height: 320px;
+  }
+  .mode-tabs {
+    flex-direction: column;
   }
 }
