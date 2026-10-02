@@ -2,7 +2,6 @@
   --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-serif: 'Playfair Display', Georgia, serif;
   
-  /* Bảng màu Retro Đêm Hà Nội */
   --bg-deep: #0e0d13;
   --bg-card: rgba(26, 23, 34, 0.9);
   --border-neon: rgba(245, 158, 11, 0.25);
@@ -77,7 +76,7 @@ body {
   margin-top: 4px;
 }
 
-/* Bộ nút chuyển đổi Mode (Ăn Uống vs Đi Chơi) */
+/* Mode Switcher Tabs */
 .mode-tabs {
   display: flex;
   justify-content: center;
@@ -112,7 +111,7 @@ body {
   box-shadow: 0 4px 18px var(--hanoi-glow);
 }
 
-/* Bố cục lưới */
+/* Main Grid */
 .main-grid {
   display: grid;
   grid-template-columns: 1.1fr 1fr;
@@ -120,7 +119,7 @@ body {
   align-items: flex-start;
 }
 
-/* Cột Vòng Quay */
+/* Wheel Canvas Area */
 .wheel-column {
   display: flex;
   flex-direction: column;
@@ -143,7 +142,6 @@ body {
   box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6), 0 0 25px var(--hanoi-glow);
 }
 
-/* Kim chỉ phía trên */
 .pointer-wrapper {
   position: absolute;
   top: -14px;
@@ -161,7 +159,6 @@ body {
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.7));
 }
 
-/* Nút quay trung tâm */
 .spin-trigger {
   position: absolute;
   width: 78px;
@@ -189,7 +186,7 @@ body {
   transform: none;
 }
 
-/* Hộp Kết Quả */
+/* Card Kết Quả Nhỏ */
 .result-card {
   margin-top: 24px;
   background: rgba(245, 158, 11, 0.06);
@@ -243,7 +240,7 @@ body {
   display: none !important;
 }
 
-/* Cột Thiết Lập & Danh Sách */
+/* Config & List */
 .config-column {
   display: flex;
   flex-direction: column;
@@ -408,7 +405,130 @@ body {
   font-style: italic;
 }
 
-/* Tối ưu màn hình điện thoại di động */
+/* ===================================================
+   MODAL POPUP TRÚNG THƯỞNG & PHÁO HOA
+   =================================================== */
+.winner-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  animation: fadeInModal 0.3s ease forwards;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 8, 16, 0.82);
+  backdrop-filter: blur(8px);
+}
+
+#confettiCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10000;
+}
+
+.modal-card {
+  position: relative;
+  z-index: 10001;
+  background: linear-gradient(145deg, rgba(35, 27, 48, 0.95), rgba(18, 14, 25, 0.98));
+  border: 2px solid var(--hanoi-yellow);
+  box-shadow: 0 0 50px rgba(245, 158, 11, 0.4), 0 20px 60px rgba(0, 0, 0, 0.9);
+  padding: 36px 30px;
+  border-radius: 24px;
+  text-align: center;
+  max-width: 480px;
+  width: 100%;
+  animation: popUpScale 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.modal-badge {
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
+  font-weight: 800;
+  color: var(--hanoi-yellow);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.modal-winner-name {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 8px;
+  line-height: 1.25;
+  text-shadow: 0 0 20px rgba(251, 191, 36, 0.6);
+  word-break: break-word;
+}
+
+.modal-winner-sub {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+}
+
+.modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-gmap-btn {
+  background: linear-gradient(135deg, var(--hanoi-brick), var(--hanoi-gold));
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 13px 20px;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 18px var(--hanoi-glow);
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.modal-gmap-btn:hover {
+  transform: scale(1.02);
+  opacity: 0.95;
+}
+
+.modal-close-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-muted);
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.modal-close-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+}
+
+@keyframes fadeInModal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popUpScale {
+  0% { transform: scale(0.65); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Mobile Responsive */
 @media (max-width: 860px) {
   .hanoi-layout {
     padding: 20px 16px;
