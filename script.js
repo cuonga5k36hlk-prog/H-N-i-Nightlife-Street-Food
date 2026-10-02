@@ -1,5 +1,5 @@
 /* ===================================================
-   WEB AUDIO API (Bọc an toàn tránh đơ vòng quay)
+   WEB AUDIO API (Bọc an toàn tránh lỗi chặn âm thanh)
    =================================================== */
 let audioCtx = null;
 
@@ -7,9 +7,7 @@ function getAudioContext() {
   try {
     if (!audioCtx) {
       const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-      if (AudioContextClass) {
-        audioCtx = new AudioContextClass();
-      }
+      if (AudioContextClass) audioCtx = new AudioContextClass();
     }
     if (audioCtx && audioCtx.state === "suspended") {
       audioCtx.resume();
@@ -22,101 +20,109 @@ function getAudioContext() {
 
 function playTickSound() {
   try {
-    const ctxAudio = getAudioContext();
-    if (!ctxAudio) return;
+    const ctxA = getAudioContext();
+    if (!ctxA) return;
 
-    const osc = ctxAudio.createOscillator();
-    const gain = ctxAudio.createGain();
+    const osc = ctxA.createOscillator();
+    const gain = ctxA.createGain();
 
     osc.type = "sine";
-    osc.frequency.setValueAtTime(560, ctxAudio.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(120, ctxAudio.currentTime + 0.035);
+    osc.frequency.setValueAtTime(560, ctxA.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(120, ctxA.currentTime + 0.035);
 
-    gain.gain.setValueAtTime(0.12, ctxAudio.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.001, ctxAudio.currentTime + 0.035);
+    gain.gain.setValueAtTime(0.12, ctxA.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctxA.currentTime + 0.035);
 
     osc.connect(gain);
-    gain.connect(ctxAudio.destination);
+    gain.connect(ctxA.destination);
 
     osc.start();
-    osc.stop(ctxAudio.currentTime + 0.035);
+    osc.stop(ctxA.currentTime + 0.035);
   } catch (e) {}
 }
 
 function playVictorySound() {
   try {
-    const ctxAudio = getAudioContext();
-    if (!ctxAudio) return;
+    const ctxA = getAudioContext();
+    if (!ctxA) return;
 
     const notes = [523.25, 659.25, 783.99, 1046.50];
     notes.forEach((freq, idx) => {
-      const osc = ctxAudio.createOscillator();
-      const gain = ctxAudio.createGain();
+      const osc = ctxA.createOscillator();
+      const gain = ctxA.createGain();
 
       osc.type = "triangle";
-      osc.frequency.setValueAtTime(freq, ctxAudio.currentTime + idx * 0.09);
+      osc.frequency.setValueAtTime(freq, ctxA.currentTime + idx * 0.09);
 
-      gain.gain.setValueAtTime(0.15, ctxAudio.currentTime + idx * 0.09);
-      gain.gain.exponentialRampToValueAtTime(0.001, ctxAudio.currentTime + idx * 0.09 + 0.35);
+      gain.gain.setValueAtTime(0.15, ctxA.currentTime + idx * 0.09);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctxA.currentTime + idx * 0.09 + 0.35);
 
       osc.connect(gain);
-      gain.connect(ctxAudio.destination);
+      gain.connect(ctxA.destination);
 
-      osc.start(ctxAudio.currentTime + idx * 0.09);
-      osc.stop(ctxAudio.currentTime + idx * 0.09 + 0.35);
+      osc.start(ctxA.currentTime + idx * 0.09);
+      osc.stop(ctxA.currentTime + idx * 0.09 + 0.35);
     });
   } catch (e) {}
 }
 
 /* ===================================================
-   DATABASE: TỔNG HỢP 60+ MÓN ĂN & 60+ ĐỊA ĐIỂM HÀ NỘI
+   DATABASE: 100+ MÓN ĂN & 100+ ĐỊA ĐIỂM HÀ NỘI
    =================================================== */
 const DATABASE = {
   food: {
     title: "Ăn Uống",
     categories: {
       allFood: {
-        label: "🔥 TẤT CẢ (61 Món Ăn)",
+        label: "🔥 TẤT CẢ (102 Món)",
         items: []
       },
-      sangTrua: {
-        label: "🍜 Sáng & Trưa (16)",
+      phoBunXoi: {
+        label: "🍜 Phở, Bún & Xôi (25)",
         items: [
-          "Phở Bát Đàn (Phố Cổ)", "Phở Thìn Lò Đúc", "Phở Gà Châm Yên Ninh",
-          "Bún Chả Hàng Quạt", "Bún Chả Hương Liên", "Bún Đậu Hàng Khay",
-          "Bún Đậu Ngõ Gạch", "Bánh Cuốn Bà Hoành", "Bún Thang Cầu Gỗ",
-          "Bún Dọc Mùng Bát Đàn", "Xôi Xéo Bát Đàn", "Xôi Yến Nguyễn Hữu Huân",
-          "Bún Ngan Nhàn Ngõ Trung Yên", "Bún Riêu Cua Hàng Bạc", "Bánh Đa Cua Hàng Chĩnh", "Cơm Tấm Phố Cổ"
+          "Phở Bát Đàn (Phố Cổ)", "Phở Thìn Lò Đúc", "Phở Gà Châm Yên Ninh", "Phở Lý Quốc Sư",
+          "Phở Khôi Hói Hàng Vải", "Phở Bò Gốc Gạo", "Phở Cuốn Hương Mai Ngũ Xã", "Phở Chiên Phồng Ngũ Xã",
+          "Bún Chả Hàng Quạt", "Bún Chả Hương Liên", "Bún Chả Đắc Kim", "Bún Đậu Hàng Khay",
+          "Bún Đậu Ngõ Gạch", "Bún Đậu Trung Hương Ngõ Phất Lộc", "Bún Thang Cầu Gỗ", "Bún Thang Hàng Hòm",
+          "Bún Dọc Mùng Bát Đàn", "Bún Ngan Nhàn Ngõ Trung Yên", "Bún Ngan Cháy Tỏi Hàng Thiếc", "Bún Riêu Cua Hàng Bạc",
+          "Bún Riêu Quang Trung", "Bún Ốc Giang Lương Ngọc Quyến", "Bún Ốc Nguội Ô Quan Chưởng", "Xôi Xéo Bát Đàn",
+          "Xôi Yến Nguyễn Hữu Huân"
         ]
       },
-      toiDem: {
-        label: "🍲 Lẩu & Đêm Muộn (15)",
+      lauNuongNhao: {
+        label: "🍲 Lẩu, Nướng & Nhậu (26)",
         items: [
-          "Lẩu Ếch Phó Đức Chính", "Lẩu Riêu Cua Hàng Tre", "Lẩu Bò Nhúng Dấm 555",
-          "Lẩu Ốc Bà Tảo Khương Thượng", "Nướng Ngói Gầm Cầu", "Chân Gà Nướng Bà Triệu",
-          "Ốc Hà Trang Đinh Liệt", "Ốc Nóng Tôn Thất Tùng", "Cháo Sườn Sụn Đồng Xuân",
-          "Mì Gà Tần Hàng Bồ", "Bánh Mì Sốt Vang Đình Ngang", "Phở Xào Bắp Bò Bát Đàn",
-          "Chả Cá Lã Vọng", "Cháo Gà Bà Mỹ Lý Quốc Sư", "Lòng Rán Nhất Quán"
+          "Lẩu Ếch Phó Đức Chính", "Lẩu Ếch Trúc Bạch", "Lẩu Riêu Cua Hàng Tre", "Lẩu Riêu Bắp Bò Phó Đức Chính",
+          "Lẩu Bò Nhúng Dấm 555", "Lẩu Ốc Bà Tảo Khương Thượng", "Lẩu Gà Lá É Đội Cấn", "Lẩu Dê Nhất Ly",
+          "Lẩu Nấm Gia Khánh", "Nướng Ngói Gầm Cầu", "Nướng Vỉa Hè Phố Mã Mây", "Nướng Bơ Xuân Kiên",
+          "Chân Gà Nướng Bà Triệu", "Chân Gà Nướng Ngõ Gạch", "Cánh Gà Nướng Thụy Khuê", "Ốc Hà Trang Đinh Liệt",
+          "Ốc Nóng Tôn Thất Tùng", "Ốc Oanh Hàm Long", "Chả Cá Lã Vọng", "Chả Cá Thăng Long",
+          "Lòng Rán Nhất Quán Nguyễn Siêu", "Nõn Đuôi Rán Hàng Gà", "Dạ Dày Nướng Gầm Cầu", "Bia Hơi Hải Xồm",
+          "Bia Hơi Lan Chín", "Bia Hơi Cường Hói"
         ]
       },
-      anVat: {
-        label: "🍢 Ăn Vặt Chiều (15)",
+      anVatBanh: {
+        label: "🍢 Ăn Vặt & Bánh Truyền Thống (26)",
         items: [
-          "Nem Chua Rán Tạm Thương", "Bánh Gối Lý Quốc Sư", "Bánh Tôm Hồ Tây",
-          "Nộm Bò Khô Bờ Hồ", "Nộm Chim Quay Hàm Long", "Tào Phớ Nghĩa Tân",
-          "Trứng Chén Nướng Đội Cấn", "Bánh Rán Mặn Lạc Long Quân", "Bánh Rán Ngọt Ô Quan Chưởng",
-          "Bò Bía Ngọt Ven Hồ Tây", "Kem Tràng Tiền", "Sữa Chua Dẻo Hàng Than",
-          "Bánh Giò Đông Các", "Chè 4 Mùa Hàng Cân", "Bánh Tráng Cuốn Thịt Heo"
+          "Nem Chua Rán Tạm Thương", "Bánh Gối Lý Quốc Sư", "Bánh Tôm Cô Ầm Đồng Xuân", "Bánh Tôm Thanh Niên",
+          "Nộm Bò Khô Bờ Hồ", "Nộm Bò Khô Long Vi Quán", "Nộm Chim Quay Hàm Long", "Tào Phớ Nghĩa Tân",
+          "Tào Phớ Cột Điện Yên Hòa", "Trứng Chén Nướng Đội Cấn", "Bánh Rán Mặn Lạc Long Quân", "Bánh Rán Ngọt Ô Quan Chưởng",
+          "Bò Bía Ngọt Ven Hồ Tây", "Bánh Giò Đông Các", "Bánh Giò Thụy Khuê", "Bánh Cuốn Bà Hoành",
+          "Bánh Cuốn Gia An", "Bánh Cuốn Nóng Hàng Gà", "Bánh Mì Lãn Ông", "Bánh Mì Dân Tổ",
+          "Bánh Mì Trâm Đình Ngang", "Bánh Mì Chảo Cột Điện", "Bánh Mì Nem Khoai Ngõ Tự Do", "Bánh Tráng Cuốn Thịt Heo Hoàng Bèo",
+          "Bánh Đúc Nóng Lê Ngọc Hân", "Bánh Xèo Đội Cấn"
         ]
       },
-      doUong: {
-        label: "☕ Cà Phê & Trà (15)",
+      demKhuyaChe: {
+        label: "☕ Đêm Khuya & Tráng Miệng (25)",
         items: [
-          "Cafe Trứng Giảng Nguyễn Hữu Huân", "Cafe Đinh Ngắm Hồ Gươm", "Yên Cafe Quán Thánh",
-          "Loading T Chân Cầm", "Trà Chanh Chợ Gạo", "Trà Đào Cam Sả Hồ Tây",
-          "Cafe Ban Công Đinh Liệt", "Cộng Cafe Nhà Thờ", "Trà Sen Tây Hồ",
-          "Chè Khúc Bạch Hàng Tre", "Sữa Chua Trân Châu", "Kem Bơ Cột Điện Bà Triệu",
-          "Nước Mía Hàng Điếu", "Trà Sữa Oolong Đậm Vị", "Nước Sấu Đá Phố Cổ"
+          "Cháo Sườn Sụn Đồng Xuân", "Cháo Sườn Bách Khoa", "Cháo Trai Trần Xuân Soạn", "Cháo Gà Bà Mỹ Lý Quốc Sư",
+          "Mì Gà Tần Hàng Bồ", "Mì Tim Cật Chùa Vua", "Phở Xào Bắp Bò Bát Đàn", "Cơm Tấm Sườn Đào Duy Từ",
+          "Cafe Trứng Giảng Nguyễn Hữu Huân", "Cafe Đinh Ngắm Hồ Gươm", "Yên Cafe Quán Thánh", "Loading T Chân Cầm",
+          "Trà Chanh Chợ Gạo", "Trà Chanh Nhà Thờ Lớn", "Trà Đào Cam Sả Ven Hồ Tây", "Cafe Ban Công Đinh Liệt",
+          "Trà Sen Tây Hồ", "Chè 4 Mùa Hàng Cân", "Chè Xoài Nguyễn Trường Tộ", "Chè Khúc Bạch Hàng Tre",
+          "Kem Tràng Tiền", "Kem Bơ Cột Điện Bà Triệu", "Sữa Chua Dẻo Hàng Than", "Sữa Chua Trân Châu Hạ Long",
+          "Nước Mía Trân Châu Hàng Điếu"
         ]
       }
     }
@@ -125,65 +131,74 @@ const DATABASE = {
     title: "Đi Chơi",
     categories: {
       allPlaces: {
-        label: "🔥 TẤT CẢ (60 Điểm Chơi)",
+        label: "🔥 TẤT CẢ (101 Điểm)",
         items: []
       },
-      vanHoa: {
-        label: "🏛️ Check-in & Di Tích (15)",
+      vanHoaDiTich: {
+        label: "🏛️ Check-in & Di Tích (25)",
         items: [
-          "Di tích Nhà Tù Hỏa Lò", "Bảo tàng Dân tộc học", "Bảo tàng Mỹ thuật Việt Nam",
-          "Hoàng thành Thăng Long", "Văn Miếu - Quốc Tử Giám", "Bảo tàng Lịch sử Quân sự VN",
-          "Lăng Bác & Quảng trường Ba Đình", "Nhà hát Lớn Hà Nội", "Cầu Long Biên Đón Gió",
-          "Phố Bích Họa Phùng Hưng", "Phố Sách 19/12 Hà Nội", "Nhà Thờ Lớn Hà Nội",
-          "Làng Gốm Bát Tràng", "Thung Lũng Hoa Hồ Tây", "Chùa Trấn Quốc & Trúc Bạch"
+          "Di tích Nhà Tù Hỏa Lò", "Bảo tàng Dân tộc học", "Bảo tàng Mỹ thuật Việt Nam", "Hoàng thành Thăng Long",
+          "Văn Miếu - Quốc Tử Giám", "Bảo tàng Lịch sử Quân sự VN", "Lăng Bác & Quảng trường Ba Đình", "Nhà hát Lớn Hà Nội",
+          "Cầu Long Biên Đón Gió", "Phố Bích Họa Phùng Hưng", "Phố Sách 19/12 Hà Nội", "Nhà Thờ Lớn Hà Nội",
+          "Chùa Trấn Quốc Hồ Tây", "Chùa Một Cột", "Đền Ngọc Sơn Hồ Gươm", "Tháp Nước Hàng Đậu",
+          "Làng Gốm Bát Tràng", "Làng Lụa Vạn Phúc", "Làng Nón Chuông", "Làng Hương Quảng Phú Cầu",
+          "Bảo tàng Thiên Nhiên VN", "Cột Cờ Hà Nội", "Cửa Bắc Hoàng Thành", "Ô Quan Chưởng",
+          "Nhà Cổ 87 Mã Mây"
         ]
       },
-      giaiTri: {
-        label: "🎯 Game & Trải Nghiệm (15)",
+      gameTraiNghiem: {
+        label: "🎯 Trò Chơi & Vận Động (25)",
         items: [
-          "Đua xe Go-Kart (VS Racing)", "Bắn Cung Target Archery", "Leo Núi Nhân Tạo Vietclimb",
-          "Tổ Hợp Board Game Phố Cổ", "Phòng Nhảy Bạt Nhún Jump Arena", "Sân Trượt Băng Royal City",
-          "Thủy Cung Lotte Mall Tây Hồ", "Escape Room Thử Thách", "Bida Club Phố Cổ",
-          "Axe Throwing Ném Rìu", "Bắn Súng Laser Tag", "Bắn Súng Sơn Paintball",
-          "Workshop Tự Làm Đồ Da", "Workshop Làm Gốm Tự Nặn", "Workshop Nến Thơm & Tranh Vẽ"
+          "Đua xe Go-Kart (VS Racing)", "Bắn Cung Target Archery", "Leo Núi Nhân Tạo Vietclimb", "Tổ Hợp Board Game Phố Cổ",
+          "Phòng Nhảy Bạt Nhún Jump Arena", "Sân Trượt Băng Royal City", "Thủy Cung Lotte Mall Tây Hồ", "Thủy Cung Vinpearl Times City",
+          "Trải nghiệm Escape Room Hà Nội", "Bida Club Phố Cổ", "Axe Throwing Ném Rìu", "Bắn Súng Laser Tag",
+          "Bắn Súng Sơn Paintball Tây Hồ", "Workshop Làm Đồ Da Thủ Công", "Workshop Gốm Tự Nặn Bát Tràng", "Workshop Nến Thơm & Tranh Vẽ",
+          "Bowling Times City Mega Mall", "Bowling Aeon Mall Hà Đông", "Sân Golf 3D Trong Nhà", "Phòng Đập Phá Đồ Xả Stress",
+          "Khu Vui Chơi Wolfoo City", "Bể Bơi Vô Cực Khách Sạn Thắng Lợi", "Bể Bơi Bốn Mùa Khăn Quàng Đỏ", "Đạp Xe Quanh Vòng Hồ Tây",
+          "Chèo Thuyền SUP Bến Sâm Hồ Tây"
         ]
       },
-      chillPho: {
-        label: "🌿 Dạo Phố & Hẹn Hò (15)",
+      chillThienNhien: {
+        label: "🌿 Chill & Ngắm Cảnh (26)",
         items: [
-          "Ngắm Hoàng Hôn Bến Hàn Quốc", "Đạp Vịt Hồ Trúc Bạch", "Lượn Đường Phan Đình Phùng",
-          "Dạo Quanh Hồ Gươm Cuối Tuần", "Ngồi Trà Chanh Ngắm Nhà Thờ", "Chill Cà Phê Ven Hồ Tây",
-          "Trải Nghiệm Ga Cát Linh - Hà Đông", "Cắm Trại Công Viên Yên Sở", "Vườn Hoa Bãi Đá Sông Hồng",
-          "Xem Phim Rạp Quốc Gia", "Rạp Beta Chiếu Phim", "Cắm Trại Bãi Giữa Sông Hồng",
-          "Hóng Mát Bờ Kè Hồ Tây", "Thăm Phố Cổ Ngõ Hẹp Đồng Xuân", "Check-in Cầu Nhật Tân Chiều Tà"
+          "Ngắm Hoàng Hôn Bến Hàn Quốc", "Đạp Vịt Hồ Trúc Bạch", "Lượn Đường Phan Đình Phùng", "Dạo Quanh Phố Đi Bộ Hồ Gươm",
+          "Ngồi Trà Chanh Ngắm Nhà Thờ", "Trải Nghiệm Ga Cát Linh - Hà Đông", "Cắm Trại Công Viên Yên Sở", "Vườn Hoa Bãi Đá Sông Hồng",
+          "Thung Lũng Hoa Hồ Tây", "Camping Bãi Giữa Sông Hồng", "Hóng Mát Bờ Kè Hồ Tây", "Vườn Bách Thảo Hà Nội",
+          "Công Viên Thủ Lệ", "Công Viên Cầu Giấy", "Công Viên Hòa Bình", "Khu Đô Thị Ecopark Xanh Mát",
+          "Check-in Cầu Nhật Tân Chiều Tà", "Rạp Chiếu Phim Quốc Gia", "Rạp Beta Chiếu Phim", "Cà Phê Đường Tàu Phùng Hưng",
+          "Chill Rooftop Cà Phê Ngắm Trọn Thành Phố", "Hồ Đồng Đò Sóc Sơn", "Núi Hàm Lợn Cắm Trại", "Thung Lũng Bản Rõm Sóc Sơn",
+          "Vườn Quốc Gia Ba Vì", "Làng Cổ Đường Lâm"
         ]
       },
-      nightlife: {
-        label: "🌙 Nightlife & Đêm (15)",
+      nightlifeGiaiTri: {
+        label: "🌙 Nightlife & Đêm Muộn (25)",
         items: [
-          "Quẩy Xuyên Đêm Phố Bia Tạ Hiện", "Nghe Nhạc Jazz Bình Minh Jazz Club", "Thưởng Thức Acoustic Bar Phố Cổ",
-          "Dạo Chợ Đêm Phố Cổ Đồng Xuân", "Hóng Gió Đêm Cầu Nhật Tân", "Food Tour Đêm Chợ Long Biên",
-          "Chill Rooftop Bar Toàn Cảnh", "Ghé Pub Đường Tàu Phùng Hưng", "Trà Chanh Đêm Chợ Gạo",
-          "Tour Đêm Giải Mã Hoàng Thành", "Tour Đêm Nhà Tù Hỏa Lò", "Hát Karaoke Cùng Hội Bạn",
-          "Đài Quan Sát Lotte Center 65F", "Lượn Xe Một Vòng Hồ Tây 0h", "Xem Lễ Hạ Cờ 21h Lăng Bác"
+          "Quẩy Xuyên Đêm Phố Bia Tạ Hiện", "Nghe Nhạc Jazz Bình Minh Jazz Club", "Acoustic Live Music Bar Phố Cổ", "Dạo Chợ Đêm Phố Cổ Đồng Xuân",
+          "Hóng Gió Đêm Cầu Nhật Tân", "Food Tour Đêm Chợ Long Biên", "Chill Rooftop Bar Khách Sạn Lotte", "Pub Nhẹ Nhàng Khu Quảng An",
+          "Trà Chanh Đêm Chợ Gạo", "Tour Đêm Giải Mã Hoàng Thành", "Tour Đêm Nhà Tù Hỏa Lò", "Hát Karaoke Tụ Tập Bạn Bè",
+          "Đài Quan Sát Lotte Center 65F", "Lượn Xe Một Vòng Hồ Tây Lúc 0h", "Xem Lễ Hạ Cờ 21h Quảng Trường Ba Đình", "Xem Lễ Thượng Cờ 6h Sáng Lăng Bác",
+          "Phòng Chiếu Phim Đêm CGV Lotte", "Bar Speakeasy Bí Mật Phố Cổ", "Quán Nhậu Xuyên Đêm Gầm Cầu", "Ngắm Bình Minh Cầu Vĩnh Tuy",
+          "Ghé Chợ Hoa Đêm Quảng Bá", "Check-in Phố Đi Bộ Trần Nhân Tông", "Dạo Phố Đi Bộ Thành Cổ Sơn Tây", "Chợ Đêm Sinh Viên Dịch Vọng",
+          "Chợ Đêm Phùng Khoang"
         ]
       }
     }
   }
 };
 
+// Tự động gộp toàn bộ danh sách vào mục TẤT CẢ (>100 món / >100 điểm)
 DATABASE.food.categories.allFood.items = [
-  ...DATABASE.food.categories.sangTrua.items,
-  ...DATABASE.food.categories.toiDem.items,
-  ...DATABASE.food.categories.anVat.items,
-  ...DATABASE.food.categories.doUong.items
+  ...DATABASE.food.categories.phoBunXoi.items,
+  ...DATABASE.food.categories.lauNuongNhao.items,
+  ...DATABASE.food.categories.anVatBanh.items,
+  ...DATABASE.food.categories.demKhuyaChe.items
 ];
 
 DATABASE.places.categories.allPlaces.items = [
-  ...DATABASE.places.categories.vanHoa.items,
-  ...DATABASE.places.categories.giaiTri.items,
-  ...DATABASE.places.categories.chillPho.items,
-  ...DATABASE.places.categories.nightlife.items
+  ...DATABASE.places.categories.vanHoaDiTich.items,
+  ...DATABASE.places.categories.gameTraiNghiem.items,
+  ...DATABASE.places.categories.chillThienNhien.items,
+  ...DATABASE.places.categories.nightlifeGiaiTri.items
 ];
 
 const WHEEL_PALETTE = [
@@ -192,8 +207,14 @@ const WHEEL_PALETTE = [
 ];
 
 /* ===================================================
-   STATE MANAGEMENT
+   TỰ ĐỘNG LÀM MỚI BỘ NHỚ LOCALSTORAGE (Tránh dính 10 món cũ)
    =================================================== */
+const APP_VERSION = "hanoi_super_100_v1";
+if (localStorage.getItem("hanoi_app_ver") !== APP_VERSION) {
+  localStorage.clear();
+  localStorage.setItem("hanoi_app_ver", APP_VERSION);
+}
+
 let currentMode = "food";
 let currentCategoryKey = "allFood";
 let options = [];
@@ -215,6 +236,77 @@ const resetAllBtn = document.getElementById("resetAllBtn");
 const modeBtns = document.querySelectorAll(".mode-btn");
 const presetGroup = document.getElementById("presetGroup");
 
+// DOM elements cho Modal Popup & Confetti
+const winnerModal = document.getElementById("winnerModal");
+const modalWinnerName = document.getElementById("modalWinnerName");
+const modalWinnerSub = document.getElementById("modalWinnerSub");
+const modalGmapLink = document.getElementById("modalGmapLink");
+const closeModalBtn = document.getElementById("closeModalBtn");
+const confettiCanvas = document.getElementById("confettiCanvas");
+
+if (closeModalBtn) {
+  closeModalBtn.addEventListener("click", () => {
+    winnerModal.classList.add("hidden");
+  });
+}
+
+/* ===================================================
+   HIỆU ỨNG PHÁO HOA GIẤY (CONFETTI CANVAS)
+   =================================================== */
+function triggerConfetti() {
+  if (!confettiCanvas) return;
+  const cctx = confettiCanvas.getContext("2d");
+  confettiCanvas.width = window.innerWidth;
+  confettiCanvas.height = window.innerHeight;
+
+  const particles = [];
+  const colors = ["#f59e0b", "#ef4444", "#10b981", "#3b82f6", "#ec4899", "#fbbf24", "#8b5cf6"];
+
+  for (let i = 0; i < 110; i++) {
+    particles.push({
+      x: window.innerWidth / 2,
+      y: window.innerHeight / 2,
+      w: Math.random() * 8 + 4,
+      h: Math.random() * 8 + 4,
+      vx: (Math.random() - 0.5) * 18,
+      vy: (Math.random() - 0.7) * 18,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      rotation: Math.random() * 360,
+      dr: Math.random() * 10 - 5
+    });
+  }
+
+  let frameCount = 0;
+  function renderConfetti() {
+    cctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+    particles.forEach((p) => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += 0.38;
+      p.rotation += p.dr;
+
+      cctx.save();
+      cctx.translate(p.x, p.y);
+      cctx.rotate((p.rotation * Math.PI) / 180);
+      cctx.fillStyle = p.color;
+      cctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+      cctx.restore();
+    });
+
+    frameCount++;
+    if (frameCount < 130) {
+      requestAnimationFrame(renderConfetti);
+    } else {
+      cctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+    }
+  }
+
+  requestAnimationFrame(renderConfetti);
+}
+
+/* ===================================================
+   QUẢN LÝ PRESET & DANH MỤC
+   =================================================== */
 function setupPresets() {
   presetGroup.innerHTML = "";
   const categories = DATABASE[currentMode].categories;
@@ -258,6 +350,9 @@ modeBtns.forEach((btn) => {
   });
 });
 
+/* ===================================================
+   VẼ VÒNG QUAY CANVAS (TỐI ƯU KHI CÓ >100 NAN)
+   =================================================== */
 function drawWheel() {
   const num = options.length;
   const cx = canvas.width / 2;
@@ -280,10 +375,12 @@ function drawWheel() {
 
   const arc = (2 * Math.PI) / num;
 
+  // Tự động điều chỉnh font chữ và độ dài nhãn theo số lượng
   let fontSize = 13;
-  if (num > 15) fontSize = 10;
-  if (num > 35) fontSize = 8.5;
-  if (num > 50) fontSize = 7;
+  let maxLen = 18;
+  if (num > 20) { fontSize = 10; maxLen = 15; }
+  if (num > 45) { fontSize = 8.5; maxLen = 12; }
+  if (num > 80) { fontSize = 6.5; maxLen = 10; }
 
   for (let i = 0; i < num; i++) {
     const angle = startAngle + i * arc;
@@ -305,13 +402,15 @@ function drawWheel() {
     ctx.rotate(angle + arc / 2);
     ctx.textAlign = "right";
 
-    const maxLen = num > 40 ? 12 : 18;
     const label = options[i].length > maxLen ? options[i].substring(0, maxLen - 2) + ".." : options[i];
     ctx.fillText(label, radius - 14, 3);
     ctx.restore();
   }
 }
 
+/* ===================================================
+   RENDER DANH SÁCH & LƯU LOCALSTORAGE
+   =================================================== */
 function renderList() {
   itemsWrapper.innerHTML = "";
   counterText.textContent = `Danh sách: ${options.length} lựa chọn`;
@@ -361,7 +460,7 @@ addForm.addEventListener("submit", (e) => {
 });
 
 /* ===================================================
-   SPIN LOGIC (Sửa lỗi bấm không quay)
+   LOGIC QUAY BÁNH XE (EASING OUT CUBIC)
    =================================================== */
 spinBtn.addEventListener("click", () => {
   if (isSpinning) return;
@@ -373,14 +472,14 @@ spinBtn.addEventListener("click", () => {
   isSpinning = true;
   spinBtn.disabled = true;
   resultTitle.textContent = "Đang quay chọn kèo...";
-  resultAdvice.textContent = "Bánh xe đang lướt qua khắp các phố phường Hà Nội...";
+  resultAdvice.textContent = "Bánh xe đang lướt qua khắp 36 phố phường Hà Nội...";
   gmapLink.classList.add("hidden");
 
   const totalRounds = 5 + Math.random() * 3;
   const extraAngle = Math.random() * 2 * Math.PI;
   const targetRotation = totalRounds * 2 * Math.PI + extraAngle;
 
-  const duration = 4000;
+  const duration = 4200;
   let startTime = null;
   const initialAngle = startAngle;
 
@@ -419,6 +518,9 @@ spinBtn.addEventListener("click", () => {
   requestAnimationFrame(animate);
 });
 
+/* ===================================================
+   HIỂN THỊ KẾT QUẢ & POPUP PHÁO HOA
+   =================================================== */
 function announceResult() {
   const num = options.length;
   if (num === 0) return;
@@ -429,17 +531,31 @@ function announceResult() {
   const winningIndex = Math.floor(arrowAngle / arc);
   const selected = options[winningIndex];
 
+  // Phát nhạc chúc mừng
   playVictorySound();
 
+  // Cập nhật card nhỏ bên dưới vòng quay
   resultTitle.textContent = `🎯 ${selected}`;
   resultAdvice.textContent = currentMode === "food" 
     ? "Món ngon đã chốt, chuẩn bị lên phố lấp đầy chiếc bụng đói thôi!" 
     : "Điểm đến lý tưởng đã định, chuẩn bị đồ rồi lên đường quẩy thôi!";
 
-  gmapLink.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(selected + " Hà Nội")}`;
+  const gmapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(selected + " Hà Nội")}`;
+  gmapLink.href = gmapUrl;
   gmapLink.classList.remove("hidden");
+
+  // Hiển thị Modal Popup & Pháo hoa
+  if (winnerModal && modalWinnerName) {
+    modalWinnerName.textContent = selected;
+    modalWinnerSub.textContent = currentMode === "food"
+      ? "Kèo ăn uống đã chốt chuẩn vị, xách xe đi thưởng thức ngay thôi!"
+      : "Địa điểm đã định, rủ ngay bạn bè lên đồ xuất phát!";
+    modalGmapLink.href = gmapUrl;
+    winnerModal.classList.remove("hidden");
+    triggerConfetti();
+  }
 }
 
-// Khởi chạy
+// Khởi chạy khi load trang
 setupPresets();
 loadCategoryData();
