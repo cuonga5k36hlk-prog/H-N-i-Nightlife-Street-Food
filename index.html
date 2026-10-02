@@ -3,23 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vòng Quay Hà Nội Phố | Hôm Nay Ăn Gì - Đi Đâu?</title>
+  <title>Vòng Quay Hà Nội Phố | Ăn Gì & Đi Đâu?</title>
+  <!-- Google Fonts & Phosphor Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="hanoi-layout">
-    <!-- Header -->
+    <!-- Tiêu đề trang -->
     <header class="hanoi-header">
       <div class="header-tag">36 PHỐ PHƯỜNG • HÀ NỘI</div>
-      <h1>Hôm Nay Ăn Gì - Đi Đâu?</h1>
-      <p class="subtitle">Đặc sản phố cổ, ăn vặt ngõ nhỏ hay cà phê lộng gió Hồ Tây</p>
+      <h1>Hôm Nay Ăn Gì – Đi Đâu?</h1>
+      <p class="subtitle">Đặc sản phố cổ, ngõ nhỏ ẩm thực hay tụ điểm vui chơi check-in</p>
     </header>
 
-    <!-- Main Container -->
+    <!-- Nút chuyển đổi 2 chế độ: Ăn Uống & Đi Chơi -->
+    <nav class="mode-tabs">
+      <button class="mode-btn active" data-mode="food">
+        <i class="ph-fill ph-bowl-food"></i> ĂN UỐNG HÀ NỘI (60+ Món)
+      </button>
+      <button class="mode-btn" data-mode="places">
+        <i class="ph-fill ph-compass"></i> ĐI CHƠI CHECK-IN (60+ Điểm)
+      </button>
+    </nav>
+
+    <!-- Bố cục chính 2 cột -->
     <main class="main-grid">
       <!-- Cột trái: Vòng quay & Kết quả -->
       <section class="wheel-column">
@@ -31,9 +42,8 @@
           <button id="spinBtn" class="spin-trigger">QUAY</button>
         </div>
 
-        <!-- Hộp hiển thị kết quả -->
         <div id="resultCard" class="result-card">
-          <span class="result-badge">Kèo Chốt Hôm Nay</span>
+          <span class="result-badge">KÈO CHỐT HÔM NAY</span>
           <h2 id="resultTitle">Bấm QUAY để chọn kèo!</h2>
           <p id="resultAdvice">Đừng để chiếc bụng đói chờ đợi quá lâu.</p>
           <a id="gmapLink" href="#" target="_blank" class="gmap-btn hidden">
@@ -42,20 +52,15 @@
         </div>
       </section>
 
-      <!-- Cột phải: Quản lý danh sách & Chủ đề Preset -->
+      <!-- Cột phải: Bộ lọc Preset & Danh sách lựa chọn -->
       <section class="config-column">
-        <!-- Preset mẫu Hà Nội -->
         <div class="panel preset-panel">
-          <span class="panel-label"><i class="ph ph-compass"></i> Chọn nhanh chủ đề Hà Nội:</span>
-          <div class="preset-group">
-            <button class="preset-tag active" data-preset="sangTrua">🍜 Sáng & Trưa</button>
-            <button class="preset-tag" data-preset="toiDem">🍲 Tối & Đêm Khuya</button>
-            <button class="preset-tag" data-preset="anVat">🍢 Ăn Vặt Chiều Phố</button>
-            <button class="preset-tag" data-preset="choiCafe">☕ Cafe & Đi Dạo</button>
+          <span class="panel-label"><i class="ph ph-funnel"></i> Chọn chủ đề chi tiết:</span>
+          <div class="preset-group" id="presetGroup">
+            <!-- Nút lọc preset sẽ tự động render tại đây qua script.js -->
           </div>
         </div>
 
-        <!-- Form nhập món -->
         <div class="panel form-panel">
           <form id="addForm" class="add-form">
             <input type="text" id="itemInput" placeholder="Thêm quán/món bạn muốn ghé..." maxlength="30" required>
@@ -63,14 +68,13 @@
           </form>
         </div>
 
-        <!-- Danh sách items -->
         <div class="panel list-panel">
           <div class="list-meta">
             <span id="counterText">Danh sách: 0 lựa chọn</span>
             <button id="resetAllBtn" class="action-btn-text">Đặt lại mặc định</button>
           </div>
           <ul id="itemsWrapper" class="custom-scroll">
-            <!-- Render từ script.js -->
+            <!-- Danh sách các món/địa điểm render tại đây qua script.js -->
           </ul>
         </div>
       </section>
