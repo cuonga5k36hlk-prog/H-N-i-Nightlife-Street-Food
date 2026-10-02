@@ -1,5 +1,5 @@
 /* ===================================================
-   WEB AUDIO API (Hiệu ứng âm thanh không cần file ngoài)
+   WEB AUDIO API
    =================================================== */
 let audioCtx = null;
 
@@ -12,7 +12,6 @@ function initAudioContext() {
   }
 }
 
-// Âm click khi kim lướt qua nan quạt
 function playTickSound() {
   try {
     initAudioContext();
@@ -20,109 +19,150 @@ function playTickSound() {
     const gain = audioCtx.createGain();
 
     osc.type = "sine";
-    osc.frequency.setValueAtTime(580, audioCtx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(120, audioCtx.currentTime + 0.04);
+    osc.frequency.setValueAtTime(560, audioCtx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(120, audioCtx.currentTime + 0.035);
 
-    gain.gain.setValueAtTime(0.18, audioCtx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.04);
+    gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.035);
 
     osc.connect(gain);
     gain.connect(audioCtx.destination);
 
     osc.start();
-    osc.stop(audioCtx.currentTime + 0.04);
-  } catch (e) {
-    // Tránh chặn UI nếu trình duyệt tắt audio
-  }
+    osc.stop(audioCtx.currentTime + 0.035);
+  } catch (e) {}
 }
 
-// Âm chuông vui mừng khi trúng giải
 function playVictorySound() {
   try {
     initAudioContext();
-    const notes = [523.25, 659.25, 783.99, 1046.50]; // C - E - G - C cao
+    const notes = [523.25, 659.25, 783.99, 1046.50];
     notes.forEach((freq, idx) => {
       const osc = audioCtx.createOscillator();
       const gain = audioCtx.createGain();
 
       osc.type = "triangle";
-      osc.frequency.setValueAtTime(freq, audioCtx.currentTime + idx * 0.1);
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime + idx * 0.09);
 
-      gain.gain.setValueAtTime(0.2, audioCtx.currentTime + idx * 0.1);
-      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + idx * 0.1 + 0.4);
+      gain.gain.setValueAtTime(0.18, audioCtx.currentTime + idx * 0.09);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + idx * 0.09 + 0.35);
 
       osc.connect(gain);
       gain.connect(audioCtx.destination);
 
-      osc.start(audioCtx.currentTime + idx * 0.1);
-      osc.stop(audioCtx.currentTime + idx * 0.1 + 0.4);
+      osc.start(audioCtx.currentTime + idx * 0.09);
+      osc.stop(audioCtx.currentTime + idx * 0.09 + 0.35);
     });
   } catch (e) {}
 }
 
 /* ===================================================
-   PRESETS MÓN ĂN & ĐỊA ĐIỂM CHUẨN HÀ NỘI
+   DATABASE: TỔNG HỢP 60+ MÓN ĂN & 60+ ĐỊA ĐIỂM HÀ NỘI
    =================================================== */
-const HANOI_PRESETS = {
-  sangTrua: [
-    "Phở Bát Đàn",
-    "Phở Thìn Lò Đúc",
-    "Bún Chả Hàng Quạt",
-    "Bún Đậu Hàng Khay",
-    "Bánh Cuốn Bà Hoành",
-    "Bún Thang Cầu Gỗ",
-    "Bún Dọc Mùng Bát Đàn",
-    "Xôi Xéo Bát Đàn",
-    "Bún Ngan Nhàn",
-    "Cơm Tấm Phố Cổ"
-  ],
-  toiDem: [
-    "Lẩu Ếch Phó Đức Chính",
-    "Nướng Gầm Cầu",
-    "Ốc Đinh Liệt Phố Cổ",
-    "Cháo Sườn Đồng Xuân",
-    "Mì Gà Tần Hàng Bồ",
-    "Lẩu Riêu Cua Hàng Tre",
-    "Phở Xào Bát Đàn",
-    "Lẩu Bò Nhúng Dấm 555",
-    "Chân Gà Nướng Bà Triệu",
-    "Bánh Mì Sốt Vang Đình Ngang"
-  ],
-  anVat: [
-    "Nem Chua Rán Tạm Thương",
-    "Bánh Gối Lý Quốc Sư",
-    "Nộm Bò Khô Bờ Hồ",
-    "Tào Phớ Nghĩa Tân",
-    "Trứng Chén Nướng Đội Cấn",
-    "Bánh Rán Mặn Lạc Long Quân",
-    "Bò Bía Ngọt Bến Hàn Quốc",
-    "Kem Tràng Tiền",
-    "Sữa Chua Dẻo Hàng Than"
-  ],
-  choiCafe: [
-    "Ngắm Hoàng Hôn Hồ Tây",
-    "Cafe Trứng Giảng",
-    "Dạo Phố Đi Bộ Hồ Gươm",
-    "Check-in Nhà Thờ Lớn",
-    "Xem Phim Rạp Quốc Gia",
-    "Lượn Phố Phan Đình Phùng",
-    "Bắn Cung Target Archery",
-    "Nghe Jazz Bình Minh Club",
-    "Uống Trà Chanh Chợ Gạo"
-  ]
+const DATABASE = {
+  food: {
+    title: "Ăn Uống",
+    categories: {
+      sangTrua: {
+        label: "🍜 Sáng & Trưa Chuẩn Vị",
+        items: [
+          "Phở Bát Đàn (Phố Cổ)", "Phở Thìn Lò Đúc", "Phở Gà Châm Yên Ninh",
+          "Bún Chả Hàng Quạt", "Bún Chả Hương Liên", "Bún Đậu Hàng Khay",
+          "Bún Đậu Ngõ Gạch", "Bánh Cuốn Bà Hoành", "Bún Thang Cầu Gỗ",
+          "Bún Dọc Mùng Bát Đàn", "Xôi Xéo Bát Đàn", "Xôi Yến Nguyễn Hữu Huân",
+          "Bún Ngan Nhàn Ngõ Trung Yên", "Bún Riêu Cua Hàng Bạc", "Bánh Đa Cua Hàng Chĩnh", "Cơm Tấm Phố Cổ"
+        ]
+      },
+      toiDem: {
+        label: "🍲 Lẩu, Nướng & Đêm Muộn",
+        items: [
+          "Lẩu Ếch Phó Đức Chính", "Lẩu Riêu Cua Hàng Tre", "Lẩu Bò Nhúng Dấm 555",
+          "Lẩu Ốc Bà Tảo Khương Thượng", "Nướng Ngói Gầm Cầu", "Chân Gà Nướng Bà Triệu",
+          "Ốc Hà Trang Đinh Liệt", "Ốc Nóng Tôn Thất Tùng", "Cháo Sườn Sụn Đồng Xuân",
+          "Mì Gà Tần Hàng Bồ", "Bánh Mì Sốt Vang Đình Ngang", "Phở Xào Bắp Bò Bát Đàn",
+          "Chả Cá Lã Vọng", "Cháo Gà Bà Mỹ Lý Quốc Sư", "Lòng Rán Nhất Quán"
+        ]
+      },
+      anVat: {
+        label: "🍢 Ăn Vặt Ngõ Phố",
+        items: [
+          "Nem Chua Rán Tạm Thương", "Bánh Gối Lý Quốc Sư", "Bánh Tôm Hồ Tây",
+          "Nộm Bò Khô Bờ Hồ", "Nộm Chim Quay Hàm Long", "Tào Phớ Nghĩa Tân",
+          "Trứng Chén Nướng Đội Cấn", "Bánh Rán Mặn Lạc Long Quân", "Bánh Rán Ngọt Ô Quan Chưởng",
+          "Bò Bía Ngọt Ven Hồ Tây", "Kem Tràng Tiền", "Sữa Chua Dẻo Hàng Than",
+          "Bánh Giò Đông Các", "Chè 4 Mùa Hàng Cân", "Bánh Tráng Cuốn Thịt Heo"
+        ]
+      },
+      doUong: {
+        label: "☕ Cà Phê & Trà Quán",
+        items: [
+          "Cafe Trứng Giảng Nguyễn Hữu Huân", "Cafe Đinh Ngắm Hồ Gươm", "Yên Cafe Quán Thánh",
+          "Loading T Chân Cầm", "Trà Chanh Chợ Gạo", "Trà Đào Cam Sả Hồ Tây",
+          "Cafe Ban Công Đinh Liệt", "Cộng Cafe Nhà Thờ", "Trà Sen Tây Hồ",
+          "Chè Khúc Bạch Hàng Tre", "Sữa Chua Trân Châu Hạ Long", "Kem Bơ Cột Điện Bà Triệu",
+          "Nước Mía Hàng Điếu", "Trà Sữa Oolong Đậm Vị", "Nước Sấu Đá Phố Cổ"
+        ]
+      }
+    }
+  },
+  places: {
+    title: "Đi Chơi",
+    categories: {
+      vanHoa: {
+        label: "🏛️ Check-in & Di Tích",
+        items: [
+          "Di tích Nhà Tù Hỏa Lò", "Bảo tàng Dân tộc học", "Bảo tàng Mỹ thuật Việt Nam",
+          "Hoàng thành Thăng Long", "Văn Miếu - Quốc Tử Giám", "Bảo tàng Lịch sử Quân sự VN",
+          "Lăng Bác & Quảng trường Ba Đình", "Nhà hát Lớn Hà Nội", "Cầu Long Biên Đón Gió",
+          "Phố Bích Họa Phùng Hưng", "Phố Sách 19/12 Hà Nội", "Nhà Thờ Lớn Hà Nội",
+          "Làng Gốm Bát Tràng", "Thung Lũng Hoa Hồ Tây", "Chùa Trấn Quốc & Trúc Bạch"
+        ]
+      },
+      giaiTri: {
+        label: "🎯 Game & Trải Nghiệm",
+        items: [
+          "Đua xe Go-Kart (VS Racing)", "Bắn Cung Target Archery", "Leo Núi Nhân Tạo Vietclimb",
+          "Tổ Hợp Board Game Phố Cổ", "Phòng Nhảy Bạt Nhún Jump Arena", "Sân Trượt Băng Royal City",
+          "Thủy Cung Lotte Mall Tây Hồ", "Escape Room Thử Thách", "Bida Club Phố Cổ",
+          "Axe Throwing Ném Rìu", "Bắn Súng Laser Tag", "Bắn Súng Sơn Paintball",
+          "Workshop Tự Làm Đồ Da", "Workshop Làm Gốm Tự Nặn", "Workshop Nến Thơm & Tranh Vẽ"
+        ]
+      },
+      chillPho: {
+        label: "🌿 Dạo Phố & Hẹn Hò",
+        items: [
+          "Ngắm Hoàng Hôn Bến Hàn Quốc", "Đạp Vịt Hồ Trúc Bạch", "Lượn Đường Phan Đình Phùng",
+          "Dạo Quanh Hồ Gươm Cuối Tuần", "Ngồi Trà Chanh Ngắm Nhà Thờ", "Chill Cà Phê Ven Hồ Tây",
+          "Trải Nghiệm Ga Cát Linh - Hà Đông", "Cắm Trại Công Viên Yên Sở", "Vườn Hoa Bãi Đá Sông Hồng",
+          "Xem Phim Rạp Quốc Gia", "Rạp Beta Chiếu Phim", "Cắm Trại Bãi Giữa Sông Hồng",
+          "Hóng Mát Bờ Kè Hồ Tây", "Thăm Phố Cổ Ngõ Hẹp Đồng Xuân", "Check-in Cầu Nhật Tân Chiều Tà"
+        ]
+      },
+      nightlife: {
+        label: "🌙 Nightlife & Xuyên Đêm",
+        items: [
+          "Quẩy Xuyên Đêm Phố Bia Tạ Hiện", "Nghe Nhạc Jazz Bình Minh Jazz Club", "Thưởng Thức Acoustic Bar Phố Cổ",
+          "Dạo Chợ Đêm Phố Cổ Đồng Xuân", "Hóng Gió Đêm Cầu Nhật Tân", "Food Tour Đêm Chợ Long Biên",
+          "Chill Rooftop Bar Toàn Cảnh", "Ghé Pub Đường Tàu Phùng Hưng", "Trà Chanh Đêm Chợ Gạo",
+          "Tour Đêm Giải Mã Hoàng Thành", "Tour Đêm Nhà Tù Hỏa Lò", "Hát Karaoke Cùng Hội Bạn",
+          "Đài Quan Sát Lotte Center 65F", "Lượn Xe Một Vòng Hồ Tây 0h", "Xem Lễ Hạ Cờ 21h Lăng Bác"
+        ]
+      }
+    }
+  }
 };
 
-// Bảng màu nan quạt ấm cúng Hà Nội (Gold, Brick, Amber, Ruby, Warm Cyan)
 const WHEEL_PALETTE = [
   "#d97706", "#dc2626", "#b45309", "#059669",
   "#9333ea", "#2563eb", "#ea580c", "#0891b2"
 ];
 
 /* ===================================================
-   STATE & DOM ELEMENTS
+   STATE MANAGEMENT
    =================================================== */
-let currentCategory = "sangTrua";
-let options = JSON.parse(localStorage.getItem("hanoi_wheel_items")) || [...HANOI_PRESETS.sangTrua];
+let currentMode = "food"; // "food" hoặc "places"
+let currentCategoryKey = "sangTrua";
+let options = [];
 let startAngle = 0;
 let isSpinning = false;
 let lastTickIndex = -1;
@@ -130,7 +170,6 @@ let lastTickIndex = -1;
 const canvas = document.getElementById("wheelCanvas");
 const ctx = canvas.getContext("2d");
 const spinBtn = document.getElementById("spinBtn");
-const resultCard = document.getElementById("resultCard");
 const resultTitle = document.getElementById("resultTitle");
 const resultAdvice = document.getElementById("resultAdvice");
 const gmapLink = document.getElementById("gmapLink");
@@ -139,10 +178,56 @@ const counterText = document.getElementById("counterText");
 const addForm = document.getElementById("addForm");
 const itemInput = document.getElementById("itemInput");
 const resetAllBtn = document.getElementById("resetAllBtn");
-const presetTags = document.querySelectorAll(".preset-tag");
+const modeBtns = document.querySelectorAll(".mode-btn");
+const presetGroup = document.getElementById("presetGroup");
 
 /* ===================================================
-   VẼ VÒNG QUAY (HTML5 CANVAS)
+   SWITCH MODE & BUILD PRESET BUTTONS
+   =================================================== */
+function setupPresets() {
+  presetGroup.innerHTML = "";
+  const categories = DATABASE[currentMode].categories;
+  const keys = Object.keys(categories);
+  
+  if (!keys.includes(currentCategoryKey)) {
+    currentCategoryKey = keys[0];
+  }
+
+  keys.forEach((key) => {
+    const btn = document.createElement("button");
+    btn.className = `preset-tag ${key === currentCategoryKey ? "active" : ""}`;
+    btn.textContent = categories[key].label;
+    btn.addEventListener("click", () => {
+      if (isSpinning) return;
+      document.querySelectorAll(".preset-tag").forEach((t) => t.classList.remove("active"));
+      btn.classList.add("active");
+      currentCategoryKey = key;
+      loadCategoryData();
+    });
+    presetGroup.appendChild(btn);
+  });
+}
+
+function loadCategoryData() {
+  const defaultItems = DATABASE[currentMode].categories[currentCategoryKey].items;
+  const storageKey = `hanoi_${currentMode}_${currentCategoryKey}`;
+  options = JSON.parse(localStorage.getItem(storageKey)) || [...defaultItems];
+  renderList();
+}
+
+modeBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    if (isSpinning) return;
+    modeBtns.forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+    currentMode = btn.dataset.mode;
+    setupPresets();
+    loadCategoryData();
+  });
+});
+
+/* ===================================================
+   CANVAS DRAWING
    =================================================== */
 function drawWheel() {
   const num = options.length;
@@ -166,6 +251,10 @@ function drawWheel() {
 
   const arc = (2 * Math.PI) / num;
 
+  let fontSize = 13;
+  if (num > 10) fontSize = 11.5;
+  if (num > 14) fontSize = 10;
+
   for (let i = 0; i < num; i++) {
     const angle = startAngle + i * arc;
     ctx.beginPath();
@@ -175,28 +264,25 @@ function drawWheel() {
     ctx.lineTo(cx, cy);
     ctx.fill();
 
-    // Viền nhẹ mỗi nan quạt
     ctx.strokeStyle = "rgba(0, 0, 0, 0.25)";
-    ctx.lineWidth = 1.5;
+    ctx.lineWidth = 1.2;
     ctx.stroke();
 
-    // Vẽ chữ hiển thị
     ctx.save();
     ctx.fillStyle = "#ffffff";
-    ctx.font = "bold 13.5px 'Plus Jakarta Sans', sans-serif";
+    ctx.font = `bold ${fontSize}px 'Plus Jakarta Sans', sans-serif`;
     ctx.translate(cx, cy);
     ctx.rotate(angle + arc / 2);
     ctx.textAlign = "right";
 
-    // Rút gọn chữ nếu tên quán quá dài
-    const label = options[i].length > 18 ? options[i].substring(0, 16) + "..." : options[i];
-    ctx.fillText(label, radius - 20, 5);
+    const label = options[i].length > 19 ? options[i].substring(0, 17) + "..." : options[i];
+    ctx.fillText(label, radius - 16, 4);
     ctx.restore();
   }
 }
 
 /* ===================================================
-   RENDER DANH SÁCH & LOCALSTORAGE
+   RENDER LIST & LOCALSTORAGE
    =================================================== */
 function renderList() {
   itemsWrapper.innerHTML = "";
@@ -219,25 +305,23 @@ function renderList() {
     itemsWrapper.appendChild(li);
   });
 
-  localStorage.setItem("hanoi_wheel_items", JSON.stringify(options));
+  const storageKey = `hanoi_${currentMode}_${currentCategoryKey}`;
+  localStorage.setItem(storageKey, JSON.stringify(options));
   drawWheel();
 }
 
-// Xóa 1 phần tử
 window.removeItem = function(index) {
   if (isSpinning) return;
   options.splice(index, 1);
   renderList();
 };
 
-// Đặt lại mặc định theo Preset đang active
 resetAllBtn.addEventListener("click", () => {
   if (isSpinning) return;
-  options = [...HANOI_PRESETS[currentCategory]];
+  options = [...DATABASE[currentMode].categories[currentCategoryKey].items];
   renderList();
 });
 
-// Thêm lựa chọn từ Form
 addForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const val = itemInput.value.trim();
@@ -248,20 +332,8 @@ addForm.addEventListener("submit", (e) => {
   }
 });
 
-// Chọn Preset
-presetTags.forEach((tag) => {
-  tag.addEventListener("click", () => {
-    if (isSpinning) return;
-    presetTags.forEach((t) => t.classList.remove("active"));
-    tag.classList.add("active");
-    currentCategory = tag.dataset.preset;
-    options = [...HANOI_PRESETS[currentCategory]];
-    renderList();
-  });
-});
-
 /* ===================================================
-   LOGIC QUAY VÒNG & HIỆU ỨNG GIẢM TỐC
+   SPIN LOGIC
    =================================================== */
 spinBtn.addEventListener("click", () => {
   if (isSpinning || options.length < 2) {
@@ -272,16 +344,15 @@ spinBtn.addEventListener("click", () => {
   initAudioContext();
   isSpinning = true;
   spinBtn.disabled = true;
-  resultTitle.textContent = "Đang chọn quán ngon...";
-  resultAdvice.textContent = "Bánh xe định mệnh đang lăn qua các con ngõ Hà Nội...";
+  resultTitle.textContent = "Đang quay chọn kèo...";
+  resultAdvice.textContent = "Bánh xe đang lướt qua khắp các phố phường Hà Nội...";
   gmapLink.classList.add("hidden");
 
-  // Số vòng quay ngẫu nhiên: 6 đến 9 vòng + góc ngẫu nhiên
   const totalRounds = 6 + Math.random() * 3;
   const extraAngle = Math.random() * 2 * Math.PI;
   const targetRotation = totalRounds * 2 * Math.PI + extraAngle;
 
-  const duration = 4500; // 4.5 giây
+  const duration = 4500;
   const startTime = performance.now();
   const initialAngle = startAngle;
 
@@ -297,7 +368,6 @@ spinBtn.addEventListener("click", () => {
     startAngle = initialAngle + targetRotation * easedProgress;
     drawWheel();
 
-    // Phát âm thanh khi vượt qua mỗi nan quạt
     const arc = (2 * Math.PI) / options.length;
     let norm = (startAngle % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
     let currentSlice = Math.floor(norm / arc);
@@ -319,30 +389,28 @@ spinBtn.addEventListener("click", () => {
 });
 
 /* ===================================================
-   XỬ LÝ KẾT QUẢ & GOOGLE MAPS
+   RESULT ANNOUNCEMENT
    =================================================== */
 function announceResult() {
   const num = options.length;
   const arc = (2 * Math.PI) / num;
 
-  // Chuẩn hóa góc quay hiện tại
   let normalizedAngle = (startAngle % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
-
-  // Vị trí kim chỉ ở đỉnh vòng quay (góc 3*PI/2)
   let arrowAngle = (1.5 * Math.PI - normalizedAngle + 2 * Math.PI) % (2 * Math.PI);
   const winningIndex = Math.floor(arrowAngle / arc);
-  const selectedPlace = options[winningIndex];
+  const selected = options[winningIndex];
 
-  // Phát chuông chúc mừng
   playVictorySound();
 
-  // Hiển thị kết quả & link Google Maps
-  resultTitle.textContent = `🎯 ${selectedPlace}`;
-  resultAdvice.textContent = "Chốt kèo liền tay, xách xe lên và cùng xuất phát thôi!";
+  resultTitle.textContent = `🎯 ${selected}`;
+  resultAdvice.textContent = currentMode === "food" 
+    ? "Món ngon đã chốt, chuẩn bị lên phố lấp đầy chiếc bụng đói thôi!" 
+    : "Điểm đến lý tưởng đã định, chuẩn bị đồ rồi lên đường quẩy thôi!";
   
-  gmapLink.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(selectedPlace + " Hà Nội")}`;
+  gmapLink.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(selected + " Hà Nội")}`;
   gmapLink.classList.remove("hidden");
 }
 
-// Khởi chạy ban đầu
-renderList();
+// Khởi tạo ban đầu
+setupPresets();
+loadCategoryData();
