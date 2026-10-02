@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vòng Quay Hà Nội Phố | Ăn Gì & Đi Đâu?</title>
+  <title>Vòng Quay Hà Nội Phố | 100+ Món Ăn & 100+ Điểm Vui Chơi</title>
   <!-- Google Fonts & Phosphor Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,26 +13,26 @@
 </head>
 <body>
   <div class="hanoi-layout">
-    <!-- Tiêu đề trang -->
+    <!-- Header -->
     <header class="hanoi-header">
-      <div class="header-tag">36 PHỐ PHƯỜNG • HÀ NỘI</div>
+      <div class="header-tag">HÀ NỘI 36 PHỐ PHƯỜNG • 200+ ĐỊA ĐIỂM</div>
       <h1>Hôm Nay Ăn Gì – Đi Đâu?</h1>
-      <p class="subtitle">Đặc sản phố cổ, ngõ nhỏ ẩm thực hay tụ điểm vui chơi check-in</p>
+      <p class="subtitle">Đặc sản ngõ nhỏ phố cổ hay tụ điểm giải trí trải nghiệm</p>
     </header>
 
-    <!-- Nút chuyển đổi 2 chế độ: Ăn Uống & Đi Chơi -->
+    <!-- Nút chuyển 2 Chế độ lớn -->
     <nav class="mode-tabs">
       <button class="mode-btn active" data-mode="food">
-        <i class="ph-fill ph-bowl-food"></i> ĂN UỐNG HÀ NỘI (60+ Món)
+        <i class="ph-fill ph-bowl-food"></i> ĂN UỐNG HÀ NỘI (100+ Món)
       </button>
       <button class="mode-btn" data-mode="places">
-        <i class="ph-fill ph-compass"></i> ĐI CHƠI CHECK-IN (60+ Điểm)
+        <i class="ph-fill ph-compass"></i> ĐI CHƠI CHECK-IN (100+ Điểm)
       </button>
     </nav>
 
-    <!-- Bố cục chính 2 cột -->
+    <!-- Main Layout -->
     <main class="main-grid">
-      <!-- Cột trái: Vòng quay & Kết quả -->
+      <!-- Cột trái: Vòng quay & Card kết quả nhỏ -->
       <section class="wheel-column">
         <div class="wheel-box">
           <div class="pointer-wrapper">
@@ -43,7 +43,7 @@
         </div>
 
         <div id="resultCard" class="result-card">
-          <span class="result-badge">KÈO CHỐT HÔM NAY</span>
+          <span class="result-badge">KÈO CHỐT GẦN NHẤT</span>
           <h2 id="resultTitle">Bấm QUAY để chọn kèo!</h2>
           <p id="resultAdvice">Đừng để chiếc bụng đói chờ đợi quá lâu.</p>
           <a id="gmapLink" href="#" target="_blank" class="gmap-btn hidden">
@@ -52,18 +52,18 @@
         </div>
       </section>
 
-      <!-- Cột phải: Bộ lọc Preset & Danh sách lựa chọn -->
+      <!-- Cột phải: Preset & Quản lý danh sách -->
       <section class="config-column">
         <div class="panel preset-panel">
-          <span class="panel-label"><i class="ph ph-funnel"></i> Chọn chủ đề chi tiết:</span>
+          <span class="panel-label"><i class="ph ph-funnel"></i> Chọn danh mục chi tiết:</span>
           <div class="preset-group" id="presetGroup">
-            <!-- Nút lọc preset sẽ tự động render tại đây qua script.js -->
+            <!-- Render nút chọn preset tự động từ script.js -->
           </div>
         </div>
 
         <div class="panel form-panel">
           <form id="addForm" class="add-form">
-            <input type="text" id="itemInput" placeholder="Thêm quán/món bạn muốn ghé..." maxlength="30" required>
+            <input type="text" id="itemInput" placeholder="Thêm quán/món bạn muốn ghé..." maxlength="35" required>
             <button type="submit" class="submit-btn"><i class="ph ph-plus-bold"></i> Thêm</button>
           </form>
         </div>
@@ -74,7 +74,7 @@
             <button id="resetAllBtn" class="action-btn-text">Đặt lại mặc định</button>
           </div>
           <ul id="itemsWrapper" class="custom-scroll">
-            <!-- Danh sách các món/địa điểm render tại đây qua script.js -->
+            <!-- Render danh sách qua script.js -->
           </ul>
         </div>
       </section>
@@ -83,6 +83,24 @@
     <footer class="hanoi-footer">
       <p>Hà Nội không vội được đâu — nhưng đói bụng thì phải quyết nhanh!</p>
     </footer>
+  </div>
+
+  <!-- MODAL POPUP HIỆN TÊN TRÚNG KÈO & PHÁO HOA -->
+  <div id="winnerModal" class="winner-modal hidden">
+    <div class="modal-backdrop"></div>
+    <canvas id="confettiCanvas"></canvas>
+    <div class="modal-card">
+      <div class="modal-badge">🎉 CHÚC MỪNG BẠN ĐÃ CÓ KÈO 🎉</div>
+      <h2 id="modalWinnerName" class="modal-winner-name">Phở Bát Đàn</h2>
+      <p id="modalWinnerSub" class="modal-winner-sub">Set kèo chuẩn chỉnh, chuẩn bị lên đồ thôi!</p>
+      
+      <div class="modal-actions">
+        <a id="modalGmapLink" href="#" target="_blank" class="modal-gmap-btn">
+          <i class="ph ph-map-pin-line"></i> Chỉ đường trên Google Maps
+        </a>
+        <button id="closeModalBtn" class="modal-close-btn">Quay tiếp</button>
+      </div>
+    </div>
   </div>
 
   <script src="script.js"></script>
