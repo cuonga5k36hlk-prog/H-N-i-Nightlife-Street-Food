@@ -1,108 +1,1096 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vòng Quay Hà Nội Phố | 100+ Món Ăn & 100+ Điểm Vui Chơi</title>
-  <!-- Google Fonts & Phosphor Icons -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Hà Nội Nightlife & Street Food - Hôm Nay Ăn Gì?</title>
+  
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/@phosphor-icons/web"></script>
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Bungee&display=swap" rel="stylesheet">
+
+  <style>
+    /* ========================================================
+       1. BIẾN MÀU & THIẾT KẾ RETRO NEON HÀ NỘI ĐÊM
+    ======================================================== */
+    :root {
+      --bg-body: #0b0c10;
+      --bg-card: #141722;
+      --bg-surface: #1d2130;
+      --neon-yellow: #ffb800;
+      --neon-red: #ff334b;
+      --neon-cyan: #00f0ff;
+      --neon-green: #00e676;
+      --text-main: #f5f6fa;
+      --text-dim: #8e94a5;
+      --border-glass: rgba(255, 255, 255, 0.08);
+      --font-heading: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding-bottom: 60px;
+    }
+
+    /* Container */
+    .app-container {
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-top: 8px;
+      margin-bottom: 16px;
+      width: 100%;
+    }
+
+    .badge-top {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--neon-yellow);
+      background: rgba(255, 184, 0, 0.12);
+      border: 1px solid rgba(255, 184, 0, 0.3);
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: 26px;
+      font-weight: 800;
+      line-height: 1.25;
+      background: linear-gradient(135deg, #fff 40%, var(--neon-yellow) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    header p {
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+
+    /* ========================================================
+       2. TOOLBAR TÍNH NĂNG ĐỈNH CAO
+    ======================================================== */
+    .feature-bar {
+      display: flex;
+      gap: 8px;
+      width: 100%;
+      overflow-x: auto;
+      padding: 6px 2px 14px;
+      scrollbar-width: none;
+    }
+    .feature-bar::-webkit-scrollbar { display: none; }
+
+    .chip-btn {
+      flex-shrink: 0;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      color: var(--text-dim);
+      padding: 8px 14px;
+      border-radius: 24px;
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .chip-btn.active, .chip-btn:hover {
+      color: #000;
+      background: var(--neon-yellow);
+      border-color: var(--neon-yellow);
+      box-shadow: 0 0 16px rgba(255, 184, 0, 0.35);
+    }
+
+    .chip-btn.special-btn {
+      color: var(--neon-cyan);
+      border-color: rgba(0, 240, 255, 0.3);
+      background: rgba(0, 240, 255, 0.08);
+    }
+    .chip-btn.special-btn:hover {
+      background: var(--neon-cyan);
+      color: #000;
+      box-shadow: 0 0 16px rgba(0, 240, 255, 0.35);
+    }
+
+    /* Bộ lọc phân loại */
+    .category-filter {
+      display: flex;
+      gap: 6px;
+      width: 100%;
+      overflow-x: auto;
+      padding-bottom: 12px;
+      margin-bottom: 12px;
+      scrollbar-width: none;
+    }
+    .category-filter::-webkit-scrollbar { display: none; }
+
+    .cat-btn {
+      flex-shrink: 0;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text-dim);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .cat-btn.active {
+      background: var(--text-main);
+      color: #000;
+      font-weight: 700;
+      border-color: var(--text-main);
+    }
+
+    /* ========================================================
+       3. KHU VỰC VÒNG QUAY CANVAS & KIM CHỈ
+    ======================================================== */
+    .wheel-wrapper {
+      position: relative;
+      width: 330px;
+      height: 330px;
+      margin: 10px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Kim chỉ */
+    .wheel-pointer {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 28px;
+      height: 36px;
+      z-index: 10;
+      filter: drop-shadow(0 4px 10px rgba(255, 51, 75, 0.6));
+      transform-origin: 50% 15%;
+      transition: transform 0.05s ease-out;
+    }
+
+    .wheel-pointer::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 0;
+      height: 0;
+      border-left: 14px solid transparent;
+      border-right: 14px solid transparent;
+      border-top: 32px solid var(--neon-red);
+    }
+
+    canvas#wheelCanvas {
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.9), 0 0 20px rgba(255, 184, 0, 0.2);
+    }
+
+    /* Nút Quay Giữa Tâm */
+    .spin-center-btn {
+      position: absolute;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #252838 0%, #12141c 100%);
+      border: 3px solid var(--neon-yellow);
+      color: var(--neon-yellow);
+      font-weight: 800;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 0 18px rgba(255, 184, 0, 0.4);
+      z-index: 5;
+      user-select: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .spin-center-btn:active {
+      transform: scale(0.92);
+      box-shadow: 0 0 8px rgba(255, 184, 0, 0.2);
+    }
+
+    /* Thông tin trạng thái */
+    .status-text {
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-top: 14px;
+      text-align: center;
+    }
+
+    /* ========================================================
+       4. BOTTOM SHEET KẾT QUẢ KÈO
+    ======================================================== */
+    .sheet-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .sheet-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .bottom-sheet {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: -100%;
+      max-width: 520px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      border-radius: 28px 28px 0 0;
+      border-top: 2px solid var(--neon-yellow);
+      box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.9);
+      padding: 20px 24px 34px;
+      z-index: 101;
+      transition: bottom 0.35s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+    .bottom-sheet.open {
+      bottom: 0;
+    }
+
+    .sheet-handle {
+      width: 44px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 2px;
+      margin: 0 auto 16px;
+    }
+
+    .pill-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 12px;
+      margin-bottom: 8px;
+    }
+    .pill-open {
+      background: rgba(0, 230, 118, 0.15);
+      color: var(--neon-green);
+      border: 1px solid var(--neon-green);
+    }
+    .pill-closed {
+      background: rgba(255, 51, 75, 0.15);
+      color: var(--neon-red);
+      border: 1px solid var(--neon-red);
+    }
+
+    .sheet-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .sheet-meta {
+      font-size: 13px;
+      color: var(--neon-cyan);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sheet-address {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.4;
+      margin-bottom: 20px;
+    }
+
+    .sheet-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .sheet-btn {
+      padding: 13px;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-maps {
+      background: var(--neon-yellow);
+      color: #000;
+    }
+    .btn-story {
+      background: var(--bg-surface);
+      color: #fff;
+      border: 1px solid var(--border-glass);
+    }
+
+    /* ========================================================
+       5. MODAL COMBO 3 CHẶNG & SO GĂNG 1v1
+    ======================================================== */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(6px);
+      z-index: 110;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal.show { display: flex; }
+
+    .modal-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 20px;
+      max-width: 440px;
+      width: 100%;
+      padding: 24px;
+      position: relative;
+    }
+
+    .modal-box h3 {
+      font-size: 20px;
+      margin-bottom: 14px;
+      color: var(--neon-yellow);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .modal-close {
+      cursor: pointer;
+      font-size: 20px;
+      color: var(--text-dim);
+    }
+
+    /* Combo 3 chặng card */
+    .combo-step {
+      background: var(--bg-surface);
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+      border-left: 3px solid var(--neon-cyan);
+    }
+    .combo-step-time {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--neon-cyan);
+    }
+    .combo-step-name {
+      font-size: 15px;
+      font-weight: 700;
+      margin: 4px 0 2px;
+    }
+    .combo-step-sub {
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    /* So găng 1v1 */
+    .battle-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 8px;
+      margin: 16px 0;
+    }
+    .battle-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-glass);
+      border-radius: 14px;
+      padding: 16px 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .battle-card:hover {
+      border-color: var(--neon-cyan);
+      transform: scale(1.02);
+    }
+    .battle-vs {
+      font-family: 'Bungee', cursive, sans-serif;
+      color: var(--neon-red);
+      font-size: 20px;
+    }
+    .battle-name {
+      font-size: 14px;
+      font-weight: 700;
+      margin-top: 6px;
+    }
+
+    /* Danh sách quán mini bên dưới */
+    .list-preview {
+      width: 100%;
+      margin-top: 24px;
+      background: var(--bg-card);
+      border-radius: 16px;
+      border: 1px solid var(--border-glass);
+      padding: 16px;
+    }
+    .list-preview-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-dim);
+      margin-bottom: 12px;
+    }
+    .mini-place-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 13px;
+    }
+    .mini-place-item:last-child { border-bottom: none; }
+  </style>
 </head>
 <body>
-  <div class="hanoi-layout">
+
+  <div class="app-container">
+    
     <!-- Header -->
-    <header class="hanoi-header">
-      <div class="header-tag">HÀ NỘI 36 PHỐ PHƯỜNG • 200+ ĐỊA ĐIỂM</div>
+    <header>
+      <div class="badge-top">Hà Nội 36 Phố Phường • 2026 Edition</div>
       <h1>Hôm Nay Ăn Gì – Đi Đâu?</h1>
-      <p class="subtitle">Đặc sản ngõ nhỏ phố cổ hay tụ điểm giải trí trải nghiệm</p>
+      <p>Quay một phát chốt kèo ngõ nhỏ phố cổ & tụ điểm đêm</p>
     </header>
 
-    <!-- Nút chuyển 2 Chế độ lớn -->
-    <nav class="mode-tabs">
-      <button class="mode-btn active" data-mode="food">
-        <i class="ph-fill ph-bowl-food"></i> ĂN UỐNG HÀ NỘI (100+ Món)
-      </button>
-      <button class="mode-btn" data-mode="places">
-        <i class="ph-fill ph-compass"></i> ĐI CHƠI CHECK-IN (100+ Điểm)
-      </button>
-    </nav>
+    <!-- Toolbar Tính năng -->
+    <div class="feature-bar">
+      <button class="chip-btn" id="btnGps">📍 Gần tôi nhất</button>
+      <button class="chip-btn" id="btnNightOwl">🌙 Cú đêm (22h-4h)</button>
+      <button class="chip-btn special-btn" id="btnCombo">✨ Combo 1 Đêm</button>
+      <button class="chip-btn special-btn" id="btnBattle">⚔️ So găng 1v1</button>
+    </div>
 
-    <!-- Main Layout -->
-    <main class="main-grid">
-      <!-- Cột trái: Vòng quay & Card kết quả nhỏ -->
-      <section class="wheel-column">
-        <div class="wheel-box">
-          <div class="pointer-wrapper">
-            <div class="needle"></div>
-          </div>
-          <canvas id="wheelCanvas" width="460" height="460"></canvas>
-          <button id="spinBtn" class="spin-trigger">QUAY</button>
-        </div>
+    <!-- Bộ lọc danh mục -->
+    <div class="category-filter" id="categoryBar">
+      <button class="cat-btn active" data-cat="all">Tất cả</button>
+      <button class="cat-btn" data-cat="Phở & Bún">Phở & Bún</button>
+      <button class="cat-btn" data-cat="Lẩu & Nướng">Lẩu & Nướng</button>
+      <button class="cat-btn" data-cat="Ăn vặt">Ăn vặt phố cổ</button>
+      <button class="cat-btn" data-cat="Cà phê">Cà phê & Ngọt</button>
+      <button class="cat-btn" data-cat="Nightlife">Nightlife & Chill</button>
+    </div>
 
-        <div id="resultCard" class="result-card">
-          <span class="result-badge">KÈO CHỐT GẦN NHẤT</span>
-          <h2 id="resultTitle">Bấm QUAY để chọn kèo!</h2>
-          <p id="resultAdvice">Đừng để chiếc bụng đói chờ đợi quá lâu.</p>
-          <a id="gmapLink" href="#" target="_blank" class="gmap-btn hidden">
-            <i class="ph ph-map-pin-line"></i> Mở Google Maps đường đi
-          </a>
-        </div>
-      </section>
+    <!-- Vòng Quay Canvas -->
+    <div class="wheel-wrapper">
+      <div class="wheel-pointer" id="wheelPointer"></div>
+      <canvas id="wheelCanvas" width="640" height="640"></canvas>
+      <div class="spin-center-btn" id="btnSpin">QUAY</div>
+    </div>
 
-      <!-- Cột phải: Preset & Quản lý danh sách -->
-      <section class="config-column">
-        <div class="panel preset-panel">
-          <span class="panel-label"><i class="ph ph-funnel"></i> Chọn danh mục chi tiết:</span>
-          <div class="preset-group" id="presetGroup">
-            <!-- Render nút chọn preset tự động từ script.js -->
-          </div>
-        </div>
+    <div class="status-text" id="statusHint">Chạm QUAY để vũ trụ quyết định kèo tối nay!</div>
 
-        <div class="panel form-panel">
-          <form id="addForm" class="add-form">
-            <input type="text" id="itemInput" placeholder="Thêm quán/món bạn muốn ghé..." maxlength="35" required>
-            <button type="submit" class="submit-btn"><i class="ph ph-plus-bold"></i> Thêm</button>
-          </form>
-        </div>
+    <!-- Danh sách xem nhanh -->
+    <div class="list-preview">
+      <div class="list-preview-header">
+        <span id="placesCountText">Danh sách: 0 địa điểm</span>
+        <span id="gpsStatusText">GPS: Chưa bật</span>
+      </div>
+      <div id="placesListMini"></div>
+    </div>
 
-        <div class="panel list-panel">
-          <div class="list-meta">
-            <span id="counterText">Danh sách: 0 lựa chọn</span>
-            <button id="resetAllBtn" class="action-btn-text">Đặt lại mặc định</button>
-          </div>
-          <ul id="itemsWrapper" class="custom-scroll">
-            <!-- Render danh sách qua script.js -->
-          </ul>
-        </div>
-      </section>
-    </main>
-
-    <footer class="hanoi-footer">
-      <p>Hà Nội không vội được đâu — nhưng đói bụng thì phải quyết nhanh!</p>
-    </footer>
   </div>
 
-  <!-- MODAL POPUP HIỆN TÊN TRÚNG KÈO & PHÁO HOA -->
-  <div id="winnerModal" class="winner-modal hidden">
-    <div class="modal-backdrop"></div>
-    <canvas id="confettiCanvas"></canvas>
-    <div class="modal-card">
-      <div class="modal-badge">🎉 CHÚC MỪNG BẠN ĐÃ CÓ KÈO 🎉</div>
-      <h2 id="modalWinnerName" class="modal-winner-name">Phở Bát Đàn</h2>
-      <p id="modalWinnerSub" class="modal-winner-sub">Set kèo chuẩn chỉnh, chuẩn bị lên đồ thôi!</p>
-      
-      <div class="modal-actions">
-        <a id="modalGmapLink" href="#" target="_blank" class="modal-gmap-btn">
-          <i class="ph ph-map-pin-line"></i> Chỉ đường trên Google Maps
-        </a>
-        <button id="closeModalBtn" class="modal-close-btn">Quay tiếp</button>
-      </div>
+  <!-- Bottom Sheet Chi Tiết Kèo Trúng -->
+  <div class="sheet-overlay" id="sheetOverlay"></div>
+  <div class="bottom-sheet" id="bottomSheet">
+    <div class="sheet-handle"></div>
+    <div id="sheetStatusBadge" class="pill-badge pill-open">🟢 ĐANG MỞ CỬA</div>
+    <h2 class="sheet-title" id="sheetPlaceName">Tên Quán</h2>
+    <div class="sheet-meta" id="sheetMeta">Đặc sản • Cách bạn 1.2km</div>
+    <p class="sheet-address" id="sheetAddress">Địa chỉ chi tiết</p>
+    
+    <div class="sheet-actions">
+      <a href="#" target="_blank" class="sheet-btn btn-maps" id="sheetMapsLink">
+        🗺️ Chỉ đường Maps
+      </a>
+      <button class="sheet-btn btn-story" id="sheetStoryBtn">
+        📸 Tải Thẻ Story
+      </button>
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <!-- Modal Combo 1 Đêm Hà Nội -->
+  <div class="modal" id="comboModal">
+    <div class="modal-box">
+      <h3>
+        <span>✨ Lịch trình 1 Đêm Hà Nội</span>
+        <span class="modal-close" id="closeComboModal">&times;</span>
+      </h3>
+      <div id="comboContent"></div>
+      <button class="sheet-btn btn-maps" id="reRollComboBtn" style="width: 100%; margin-top: 10px;">
+        🎲 Đổi Combo Khác
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal So Găng 1v1 -->
+  <div class="modal" id="battleModal">
+    <div class="modal-box">
+      <h3>
+        <span>⚔️ Đại Chiến 1v1</span>
+        <span class="modal-close" id="closeBattleModal">&times;</span>
+      </h3>
+      <p style="font-size: 13px; color: var(--text-dim);">Không biết chọn gì? Bấm chọn kèo bạn thèm hơn:</p>
+      
+      <div class="battle-grid">
+        <div class="battle-card" id="battleOptionA">
+          <div style="font-size: 30px;">🍲</div>
+          <div class="battle-name" id="battleNameA">Quán A</div>
+        </div>
+        <div class="battle-vs">VS</div>
+        <div class="battle-card" id="battleOptionB">
+          <div style="font-size: 30px;">🍢</div>
+          <div class="battle-name" id="battleNameB">Quán B</div>
+        </div>
+      </div>
+      
+      <div id="battleResult" style="text-align: center; font-weight: 700; color: var(--neon-green); font-size: 14px; min-height: 20px;"></div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       6. JAVASCRIPT: LOGIC & DỮ LIỆU
+  ======================================================== -->
+  <script>
+    /* Dữ liệu 25 địa điểm ăn đêm & trải nghiệm thực tế Hà Nội */
+    const rawPlaces = [
+      { id: "bat-dan", name: "Phở Gia Truyền Bát Đàn", category: "Phở & Bún", phase: "dinner", open: 6, close: 20.5, lat: 21.0336, lng: 105.8475, address: "49 Bát Đàn, Hoàn Kiếm", maps: "https://maps.google.com/?q=Pho+Bat+Dan+Hanoi" },
+      { id: "pho-ganh", name: "Phở Gánh Hàng Chiếu", category: "Phở & Bún", phase: "chill", open: 22, close: 5, lat: 21.0381, lng: 105.8522, address: "Ngã tư Hàng Chiếu - Hàng Đường", maps: "https://maps.google.com/?q=Pho+Ganh+Hang+Chieu" },
+      { id: "pho-nguyet", name: "Phở Gà Nguyệt (Ăn Đêm)", category: "Phở & Bún", phase: "chill", open: 18, close: 2, lat: 21.0308, lng: 105.8489, address: "5B Phủ Doãn, Hàng Trống", maps: "https://maps.google.com/?q=Pho+Ga+Nguyet+Phu+Doan" },
+      { id: "bun-cha-dac-kim", name: "Bún Chả Đắc Kim", category: "Phở & Bún", phase: "dinner", open: 9, close: 21, lat: 21.0337, lng: 105.8465, address: "Số 1 Hàng Mành, Hoàn Kiếm", maps: "https://maps.google.com/?q=Bun+Cha+Dac+Kim" },
+      { id: "bun-oc-co-hue", name: "Bún Ốc Nguội Cô Huệ", category: "Phở & Bún", phase: "dinner", open: 6, close: 15, lat: 21.0356, lng: 105.8505, address: "43 Đặng Dung & Chợ Đồng Xuân", maps: "https://maps.google.com/?q=Bun+Oc+Co+Hue+Dong+Xuan" },
+      { id: "chao-suon-dong-xuan", name: "Cháo Sườn Sụn Đồng Xuân", category: "Ăn vặt", phase: "chill", open: 17, close: 2, lat: 21.0375, lng: 105.8504, address: "14 Đồng Xuân, Hoàn Kiếm", maps: "https://maps.google.com/?q=Chao+Suon+Dong+Xuan" },
+      { id: "banh-mi-dan-to", name: "Bánh Mì Dân Tổ", category: "Ăn vặt", phase: "chill", open: 23, close: 6, lat: 21.0398, lng: 105.8540, address: "Ngã 3 Cao Thắng - Trần Nhật Duật", maps: "https://maps.google.com/?q=Banh+Mi+Dan+To+Hanoi" },
+      { id: "banh-cuon-ba-xuan", name: "Bánh Cuốn Bà Xuân", category: "Phở & Bún", phase: "dinner", open: 7, close: 23, lat: 21.0189, lng: 105.8507, address: "16 Dốc Hoè Nhai, Ba Đình", maps: "https://maps.google.com/?q=Banh+Cuon+Ba+Xuan+Hoe+Nhai" },
+      { id: "lau-ech-lo-duc", name: "Lẩu Ếch Hà My", category: "Lẩu & Nướng", phase: "dinner", open: 10, close: 23.5, lat: 21.0142, lng: 105.8569, address: "70 Lò Đúc, Hai Bà Trưng", maps: "https://maps.google.com/?q=Lau+Ech+Ha+My+Lo+Duc" },
+      { id: "lau-bo-nhung-dam-555", name: "Bò Nhúng Dấm 555", category: "Lẩu & Nướng", phase: "dinner", open: 10.5, close: 22.5, lat: 21.0315, lng: 105.8312, address: "Ngõ 12 Núi Trúc, Ba Đình", maps: "https://maps.google.com/?q=Bo+Nhung+Dam+555+Nui+Truc" },
+      { id: "nuong-gam-cau", name: "Nướng Lòng Phố Gầm Cầu", category: "Lẩu & Nướng", phase: "dinner", open: 17.5, close: 1.5, lat: 21.0388, lng: 105.8491, address: "Phố Gầm Cầu, Đồng Xuân", maps: "https://maps.google.com/?q=Nuong+Gam+Cau+Hanoi" },
+      { id: "lau-chao-chim-tran-nhan-tong", name: "Lẩu Cháo Chim Kê", category: "Lẩu & Nướng", phase: "chill", open: 17, close: 24, lat: 21.0185, lng: 105.8492, address: "Trần Nhân Tông, Hai Bà Trưng", maps: "https://maps.google.com/?q=Lau+Chao+Chim+Tran+Nhan+Tong" },
+      { id: "nom-bo-kho-long-vi-dung", name: "Nộm Bò Khô Long Vi Dung", category: "Ăn vặt", phase: "dinner", open: 8, close: 22, lat: 21.0319, lng: 105.8529, address: "23 Hồ Hoàn Kiếm, Hàng Bạc", maps: "https://maps.google.com/?q=Nom+Long+Vi+Dung+Ho+Hoan+Kiem" },
+      { id: "oc-luoc-ha-trang", name: "Ốc Luộc Hà Trang", category: "Ăn vặt", phase: "dinner", open: 15, close: 22, lat: 21.0331, lng: 105.8496, address: "1A Đinh Liệt, Hàng Bạc", maps: "https://maps.google.com/?q=Oc+Ha+Trang+Dinh+Liet" },
+      { id: "nem-chua-ran-tam-thuong", name: "Nem Chua Rán Ngõ Tạm Thương", category: "Ăn vặt", phase: "dinner", open: 10, close: 23, lat: 21.0322, lng: 105.8471, address: "36 Ngõ Tạm Thương, Hàng Gai", maps: "https://maps.google.com/?q=Nem+Chua+Ran+Tam+Thuong" },
+      { id: "chan-ga-nuong-ly-van-phuc", name: "Chân Gà Nướng Phố Bà Triệu", category: "Ăn vặt", phase: "dinner", open: 16, close: 23.5, lat: 21.0264, lng: 105.8361, address: "Phố Lý Văn Phục, Đống Đa", maps: "https://maps.google.com/?q=Chan+Ga+Nuong+Ly+Van+Phuc" },
+      { id: "cafe-giang", name: "Cà Phê Giảng (Cà Phê Trứng)", category: "Cà phê", phase: "cafe", open: 7, close: 22.5, lat: 21.0339, lng: 105.8541, address: "39 Nguyễn Hữu Huân, Lý Thái Tổ", maps: "https://maps.google.com/?q=Cafe+Giang+39+Nguyen+Huu+Huan" },
+      { id: "tra-chanh-nha-tho", name: "Trà Chanh Nhà Thờ Lớn", category: "Cà phê", phase: "cafe", open: 8, close: 23, lat: 21.0287, lng: 105.8491, address: "Nhà Thờ, Hàng Trống, Hoàn Kiếm", maps: "https://maps.google.com/?q=Tra+Chanh+Nha+Tho+Hanoi" },
+      { id: "kem-trang-tien", name: "Kem Tràng Tiền Chính Gốc", category: "Cà phê", phase: "cafe", open: 8, close: 22.5, lat: 21.0253, lng: 105.8557, address: "35 Tràng Tiền, Hoàn Kiếm", maps: "https://maps.google.com/?q=Kem+Trang+Tien+35" },
+      { id: "hoa-beo-hoa-qua-dam", name: "Hoa Béo Tô Tịch (Hoa Quả Dầm)", category: "Cà phê", phase: "cafe", open: 9, close: 23, lat: 21.0318, lng: 105.8504, address: "17 Tô Tịch, Hàng Gai", maps: "https://maps.google.com/?q=Hoa+Beo+To+Tich" },
+      { id: "ta-hien-beer", name: "Phố Bia Quốc Tế Tạ Hiện", category: "Nightlife", phase: "chill", open: 16, close: 2, lat: 21.0345, lng: 105.8528, address: "Tạ Hiện, Hàng Buồm, Hoàn Kiếm", maps: "https://maps.google.com/?q=Pho+Ta+Hien+Hanoi" },
+      { id: "polygon-music", name: "Polygon Musik (Live Acoustic)", category: "Nightlife", phase: "chill", open: 19, close: 24, lat: 21.0101, lng: 105.8288, address: "Ngõ 29/44 Hào Nam, Đống Đa", maps: "https://maps.google.com/?q=Polygon+Musik+Hao+Nam" },
+      { id: "the-halley", name: "The Alchemist - Cocktail Bar", category: "Nightlife", phase: "chill", open: 19, close: 1.5, lat: 21.0298, lng: 105.8479, address: "19 Nguyễn Quang Bích, Hoàn Kiếm", maps: "https://maps.google.com/?q=The+Alchemist+Cocktail+Bar+Hanoi" },
+      { id: "long-bien-bridge-night", name: "Trà Ngô Cầu Long Biên Đêm", category: "Nightlife", phase: "chill", open: 20, close: 3, lat: 21.0427, lng: 105.8576, address: "Giữa Cầu Long Biên lộng gió", maps: "https://maps.google.com/?q=Cau+Long+Bien+Hanoi" }
+    ];
+
+    /* ========================================================
+       ÂM THANH CƠ HỌC (WEB AUDIO API) & RUNG HAPTIC
+    ======================================================== */
+    let audioCtx = null;
+    function playWheelTick() {
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(540, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(60, audioCtx.currentTime + 0.03);
+
+        gain.gain.setValueAtTime(0.18, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.03);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.03);
+
+        if (navigator.vibrate) navigator.vibrate(10);
+      } catch (e) {}
+    }
+
+    /* ========================================================
+       TÍNH TOÁN KHOẢNG CÁCH GPS & GIỜ MỞ CỬA
+    ======================================================== */
+    let userCoords = null;
+
+    function calculateHaversine(lat1, lon1, lat2, lon2) {
+      const R = 6371;
+      const dLat = (lat2 - lat1) * Math.PI / 180;
+      const dLon = (lon2 - lon1) * Math.PI / 180;
+      const a = Math.sin(dLat/2)*Math.sin(dLat/2) +
+                Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180) *
+                Math.sin(dLon/2)*Math.sin(dLon/2);
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+      const d = R * c;
+      return d < 1 ? `${Math.round(d * 1000)}m` : `${d.toFixed(1)}km`;
+    }
+
+    function checkIsOpenNow(place) {
+      const now = new Date();
+      const currentH = now.getHours() + now.getMinutes() / 60;
+      if (place.open <= place.close) {
+        return currentH >= place.open && currentH <= place.close;
+      } else {
+        // Mở qua nửa đêm (ví dụ: 18h đến 2h sáng)
+        return currentH >= place.open || currentH <= place.close;
+      }
+    }
+
+    /* ========================================================
+       QUẢN LÝ DỮ LIỆU ĐANG KÍCH HOẠT & BỘ LỌC
+    ======================================================== */
+    let activePlaces = [...rawPlaces];
+    let isNightOwlMode = false;
+    let selectedCategory = 'all';
+
+    function applyFilters() {
+      let filtered = [...rawPlaces];
+      
+      if (selectedCategory !== 'all') {
+        filtered = filtered.filter(p => p.category.includes(selectedCategory));
+      }
+      
+      if (isNightOwlMode) {
+        filtered = filtered.filter(p => p.close > 22 || p.close <= 6 || p.open >= 21);
+      }
+      
+      activePlaces = filtered;
+      updateMiniList();
+      drawWheel();
+    }
+
+    /* ========================================================
+       VẼ VÒNG QUAY TRÊN CANVAS
+    ======================================================== */
+    const canvas = document.getElementById('wheelCanvas');
+    const ctx = canvas.getContext('2d');
+    let currentAngle = 0;
+    let isSpinning = false;
+    let lastTickSegment = -1;
+
+    // Bảng màu rực rỡ neon luân phiên
+    const sliceColors = [
+      '#ffb800', '#1c2237', '#ff334b', '#181b28', 
+      '#00f0ff', '#23283b', '#a855f7', '#161924'
+    ];
+
+    function drawWheel() {
+      const numSlices = activePlaces.length;
+      if (numSlices === 0) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#ff334b";
+        ctx.font = "bold 28px sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText("Không có quán phù hợp!", 320, 320);
+        return;
+      }
+
+      const arc = (2 * Math.PI) / numSlices;
+      const radius = canvas.width / 2;
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = 0; i < numSlices; i++) {
+        const angle = currentAngle + i * arc;
+        
+        // Vẽ nan quạt
+        ctx.beginPath();
+        ctx.fillStyle = sliceColors[i % sliceColors.length];
+        ctx.moveTo(radius, radius);
+        ctx.arc(radius, radius, radius - 6, angle, angle + arc);
+        ctx.lineTo(radius, radius);
+        ctx.fill();
+        ctx.strokeStyle = "rgba(0,0,0,0.5)";
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // Vẽ tên món/quán
+        ctx.save();
+        ctx.translate(radius, radius);
+        ctx.rotate(angle + arc / 2);
+        ctx.textAlign = "right";
+        ctx.fillStyle = (sliceColors[i % sliceColors.length] === '#ffb800' || sliceColors[i % sliceColors.length] === '#00f0ff') ? '#0b0c10' : '#ffffff';
+        ctx.font = "bold 22px sans-serif";
+        
+        // Cắt gọn tên nếu quá dài trên nan quạt
+        let displayName = activePlaces[i].name;
+        if (displayName.length > 16) displayName = displayName.substring(0, 14) + '...';
+        ctx.fillText(displayName, radius - 24, 8);
+        ctx.restore();
+      }
+
+      // Viền neon ngoài cùng
+      ctx.beginPath();
+      ctx.arc(radius, radius, radius - 4, 0, 2 * Math.PI);
+      ctx.strokeStyle = "#ffb800";
+      ctx.lineWidth = 6;
+      ctx.stroke();
+    }
+
+    /* ========================================================
+       LOGIC QUAY & ĐỘ NẢY KIM CHỈ
+    ======================================================== */
+    const pointerEl = document.getElementById('wheelPointer');
+
+    function spinWheel() {
+      if (isSpinning || activePlaces.length === 0) return;
+      isSpinning = true;
+
+      const spinDuration = 4200; // 4.2 giây
+      const startTime = performance.now();
+      const numSlices = activePlaces.length;
+      const arc = (2 * Math.PI) / numSlices;
+
+      // Chọn ngẫu nhiên quán thắng trước
+      const winningIndex = Math.floor(Math.random() * numSlices);
+      
+      // Tính góc dừng sao cho kim (ở đỉnh 270 độ / 1.5 * PI) chỉ đúng nan này
+      const targetSliceOffset = (winningIndex * arc) + (arc / 2);
+      const basePointerAngle = 1.5 * Math.PI; 
+      const extraRounds = 6 + Math.floor(Math.random() * 3); // 6-8 vòng quay
+      const totalDelta = (extraRounds * 2 * Math.PI) + (basePointerAngle - (currentAngle % (2 * Math.PI)) - targetSliceOffset) + (2 * Math.PI * 10);
+
+      const startAngle = currentAngle;
+      lastTickSegment = -1;
+
+      function animateSpin(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / spinDuration, 1);
+
+        // Cubic Easing Out
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        currentAngle = startAngle + totalDelta * easeOut;
+        drawWheel();
+
+        // Kiểm tra góc đi qua để kích hoạt tick tick & nảy kim
+        const normalizedAngle = (currentAngle % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
+        const currentSegment = Math.floor(normalizedAngle / arc);
+        if (currentSegment !== lastTickSegment) {
+          playWheelTick();
+          lastTickSegment = currentSegment;
+          pointerEl.style.transform = "translateX(-50%) rotate(-18deg)";
+          setTimeout(() => { pointerEl.style.transform = "translateX(-50%) rotate(0deg)"; }, 40);
+        }
+
+        if (progress < 1) {
+          requestAnimationFrame(animateSpin);
+        } else {
+          isSpinning = false;
+          showWinner(activePlaces[winningIndex]);
+        }
+      }
+
+      requestAnimationFrame(animateSpin);
+    }
+
+    /* ========================================================
+       HIỂN THỊ KẾT QUẢ TẠI BOTTOM SHEET
+    ======================================================== */
+    let currentWinner = null;
+
+    function showWinner(place) {
+      currentWinner = place;
+      const isOpen = checkIsOpenNow(place);
+      const statusBadge = document.getElementById('sheetStatusBadge');
+      
+      statusBadge.textContent = isOpen ? "🟢 ĐANG MỞ CỬA" : "🔴 ĐÃ ĐÓNG CỬA";
+      statusBadge.className = `pill-badge ${isOpen ? 'pill-open' : 'pill-closed'}`;
+
+      document.getElementById('sheetPlaceName').textContent = place.name;
+      document.getElementById('sheetAddress').textContent = place.address;
+      document.getElementById('sheetMapsLink').href = place.maps;
+
+      let distanceStr = "";
+      if (userCoords) {
+        distanceStr = calculateHaversine(userCoords.lat, userCoords.lng, place.lat, place.lng);
+        document.getElementById('sheetMeta').textContent = `${place.category} • Cách bạn ${distanceStr}`;
+      } else {
+        document.getElementById('sheetMeta').textContent = place.category;
+      }
+
+      document.getElementById('sheetOverlay').classList.add('active');
+      document.getElementById('bottomSheet').classList.add('open');
+    }
+
+    function closeBottomSheet() {
+      document.getElementById('sheetOverlay').classList.remove('active');
+      document.getElementById('bottomSheet').classList.remove('open');
+    }
+
+    /* ========================================================
+       XUẤT THẺ KÈO 9:16 (STORY CANVAS) TẢI VỀ KHOE BẠN BÈ
+    ======================================================== */
+    function generateAndDownloadStory() {
+      if (!currentWinner) return;
+
+      const p = currentWinner;
+      const c = document.createElement('canvas');
+      c.width = 1080;
+      c.height = 1920;
+      const cx = c.getContext('2d');
+
+      // Nền Gradient Đêm Sâu
+      const bg = cx.createLinearGradient(0, 0, 0, 1920);
+      bg.addColorStop(0, '#0a0b0e');
+      bg.addColorStop(0.5, '#161925');
+      bg.addColorStop(1, '#07080a');
+      cx.fillStyle = bg;
+      cx.fillRect(0, 0, 1080, 1920);
+
+      // Đèn Neon Radial Phố Cổ
+      const glow = cx.createRadialGradient(540, 750, 40, 540, 750, 560);
+      glow.addColorStop(0, 'rgba(255, 184, 0, 0.25)');
+      glow.addColorStop(0.6, 'rgba(255, 51, 75, 0.1)');
+      glow.addColorStop(1, 'transparent');
+      cx.fillStyle = glow;
+      cx.fillRect(0, 0, 1080, 1920);
+
+      // Khung viền Thẻ Kèo
+      cx.strokeStyle = '#ffb800';
+      cx.lineWidth = 6;
+      cx.strokeRect(50, 50, 980, 1820);
+
+      // Header thẻ
+      cx.textAlign = 'center';
+      cx.fillStyle = '#ffb800';
+      cx.font = 'bold 36px sans-serif';
+      cx.fillText('★ HÀ NỘI NIGHTLIFE & STREET FOOD ★', 540, 220);
+
+      cx.fillStyle = '#8e94a5';
+      cx.font = '30px sans-serif';
+      cx.fillText('LỆNH TRIỆU TẬP TỐI NAY', 540, 280);
+
+      // Icon & Tên Quán
+      cx.fillStyle = '#ffffff';
+      cx.font = 'bold 64px sans-serif';
+      cx.fillText(p.name, 540, 780);
+
+      let dist = userCoords ? `Cách bạn ${calculateHaversine(userCoords.lat, userCoords.lng, p.lat, p.lng)} • ` : "";
+      cx.fillStyle = '#00f0ff';
+      cx.font = '36px sans-serif';
+      cx.fillText(`${dist}${p.category}`, 540, 860);
+
+      cx.fillStyle = '#cfd3e0';
+      cx.font = '30px sans-serif';
+      cx.fillText(p.address, 540, 930);
+
+      // Slogan hài hước
+      cx.fillStyle = '#ff334b';
+      cx.font = 'italic bold 44px sans-serif';
+      cx.fillText('“Vũ trụ đã an bài – Ai vắng mặt nộp phạt 50k!”', 540, 1320);
+
+      // Giờ tạo thẻ
+      const timeNow = new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' });
+      cx.fillStyle = '#6b7280';
+      cx.font = '28px sans-serif';
+      cx.fillText(`Chốt kèo lúc: ${timeNow} • Đêm Phố Cổ`, 540, 1720);
+
+      // Tự động tải file ảnh về
+      const a = document.createElement('a');
+      a.download = `Keo_HaNoi_${p.id}.png`;
+      a.href = c.toDataURL('image/png');
+      a.click();
+    }
+
+    /* ========================================================
+       TÍNH NĂNG: COMBO 1 ĐÊM HÀ NỘI (TOUR 3 CHẶNG)
+    ======================================================== */
+    function renderComboTour() {
+      const dinners = rawPlaces.filter(p => p.phase === 'dinner');
+      const cafes = rawPlaces.filter(p => p.phase === 'cafe');
+      const chills = rawPlaces.filter(p => p.phase === 'chill');
+
+      const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+      const step1 = pick(dinners);
+      const step2 = pick(cafes);
+      const step3 = pick(chills);
+
+      const html = `
+        <div class="combo-step">
+          <div class="combo-step-time">CHẶNG 1: 18:30 - 20:30 (ẤM BỤNG ĐẦU TỐI)</div>
+          <div class="combo-step-name">${step1.name}</div>
+          <div class="combo-step-sub">${step1.category} • ${step1.address}</div>
+        </div>
+        <div class="combo-step">
+          <div class="combo-step-time">CHẶNG 2: 20:30 - 22:30 (TRÁNG MIỆNG & CÀ PHÊ)</div>
+          <div class="combo-step-name">${step2.name}</div>
+          <div class="combo-step-sub">${step2.category} • ${step2.address}</div>
+        </div>
+        <div class="combo-step">
+          <div class="combo-step-time">CHẶNG 3: 22:30 - ĐÊM MUỘN (CHILL & QUẨY PHỐ CỔ)</div>
+          <div class="combo-step-name">${step3.name}</div>
+          <div class="combo-step-sub">${step3.category} • ${step3.address}</div>
+        </div>
+      `;
+      document.getElementById('comboContent').innerHTML = html;
+      document.getElementById('comboModal').classList.add('show');
+    }
+
+    /* ========================================================
+       TÍNH NĂNG: ĐẠI CHIẾN SO GĂNG 1v1
+    ======================================================== */
+    let battlePair = [];
+    function openBattleModal() {
+      const idx1 = Math.floor(Math.random() * rawPlaces.length);
+      let idx2 = Math.floor(Math.random() * rawPlaces.length);
+      while (idx2 === idx1) idx2 = Math.floor(Math.random() * rawPlaces.length);
+
+      battlePair = [rawPlaces[idx1], rawPlaces[idx2]];
+      document.getElementById('battleNameA').textContent = battlePair[0].name;
+      document.getElementById('battleNameB').textContent = battlePair[1].name;
+      document.getElementById('battleResult').textContent = "";
+      document.getElementById('battleModal').classList.add('show');
+    }
+
+    function chooseBattleWinner(chosenIndex) {
+      const winner = battlePair[chosenIndex];
+      document.getElementById('battleResult').textContent = `🎉 Kèo "${winner.name}" đã thắng áp đảo! Lên đồ thôi!`;
+      setTimeout(() => {
+        document.getElementById('battleModal').classList.remove('show');
+        showWinner(winner);
+      }, 900);
+    }
+
+    /* ========================================================
+       CẬP NHẬT DANH SÁCH XEM NHANH PHÍA DƯỚI
+    ======================================================== */
+    function updateMiniList() {
+      const countEl = document.getElementById('placesCountText');
+      const listEl = document.getElementById('placesListMini');
+      countEl.textContent = `Danh sách: ${activePlaces.length} địa điểm`;
+
+      listEl.innerHTML = activePlaces.slice(0, 5).map(p => {
+        let dist = userCoords ? ` (${calculateHaversine(userCoords.lat, userCoords.lng, p.lat, p.lng)})` : '';
+        return `
+          <div class="mini-place-item">
+            <span><strong>${p.name}</strong> <small style="color:var(--text-dim);">${dist}</small></span>
+            <span style="color:var(--neon-yellow); font-size:12px;">${p.category}</span>
+          </div>
+        `;
+      }).join('');
+      
+      if (activePlaces.length > 5) {
+        listEl.innerHTML += `<div style="text-align:center; padding-top:8px; font-size:12px; color:var(--text-dim);">...và ${activePlaces.length - 5} quán khác trên vòng quay</div>`;
+      }
+    }
+
+    /* ========================================================
+       GẮN SỰ KIỆN TƯƠNG TÁC (EVENT LISTENERS)
+    ======================================================== */
+    document.addEventListener('DOMContentLoaded', () => {
+      drawWheel();
+      updateMiniList();
+
+      // Nút Quay
+      document.getElementById('btnSpin').addEventListener('click', spinWheel);
+
+      // Đóng Bottom Sheet
+      document.getElementById('sheetOverlay').addEventListener('click', closeBottomSheet);
+      document.getElementById('sheetStoryBtn').addEventListener('click', generateAndDownloadStory);
+
+      // Chế độ Cú đêm
+      const nightBtn = document.getElementById('btnNightOwl');
+      nightBtn.addEventListener('click', () => {
+        isNightOwlMode = !isNightOwlMode;
+        nightBtn.classList.toggle('active', isNightOwlMode);
+        applyFilters();
+      });
+
+      // Lọc danh mục
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          selectedCategory = btn.getAttribute('data-cat');
+          applyFilters();
+        });
+      });
+
+      // Bật GPS
+      const gpsBtn = document.getElementById('btnGps');
+      gpsBtn.addEventListener('click', () => {
+        if (!navigator.geolocation) {
+          alert('Thiết bị không hỗ trợ GPS!');
+          return;
+        }
+        gpsBtn.textContent = '📍 Đang định vị...';
+        navigator.geolocation.getCurrentPosition(
+          pos => {
+            userCoords = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+            gpsBtn.textContent = '📍 Đã bật GPS';
+            gpsBtn.classList.add('active');
+            document.getElementById('gpsStatusText').textContent = 'GPS: Đã kết nối';
+            updateMiniList();
+          },
+          err => {
+            gpsBtn.textContent = '📍 GPS Thất bại';
+            alert('Vui lòng cấp quyền vị trí để tính khoảng cách đến quán!');
+          },
+          { enableHighAccuracy: true, timeout: 8000 }
+        );
+      });
+
+      // Combo Modal
+      document.getElementById('btnCombo').addEventListener('click', renderComboTour);
+      document.getElementById('closeComboModal').addEventListener('click', () => {
+        document.getElementById('comboModal').classList.remove('show');
+      });
+      document.getElementById('reRollComboBtn').addEventListener('click', renderComboTour);
+
+      // Battle Modal
+      document.getElementById('btnBattle').addEventListener('click', openBattleModal);
+      document.getElementById('closeBattleModal').addEventListener('click', () => {
+        document.getElementById('battleModal').classList.remove('show');
+      });
+      document.getElementById('battleOptionA').addEventListener('click', () => chooseBattleWinner(0));
+      document.getElementById('battleOptionB').addEventListener('click', () => chooseBattleWinner(1));
+    });
+  </script>
 </body>
 </html>
