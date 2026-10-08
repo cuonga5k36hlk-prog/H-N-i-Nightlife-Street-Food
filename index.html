@@ -1,1096 +1,1588 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Hà Nội Nightlife & Street Food - Hôm Nay Ăn Gì?</title>
-  
-  <!-- Google Fonts -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>100 Câu Đố Siêu Mẹo - Hack Não 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Bungee&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    /* ========================================================
-       1. BIẾN MÀU & THIẾT KẾ RETRO NEON HÀ NỘI ĐÊM
-    ======================================================== */
     :root {
-      --bg-body: #0b0c10;
-      --bg-card: #141722;
-      --bg-surface: #1d2130;
-      --neon-yellow: #ffb800;
-      --neon-red: #ff334b;
-      --neon-cyan: #00f0ff;
-      --neon-green: #00e676;
-      --text-main: #f5f6fa;
-      --text-dim: #8e94a5;
-      --border-glass: rgba(255, 255, 255, 0.08);
-      --font-heading: 'Plus Jakarta Sans', sans-serif;
+      --bg-body: #f8fafc;
+      --bg-card: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-subtle: #eff6ff;
+      --success: #10b981;
+      --success-bg: #ecfdf5;
+      --wrong: #ef4444;
+      --wrong-bg: #fef2f2;
+      --warning: #f59e0b;
+      --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+      --radius-lg: 20px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    [data-theme="dark"] {
+      --bg-body: #0b0f17;
+      --bg-card: #151c28;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border: #243044;
+      --primary: #3b82f6;
+      --primary-hover: #60a5fa;
+      --primary-subtle: rgba(59, 130, 246, 0.12);
+      --success: #10b981;
+      --success-bg: rgba(16, 185, 129, 0.15);
+      --wrong: #f43f5e;
+      --wrong-bg: rgba(244, 63, 94, 0.15);
+      --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.6);
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
       -webkit-tap-highlight-color: transparent;
     }
 
     body {
       background-color: var(--bg-body);
       color: var(--text-main);
-      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
       min-height: 100vh;
-      overflow-x: hidden;
-      padding-bottom: 60px;
-    }
-
-    /* Container */
-    .app-container {
-      max-width: 520px;
-      margin: 0 auto;
-      padding: 16px;
       display: flex;
       flex-direction: column;
       align-items: center;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      padding: 12px 16px 40px;
     }
 
-    /* Header */
-    header {
-      text-align: center;
-      margin-top: 8px;
-      margin-bottom: 16px;
+    /* --- Header --- */
+    .app-header {
       width: 100%;
-    }
-
-    .badge-top {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      color: var(--neon-yellow);
-      background: rgba(255, 184, 0, 0.12);
-      border: 1px solid rgba(255, 184, 0, 0.3);
-      padding: 4px 12px;
-      border-radius: 20px;
-      margin-bottom: 8px;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      font-size: 26px;
-      font-weight: 800;
-      line-height: 1.25;
-      background: linear-gradient(135deg, #fff 40%, var(--neon-yellow) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    header p {
-      font-size: 13px;
-      color: var(--text-dim);
-      margin-top: 4px;
-    }
-
-    /* ========================================================
-       2. TOOLBAR TÍNH NĂNG ĐỈNH CAO
-    ======================================================== */
-    .feature-bar {
+      max-width: 600px;
       display: flex;
-      gap: 8px;
-      width: 100%;
-      overflow-x: auto;
-      padding: 6px 2px 14px;
-      scrollbar-width: none;
-    }
-    .feature-bar::-webkit-scrollbar { display: none; }
-
-    .chip-btn {
-      flex-shrink: 0;
-      background: var(--bg-card);
-      border: 1px solid var(--border-glass);
-      color: var(--text-dim);
-      padding: 8px 14px;
-      border-radius: 24px;
-      font-size: 13px;
-      font-weight: 600;
-      display: inline-flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 6px;
-      cursor: pointer;
-      transition: all 0.2s ease;
+      padding: 8px 0 16px;
     }
 
-    .chip-btn.active, .chip-btn:hover {
-      color: #000;
-      background: var(--neon-yellow);
-      border-color: var(--neon-yellow);
-      box-shadow: 0 0 16px rgba(255, 184, 0, 0.35);
-    }
-
-    .chip-btn.special-btn {
-      color: var(--neon-cyan);
-      border-color: rgba(0, 240, 255, 0.3);
-      background: rgba(0, 240, 255, 0.08);
-    }
-    .chip-btn.special-btn:hover {
-      background: var(--neon-cyan);
-      color: #000;
-      box-shadow: 0 0 16px rgba(0, 240, 255, 0.35);
-    }
-
-    /* Bộ lọc phân loại */
-    .category-filter {
-      display: flex;
-      gap: 6px;
-      width: 100%;
-      overflow-x: auto;
-      padding-bottom: 12px;
-      margin-bottom: 12px;
-      scrollbar-width: none;
-    }
-    .category-filter::-webkit-scrollbar { display: none; }
-
-    .cat-btn {
-      flex-shrink: 0;
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      color: var(--text-dim);
-      padding: 6px 12px;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 500;
-      cursor: pointer;
-    }
-    .cat-btn.active {
-      background: var(--text-main);
-      color: #000;
-      font-weight: 700;
-      border-color: var(--text-main);
-    }
-
-    /* ========================================================
-       3. KHU VỰC VÒNG QUAY CANVAS & KIM CHỈ
-    ======================================================== */
-    .wheel-wrapper {
-      position: relative;
-      width: 330px;
-      height: 330px;
-      margin: 10px auto;
+    .brand {
       display: flex;
       align-items: center;
-      justify-content: center;
-    }
-
-    /* Kim chỉ */
-    .wheel-pointer {
-      position: absolute;
-      top: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 28px;
-      height: 36px;
-      z-index: 10;
-      filter: drop-shadow(0 4px 10px rgba(255, 51, 75, 0.6));
-      transform-origin: 50% 15%;
-      transition: transform 0.05s ease-out;
-    }
-
-    .wheel-pointer::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 0;
-      height: 0;
-      border-left: 14px solid transparent;
-      border-right: 14px solid transparent;
-      border-top: 32px solid var(--neon-red);
-    }
-
-    canvas#wheelCanvas {
-      width: 320px;
-      height: 320px;
-      border-radius: 50%;
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.9), 0 0 20px rgba(255, 184, 0, 0.2);
-    }
-
-    /* Nút Quay Giữa Tâm */
-    .spin-center-btn {
-      position: absolute;
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      background: radial-gradient(circle, #252838 0%, #12141c 100%);
-      border: 3px solid var(--neon-yellow);
-      color: var(--neon-yellow);
-      font-weight: 800;
-      font-size: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 0 18px rgba(255, 184, 0, 0.4);
-      z-index: 5;
-      user-select: none;
-      transition: transform 0.15s, box-shadow 0.15s;
-    }
-    .spin-center-btn:active {
-      transform: scale(0.92);
-      box-shadow: 0 0 8px rgba(255, 184, 0, 0.2);
-    }
-
-    /* Thông tin trạng thái */
-    .status-text {
-      font-size: 13px;
-      color: var(--text-dim);
-      margin-top: 14px;
-      text-align: center;
-    }
-
-    /* ========================================================
-       4. BOTTOM SHEET KẾT QUẢ KÈO
-    ======================================================== */
-    .sheet-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(4px);
-      z-index: 100;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s;
-    }
-    .sheet-overlay.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .bottom-sheet {
-      position: fixed;
-      left: 0;
-      right: 0;
-      bottom: -100%;
-      max-width: 520px;
-      margin: 0 auto;
-      background: var(--bg-card);
-      border-radius: 28px 28px 0 0;
-      border-top: 2px solid var(--neon-yellow);
-      box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.9);
-      padding: 20px 24px 34px;
-      z-index: 101;
-      transition: bottom 0.35s cubic-bezier(0.19, 1, 0.22, 1);
-    }
-    .bottom-sheet.open {
-      bottom: 0;
-    }
-
-    .sheet-handle {
-      width: 44px;
-      height: 4px;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 2px;
-      margin: 0 auto 16px;
-    }
-
-    .pill-badge {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 12px;
-      margin-bottom: 8px;
-    }
-    .pill-open {
-      background: rgba(0, 230, 118, 0.15);
-      color: var(--neon-green);
-      border: 1px solid var(--neon-green);
-    }
-    .pill-closed {
-      background: rgba(255, 51, 75, 0.15);
-      color: var(--neon-red);
-      border: 1px solid var(--neon-red);
-    }
-
-    .sheet-title {
-      font-size: 22px;
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 6px;
-    }
-
-    .sheet-meta {
-      font-size: 13px;
-      color: var(--neon-cyan);
-      margin-bottom: 6px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .sheet-address {
-      font-size: 13px;
-      color: var(--text-dim);
-      line-height: 1.4;
-      margin-bottom: 20px;
-    }
-
-    .sheet-actions {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
       gap: 10px;
     }
 
-    .sheet-btn {
-      padding: 13px;
-      border-radius: 14px;
-      font-weight: 700;
-      font-size: 13px;
+    .brand-icon {
+      font-size: 1.5rem;
+    }
+
+    .brand-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .icon-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      text-decoration: none;
-      cursor: pointer;
-      border: none;
-    }
-    .btn-maps {
-      background: var(--neon-yellow);
-      color: #000;
-    }
-    .btn-story {
-      background: var(--bg-surface);
-      color: #fff;
-      border: 1px solid var(--border-glass);
+      font-size: 1.1rem;
+      box-shadow: var(--card-shadow);
+      transition: var(--transition);
+      color: var(--text-main);
     }
 
-    /* ========================================================
-       5. MODAL COMBO 3 CHẶNG & SO GĂNG 1v1
-    ======================================================== */
-    .modal {
+    .icon-btn:hover {
+      transform: scale(1.05);
+      border-color: var(--primary);
+    }
+
+    /* --- Main Container --- */
+    .quiz-app {
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* Top stats */
+    .status-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      padding: 0 4px;
+    }
+
+    .badge-pill {
+      background: var(--primary-subtle);
+      color: var(--primary);
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 7px;
+      background-color: var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 1%;
+      background: linear-gradient(90deg, var(--primary), #8b5cf6);
+      border-radius: 10px;
+      transition: width 0.3s ease;
+    }
+
+    /* Card Question */
+    .quiz-card {
+      background-color: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      box-shadow: var(--card-shadow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+    }
+
+    .media-container {
+      width: 100%;
+      height: 220px;
+      position: relative;
+      background-color: var(--border);
+      overflow: hidden;
+    }
+
+    .media-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .media-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(8px);
+      color: #ffffff;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .card-content {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .question-title {
+      font-size: 1.15rem;
+      line-height: 1.45;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .options-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .opt-btn {
+      background-color: var(--bg-card);
+      border: 1.5px solid var(--border);
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      color: var(--text-main);
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: var(--transition);
+      line-height: 1.35;
+    }
+
+    .opt-btn:hover:not(:disabled) {
+      border-color: var(--primary);
+      background-color: var(--primary-subtle);
+      transform: translateY(-1px);
+    }
+
+    .opt-btn:disabled {
+      cursor: default;
+    }
+
+    .opt-btn.correct {
+      border-color: var(--success) !important;
+      background-color: var(--success-bg) !important;
+      color: var(--success) !important;
+    }
+
+    .opt-btn.wrong {
+      border-color: var(--wrong) !important;
+      background-color: var(--wrong-bg) !important;
+      color: var(--wrong) !important;
+    }
+
+    /* Explanation Box */
+    .trap-explanation {
+      display: none;
+      background-color: var(--primary-subtle);
+      border-left: 4px solid var(--warning);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 14px 16px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .trap-header {
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--warning);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .trap-desc {
+      font-size: 0.92rem;
+      line-height: 1.5;
+      color: var(--text-main);
+    }
+
+    /* Navigation Footer */
+    .card-footer {
+      padding: 14px 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg-card);
+    }
+
+    .btn {
+      padding: 10px 18px;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border: none;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover:not(:disabled) {
+      background: var(--bg-body);
+      color: var(--text-main);
+    }
+
+    .btn-secondary:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+    }
+
+    /* Modal Grid Chọn Câu */
+    .modal-backdrop {
+      display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(6px);
-      z-index: 110;
-      display: none;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 100;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 16px;
+      animation: fadeIn 0.2s ease;
     }
-    .modal.show { display: flex; }
+
+    .modal-backdrop.active {
+      display: flex;
+    }
 
     .modal-box {
       background: var(--bg-card);
-      border: 1px solid var(--border-glass);
-      border-radius: 20px;
-      max-width: 440px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
       width: 100%;
-      padding: 24px;
-      position: relative;
-    }
-
-    .modal-box h3 {
-      font-size: 20px;
-      margin-bottom: 14px;
-      color: var(--neon-yellow);
+      max-width: 480px;
+      max-height: 80vh;
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+      overflow: hidden;
+    }
+
+    .modal-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
       justify-content: space-between;
-    }
-    .modal-close {
-      cursor: pointer;
-      font-size: 20px;
-      color: var(--text-dim);
-    }
-
-    /* Combo 3 chặng card */
-    .combo-step {
-      background: var(--bg-surface);
-      border-radius: 12px;
-      padding: 12px 14px;
-      margin-bottom: 10px;
-      border-left: 3px solid var(--neon-cyan);
-    }
-    .combo-step-time {
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--neon-cyan);
-    }
-    .combo-step-name {
-      font-size: 15px;
-      font-weight: 700;
-      margin: 4px 0 2px;
-    }
-    .combo-step-sub {
-      font-size: 12px;
-      color: var(--text-dim);
-    }
-
-    /* So găng 1v1 */
-    .battle-grid {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      gap: 8px;
-      margin: 16px 0;
-    }
-    .battle-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-glass);
-      border-radius: 14px;
-      padding: 16px 10px;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .battle-card:hover {
-      border-color: var(--neon-cyan);
-      transform: scale(1.02);
-    }
-    .battle-vs {
-      font-family: 'Bungee', cursive, sans-serif;
-      color: var(--neon-red);
-      font-size: 20px;
-    }
-    .battle-name {
-      font-size: 14px;
-      font-weight: 700;
-      margin-top: 6px;
     }
 
-    /* Danh sách quán mini bên dưới */
-    .list-preview {
-      width: 100%;
-      margin-top: 24px;
-      background: var(--bg-card);
-      border-radius: 16px;
-      border: 1px solid var(--border-glass);
+    .modal-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+    }
+
+    .modal-body {
       padding: 16px;
+      overflow-y: auto;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
     }
-    .list-preview-header {
-      display: flex;
-      justify-content: space-between;
-      font-size: 13px;
+
+    .num-btn {
+      aspect-ratio: 1;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-main);
+      font-size: 0.85rem;
       font-weight: 700;
-      color: var(--text-dim);
-      margin-bottom: 12px;
-    }
-    .mini-place-item {
+      cursor: pointer;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 9px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      font-size: 13px;
+      justify-content: center;
+      transition: var(--transition);
     }
-    .mini-place-item:last-child { border-bottom: none; }
+
+    .num-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .num-btn.current {
+      outline: 2px solid var(--primary);
+    }
+
+    .num-btn.is-correct {
+      background: var(--success);
+      color: #fff;
+      border-color: var(--success);
+    }
+
+    .num-btn.is-wrong {
+      background: var(--wrong);
+      color: #fff;
+      border-color: var(--wrong);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 480px) {
+      .media-container { height: 180px; }
+      .card-content { padding: 16px; gap: 14px; }
+      .question-title { font-size: 1.05rem; }
+      .opt-btn { padding: 12px 14px; font-size: 0.9rem; }
+      .modal-body { grid-template-columns: repeat(5, 1fr); gap: 6px; }
+    }
   </style>
 </head>
 <body>
 
-  <div class="app-container">
-    
-    <!-- Header -->
-    <header>
-      <div class="badge-top">Hà Nội 36 Phố Phường • 2026 Edition</div>
-      <h1>Hôm Nay Ăn Gì – Đi Đâu?</h1>
-      <p>Quay một phát chốt kèo ngõ nhỏ phố cổ & tụ điểm đêm</p>
-    </header>
+  <header class="app-header">
+    <div class="brand">
+      <span class="brand-icon">⚡</span>
+      <h1 class="brand-title">Siêu Mẹo 100</h1>
+    </div>
+    <div class="header-actions">
+      <button class="icon-btn" id="btn-grid" title="Danh sách 100 câu">☰</button>
+      <button class="icon-btn" id="btn-theme" title="Đổi màu nền">🌙</button>
+    </div>
+  </header>
 
-    <!-- Toolbar Tính năng -->
-    <div class="feature-bar">
-      <button class="chip-btn" id="btnGps">📍 Gần tôi nhất</button>
-      <button class="chip-btn" id="btnNightOwl">🌙 Cú đêm (22h-4h)</button>
-      <button class="chip-btn special-btn" id="btnCombo">✨ Combo 1 Đêm</button>
-      <button class="chip-btn special-btn" id="btnBattle">⚔️ So găng 1v1</button>
+  <main class="quiz-app">
+    <div class="status-card">
+      <span id="label-progress">Câu 1/100</span>
+      <span class="badge-pill" id="label-score">Điểm: 0</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-bar" id="progress-fill"></div>
     </div>
 
-    <!-- Bộ lọc danh mục -->
-    <div class="category-filter" id="categoryBar">
-      <button class="cat-btn active" data-cat="all">Tất cả</button>
-      <button class="cat-btn" data-cat="Phở & Bún">Phở & Bún</button>
-      <button class="cat-btn" data-cat="Lẩu & Nướng">Lẩu & Nướng</button>
-      <button class="cat-btn" data-cat="Ăn vặt">Ăn vặt phố cổ</button>
-      <button class="cat-btn" data-cat="Cà phê">Cà phê & Ngọt</button>
-      <button class="cat-btn" data-cat="Nightlife">Nightlife & Chill</button>
-    </div>
-
-    <!-- Vòng Quay Canvas -->
-    <div class="wheel-wrapper">
-      <div class="wheel-pointer" id="wheelPointer"></div>
-      <canvas id="wheelCanvas" width="640" height="640"></canvas>
-      <div class="spin-center-btn" id="btnSpin">QUAY</div>
-    </div>
-
-    <div class="status-text" id="statusHint">Chạm QUAY để vũ trụ quyết định kèo tối nay!</div>
-
-    <!-- Danh sách xem nhanh -->
-    <div class="list-preview">
-      <div class="list-preview-header">
-        <span id="placesCountText">Danh sách: 0 địa điểm</span>
-        <span id="gpsStatusText">GPS: Chưa bật</span>
+    <article class="quiz-card">
+      <div class="media-container">
+        <span class="media-badge" id="category-badge">BẪY LOGIC</span>
+        <img id="quiz-img" src="" alt="Hình minh họa" onerror="this.src='https://images.unsplash.com/photo-1518770660439-4636190af475?w=700&auto=format&fit=crop&q=80'">
       </div>
-      <div id="placesListMini"></div>
-    </div>
 
-  </div>
+      <div class="card-content">
+        <h2 class="question-title" id="quiz-question">Đang tải nội dung...</h2>
 
-  <!-- Bottom Sheet Chi Tiết Kèo Trúng -->
-  <div class="sheet-overlay" id="sheetOverlay"></div>
-  <div class="bottom-sheet" id="bottomSheet">
-    <div class="sheet-handle"></div>
-    <div id="sheetStatusBadge" class="pill-badge pill-open">🟢 ĐANG MỞ CỬA</div>
-    <h2 class="sheet-title" id="sheetPlaceName">Tên Quán</h2>
-    <div class="sheet-meta" id="sheetMeta">Đặc sản • Cách bạn 1.2km</div>
-    <p class="sheet-address" id="sheetAddress">Địa chỉ chi tiết</p>
-    
-    <div class="sheet-actions">
-      <a href="#" target="_blank" class="sheet-btn btn-maps" id="sheetMapsLink">
-        🗺️ Chỉ đường Maps
-      </a>
-      <button class="sheet-btn btn-story" id="sheetStoryBtn">
-        📸 Tải Thẻ Story
-      </button>
-    </div>
-  </div>
+        <div class="options-list" id="quiz-options"></div>
 
-  <!-- Modal Combo 1 Đêm Hà Nội -->
-  <div class="modal" id="comboModal">
-    <div class="modal-box">
-      <h3>
-        <span>✨ Lịch trình 1 Đêm Hà Nội</span>
-        <span class="modal-close" id="closeComboModal">&times;</span>
-      </h3>
-      <div id="comboContent"></div>
-      <button class="sheet-btn btn-maps" id="reRollComboBtn" style="width: 100%; margin-top: 10px;">
-        🎲 Đổi Combo Khác
-      </button>
-    </div>
-  </div>
-
-  <!-- Modal So Găng 1v1 -->
-  <div class="modal" id="battleModal">
-    <div class="modal-box">
-      <h3>
-        <span>⚔️ Đại Chiến 1v1</span>
-        <span class="modal-close" id="closeBattleModal">&times;</span>
-      </h3>
-      <p style="font-size: 13px; color: var(--text-dim);">Không biết chọn gì? Bấm chọn kèo bạn thèm hơn:</p>
-      
-      <div class="battle-grid">
-        <div class="battle-card" id="battleOptionA">
-          <div style="font-size: 30px;">🍲</div>
-          <div class="battle-name" id="battleNameA">Quán A</div>
-        </div>
-        <div class="battle-vs">VS</div>
-        <div class="battle-card" id="battleOptionB">
-          <div style="font-size: 30px;">🍢</div>
-          <div class="battle-name" id="battleNameB">Quán B</div>
+        <div class="trap-explanation" id="quiz-explanation">
+          <div class="trap-header">⚠️ Bẫy ở chỗ này!</div>
+          <p class="trap-desc" id="quiz-trap-text"></p>
         </div>
       </div>
-      
-      <div id="battleResult" style="text-align: center; font-weight: 700; color: var(--neon-green); font-size: 14px; min-height: 20px;"></div>
+
+      <footer class="card-footer">
+        <button class="btn btn-secondary" id="btn-prev" disabled>← Câu trước</button>
+        <button class="btn btn-primary" id="btn-next">Tiếp theo →</button>
+      </footer>
+    </article>
+  </main>
+
+  <!-- Modal Bảng Số Câu Hỏi -->
+  <div class="modal-backdrop" id="modal-grid">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title">Danh sách 100 câu</h3>
+        <button class="icon-btn" id="btn-close-modal" style="width:32px;height:32px;font-size:0.9rem;">✕</button>
+      </div>
+      <div class="modal-body" id="grid-container"></div>
     </div>
   </div>
 
-  <!-- ========================================================
-       6. JAVASCRIPT: LOGIC & DỮ LIỆU
-  ======================================================== -->
   <script>
-    /* Dữ liệu 25 địa điểm ăn đêm & trải nghiệm thực tế Hà Nội */
-    const rawPlaces = [
-      { id: "bat-dan", name: "Phở Gia Truyền Bát Đàn", category: "Phở & Bún", phase: "dinner", open: 6, close: 20.5, lat: 21.0336, lng: 105.8475, address: "49 Bát Đàn, Hoàn Kiếm", maps: "https://maps.google.com/?q=Pho+Bat+Dan+Hanoi" },
-      { id: "pho-ganh", name: "Phở Gánh Hàng Chiếu", category: "Phở & Bún", phase: "chill", open: 22, close: 5, lat: 21.0381, lng: 105.8522, address: "Ngã tư Hàng Chiếu - Hàng Đường", maps: "https://maps.google.com/?q=Pho+Ganh+Hang+Chieu" },
-      { id: "pho-nguyet", name: "Phở Gà Nguyệt (Ăn Đêm)", category: "Phở & Bún", phase: "chill", open: 18, close: 2, lat: 21.0308, lng: 105.8489, address: "5B Phủ Doãn, Hàng Trống", maps: "https://maps.google.com/?q=Pho+Ga+Nguyet+Phu+Doan" },
-      { id: "bun-cha-dac-kim", name: "Bún Chả Đắc Kim", category: "Phở & Bún", phase: "dinner", open: 9, close: 21, lat: 21.0337, lng: 105.8465, address: "Số 1 Hàng Mành, Hoàn Kiếm", maps: "https://maps.google.com/?q=Bun+Cha+Dac+Kim" },
-      { id: "bun-oc-co-hue", name: "Bún Ốc Nguội Cô Huệ", category: "Phở & Bún", phase: "dinner", open: 6, close: 15, lat: 21.0356, lng: 105.8505, address: "43 Đặng Dung & Chợ Đồng Xuân", maps: "https://maps.google.com/?q=Bun+Oc+Co+Hue+Dong+Xuan" },
-      { id: "chao-suon-dong-xuan", name: "Cháo Sườn Sụn Đồng Xuân", category: "Ăn vặt", phase: "chill", open: 17, close: 2, lat: 21.0375, lng: 105.8504, address: "14 Đồng Xuân, Hoàn Kiếm", maps: "https://maps.google.com/?q=Chao+Suon+Dong+Xuan" },
-      { id: "banh-mi-dan-to", name: "Bánh Mì Dân Tổ", category: "Ăn vặt", phase: "chill", open: 23, close: 6, lat: 21.0398, lng: 105.8540, address: "Ngã 3 Cao Thắng - Trần Nhật Duật", maps: "https://maps.google.com/?q=Banh+Mi+Dan+To+Hanoi" },
-      { id: "banh-cuon-ba-xuan", name: "Bánh Cuốn Bà Xuân", category: "Phở & Bún", phase: "dinner", open: 7, close: 23, lat: 21.0189, lng: 105.8507, address: "16 Dốc Hoè Nhai, Ba Đình", maps: "https://maps.google.com/?q=Banh+Cuon+Ba+Xuan+Hoe+Nhai" },
-      { id: "lau-ech-lo-duc", name: "Lẩu Ếch Hà My", category: "Lẩu & Nướng", phase: "dinner", open: 10, close: 23.5, lat: 21.0142, lng: 105.8569, address: "70 Lò Đúc, Hai Bà Trưng", maps: "https://maps.google.com/?q=Lau+Ech+Ha+My+Lo+Duc" },
-      { id: "lau-bo-nhung-dam-555", name: "Bò Nhúng Dấm 555", category: "Lẩu & Nướng", phase: "dinner", open: 10.5, close: 22.5, lat: 21.0315, lng: 105.8312, address: "Ngõ 12 Núi Trúc, Ba Đình", maps: "https://maps.google.com/?q=Bo+Nhung+Dam+555+Nui+Truc" },
-      { id: "nuong-gam-cau", name: "Nướng Lòng Phố Gầm Cầu", category: "Lẩu & Nướng", phase: "dinner", open: 17.5, close: 1.5, lat: 21.0388, lng: 105.8491, address: "Phố Gầm Cầu, Đồng Xuân", maps: "https://maps.google.com/?q=Nuong+Gam+Cau+Hanoi" },
-      { id: "lau-chao-chim-tran-nhan-tong", name: "Lẩu Cháo Chim Kê", category: "Lẩu & Nướng", phase: "chill", open: 17, close: 24, lat: 21.0185, lng: 105.8492, address: "Trần Nhân Tông, Hai Bà Trưng", maps: "https://maps.google.com/?q=Lau+Chao+Chim+Tran+Nhan+Tong" },
-      { id: "nom-bo-kho-long-vi-dung", name: "Nộm Bò Khô Long Vi Dung", category: "Ăn vặt", phase: "dinner", open: 8, close: 22, lat: 21.0319, lng: 105.8529, address: "23 Hồ Hoàn Kiếm, Hàng Bạc", maps: "https://maps.google.com/?q=Nom+Long+Vi+Dung+Ho+Hoan+Kiem" },
-      { id: "oc-luoc-ha-trang", name: "Ốc Luộc Hà Trang", category: "Ăn vặt", phase: "dinner", open: 15, close: 22, lat: 21.0331, lng: 105.8496, address: "1A Đinh Liệt, Hàng Bạc", maps: "https://maps.google.com/?q=Oc+Ha+Trang+Dinh+Liet" },
-      { id: "nem-chua-ran-tam-thuong", name: "Nem Chua Rán Ngõ Tạm Thương", category: "Ăn vặt", phase: "dinner", open: 10, close: 23, lat: 21.0322, lng: 105.8471, address: "36 Ngõ Tạm Thương, Hàng Gai", maps: "https://maps.google.com/?q=Nem+Chua+Ran+Tam+Thuong" },
-      { id: "chan-ga-nuong-ly-van-phuc", name: "Chân Gà Nướng Phố Bà Triệu", category: "Ăn vặt", phase: "dinner", open: 16, close: 23.5, lat: 21.0264, lng: 105.8361, address: "Phố Lý Văn Phục, Đống Đa", maps: "https://maps.google.com/?q=Chan+Ga+Nuong+Ly+Van+Phuc" },
-      { id: "cafe-giang", name: "Cà Phê Giảng (Cà Phê Trứng)", category: "Cà phê", phase: "cafe", open: 7, close: 22.5, lat: 21.0339, lng: 105.8541, address: "39 Nguyễn Hữu Huân, Lý Thái Tổ", maps: "https://maps.google.com/?q=Cafe+Giang+39+Nguyen+Huu+Huan" },
-      { id: "tra-chanh-nha-tho", name: "Trà Chanh Nhà Thờ Lớn", category: "Cà phê", phase: "cafe", open: 8, close: 23, lat: 21.0287, lng: 105.8491, address: "Nhà Thờ, Hàng Trống, Hoàn Kiếm", maps: "https://maps.google.com/?q=Tra+Chanh+Nha+Tho+Hanoi" },
-      { id: "kem-trang-tien", name: "Kem Tràng Tiền Chính Gốc", category: "Cà phê", phase: "cafe", open: 8, close: 22.5, lat: 21.0253, lng: 105.8557, address: "35 Tràng Tiền, Hoàn Kiếm", maps: "https://maps.google.com/?q=Kem+Trang+Tien+35" },
-      { id: "hoa-beo-hoa-qua-dam", name: "Hoa Béo Tô Tịch (Hoa Quả Dầm)", category: "Cà phê", phase: "cafe", open: 9, close: 23, lat: 21.0318, lng: 105.8504, address: "17 Tô Tịch, Hàng Gai", maps: "https://maps.google.com/?q=Hoa+Beo+To+Tich" },
-      { id: "ta-hien-beer", name: "Phố Bia Quốc Tế Tạ Hiện", category: "Nightlife", phase: "chill", open: 16, close: 2, lat: 21.0345, lng: 105.8528, address: "Tạ Hiện, Hàng Buồm, Hoàn Kiếm", maps: "https://maps.google.com/?q=Pho+Ta+Hien+Hanoi" },
-      { id: "polygon-music", name: "Polygon Musik (Live Acoustic)", category: "Nightlife", phase: "chill", open: 19, close: 24, lat: 21.0101, lng: 105.8288, address: "Ngõ 29/44 Hào Nam, Đống Đa", maps: "https://maps.google.com/?q=Polygon+Musik+Hao+Nam" },
-      { id: "the-halley", name: "The Alchemist - Cocktail Bar", category: "Nightlife", phase: "chill", open: 19, close: 1.5, lat: 21.0298, lng: 105.8479, address: "19 Nguyễn Quang Bích, Hoàn Kiếm", maps: "https://maps.google.com/?q=The+Alchemist+Cocktail+Bar+Hanoi" },
-      { id: "long-bien-bridge-night", name: "Trà Ngô Cầu Long Biên Đêm", category: "Nightlife", phase: "chill", open: 20, close: 3, lat: 21.0427, lng: 105.8576, address: "Giữa Cầu Long Biên lộng gió", maps: "https://maps.google.com/?q=Cau+Long+Bien+Hanoi" }
+    /* ==========================================================
+       DỮ LIỆU ĐẦY ĐỦ 100 CÂU ĐỐ MẸO BẪY TƯ DUY KINH ĐIỂN
+       ========================================================== */
+    const riddles = [
+      {
+        id: 1,
+        cat: "BẪY TOÁN HỌC",
+        q: "Một con ốc sên rơi xuống giếng sâu 10m. Ban ngày bò lên 3m, ban đêm tụt xuống 2m. Sau bao nhiêu ngày ốc sên lên tới miệng giếng?",
+        img: "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=700&auto=format&fit=crop&q=80",
+        opt: ["10 ngày", "8 ngày", "7 ngày", "9 ngày"],
+        cor: 1,
+        trap: "Mỗi ngày tiến 1m, sau 7 ngày được 7m. Sang ban ngày thứ 8 bò thêm 3m là chạm miệng giếng và thoát ra luôn, không bị tụt xuống nữa."
+      },
+      {
+        id: 2,
+        cat: "BẪY VẬT LÝ",
+        q: "Tàu điện chạy về hướng Nam với tốc độ 60 km/h. Gió thổi về hướng Tây 30 km/h. Hỏi khói tàu bay về hướng nào?",
+        img: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=700&auto=format&fit=crop&q=80",
+        opt: ["Hướng Tây", "Hướng Tây Nam", "Không có khói", "Hướng Bắc"],
+        cor: 2,
+        trap: "Tàu điện chạy bằng điện nên hoàn toàn không nhả khói."
+      },
+      {
+        id: 3,
+        cat: "BẪY GIA ĐÌNH",
+        q: "Hai người cha và hai người con cùng đi câu cá. Mỗi người câu được đúng 1 con cá. Khi về chỉ có 3 con cá. Vì sao?",
+        img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&auto=format&fit=crop&q=80",
+        opt: ["Rơi mất 1 con", "Có 3 người: Ông nội, Bố và Con", "Người cha không tính", "Một con cá to gấp đôi"],
+        cor: 1,
+        trap: "Chỉ có 3 người: Ông nội, Cha và Con trai. Người cha vừa là con của ông nội vừa là cha của đứa con nhỏ."
+      },
+      {
+        id: 4,
+        cat: "BẪY THỜI GIAN",
+        q: "Bác sĩ đưa cho bạn 3 viên thuốc và dặn cứ 30 phút uống 1 viên. Bạn sẽ uống hết số thuốc đó trong bao nhiêu phút?",
+        img: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=700&auto=format&fit=crop&q=80",
+        opt: ["90 phút", "60 phút", "45 phút", "30 phút"],
+        cor: 1,
+        trap: "Viên thứ nhất uống ngay lập tức lúc 0 phút, viên thứ hai sau 30 phút, viên thứ ba sau 60 phút."
+      },
+      {
+        id: 5,
+        cat: "BẪY KHÔNG GIAN",
+        q: "Làm sao ném quả bóng tennis thật mạnh, nó tự dừng lại rồi bay ngược lại đúng tay bạn mà không chạm bất cứ vật cản nào?",
+        img: "https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?w=700&auto=format&fit=crop&q=80",
+        opt: ["Dùng dây thun", "Ném thẳng lên trời", "Tạo xoáy cực mạnh", "Ném trong phòng kín"],
+        cor: 1,
+        trap: "Ném thẳng đứng lên trời, trọng lực sẽ kéo quả bóng dừng lại và tự rơi ngược về tay bạn."
+      },
+      {
+        id: 6,
+        cat: "ĐỐ CHỮ",
+        q: "Từ nào trong từ điển tiếng Việt mà bất kỳ người Việt Nam nào phát âm cũng đều 'sai'?",
+        img: "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=700&auto=format&fit=crop&q=80",
+        opt: ["Từ 'Khuỷu'", "Từ 'Ngoằn ngoèo'", "Từ 'Sai'", "Từ 'Nghiêng'"],
+        cor: 2,
+        trap: "Chính là từ 'Sai'. Dù phát âm chuẩn đến đâu thì từ đó vẫn là từ 'Sai'."
+      },
+      {
+        id: 7,
+        cat: "BẪY TƯ TƯỞNG",
+        q: "Một người thợ nhảy xuống từ chiếc thang cao 10 mét nhưng không hề bị xây xát hay đau đớn. Tại sao?",
+        img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=700&auto=format&fit=crop&q=80",
+        opt: ["Có đệm lò xo", "Đang đứng ở bậc dưới cùng", "Thang ngã nghiêng", "Có dù bay"],
+        cor: 1,
+        trap: "Thang dài 10m nhưng anh ấy đang đứng ở bậc thang sát đất."
+      },
+      {
+        id: 8,
+        cat: "NGUYÊN LÝ LOGIC",
+        q: "Trong tủ tối có 10 chiếc tất đen và 10 chiếc tất trắng lẫn lộn. Cần lấy ra ít nhất bao nhiêu chiếc để chắc chắn có 1 đôi cùng màu?",
+        img: "https://images.unsplash.com/photo-1586350977771-b3b0abd50c82?w=700&auto=format&fit=crop&q=80",
+        opt: ["11 chiếc", "2 chiếc", "3 chiếc", "10 chiếc"],
+        cor: 2,
+        trap: "Chỉ có 2 loại màu. Lấy 3 chiếc thì theo nguyên lý Dirichlet chắc chắn có ít nhất 2 chiếc cùng màu."
+      },
+      {
+        id: 9,
+        cat: "BẪY TOÁN HỌC",
+        q: "Một gia đình có 6 người con trai. Mỗi người con trai đều có đúng 1 người em gái. Hỏi gia đình có bao nhiêu người?",
+        img: "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=700&auto=format&fit=crop&q=80",
+        opt: ["14 người", "9 người", "12 người", "8 người"],
+        cor: 1,
+        trap: "Gồm Bố, Mẹ, 6 người con trai và 1 cô con gái út (em gái chung của cả 6 người anh) = 2 + 6 + 1 = 9 người."
+      },
+      {
+        id: 10,
+        cat: "LỊCH THỜI GIAN",
+        q: "Tháng nào trong năm có 28 ngày?",
+        img: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=700&auto=format&fit=crop&q=80",
+        opt: ["Chỉ tháng 2", "Tháng nhuận", "Tất cả các tháng", "Tháng 2 năm thường"],
+        cor: 2,
+        trap: "Tất cả 12 tháng trong năm đều trải qua ngày thứ 28."
+      },
+      {
+        id: 11,
+        cat: "ĐỐ CƠ THỂ",
+        q: "Cái gì của bạn nhưng người khác lại dùng nó nhiều hơn bạn?",
+        img: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=700&auto=format&fit=crop&q=80",
+        opt: ["Tiền bạc", "Tên của bạn", "Điện thoại", "Quần áo"],
+        cor: 1,
+        trap: "Tên của bạn chủ yếu để người khác gọi."
+      },
+      {
+        id: 12,
+        cat: "VẬT DỤNG ĐỜI SỐNG",
+        q: "Cái gì người mua biết, người bán biết, nhưng người dùng không bao giờ biết?",
+        img: "https://images.unsplash.com/photo-1544717305-2782549b5136?w=700&auto=format&fit=crop&q=80",
+        opt: ["Thuốc mê", "Quan tài", "Bánh sinh nhật", "Món quà bí mật"],
+        cor: 1,
+        trap: "Quan tài - người nằm trong đó đã mất nên không thể biết."
+      },
+      {
+        id: 13,
+        cat: "NGHỊCH LÝ",
+        q: "Cái gì càng kéo thì lại càng ngắn lại?",
+        img: "https://images.unsplash.com/photo-1527661591475-527312dd65f5?w=700&auto=format&fit=crop&q=80",
+        opt: ["Dây thun", "Sợi chỉ", "Điếu thuốc lá", "Thời gian"],
+        cor: 2,
+        trap: "Điếu thuốc lá, mỗi lần 'kéo' một hơi là nó cháy ngắn đi một đoạn."
+      },
+      {
+        id: 14,
+        cat: "ĐỐ CƠ THỂ",
+        q: "Cái gì tay trái cầm được nhưng tay phải không bao giờ cầm được?",
+        img: "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=700&auto=format&fit=crop&q=80",
+        opt: ["Bàn tay trái", "Cùi chỏ tay phải", "Cổ tay trái", "Ngón tay cái"],
+        cor: 1,
+        trap: "Tay phải không thể tự cầm cùi chỏ của chính nó."
+      },
+      {
+        id: 15,
+        cat: "TỰ NHIÊN",
+        q: "Cái gì chặt không đứt, bứt không rời, phơi không khô, đốt không cháy?",
+        img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=700&auto=format&fit=crop&q=80",
+        opt: ["Nước", "Không khí", "Kim cương", "Bóng tối"],
+        cor: 0,
+        trap: "Dòng nước không thể chặt hay đốt cháy được."
+      },
+      {
+        id: 16,
+        cat: "ĐỐ MẸO ĐỜI SỐNG",
+        q: "Bỏ ngoài nướng trong, ăn ngoài bỏ trong là gì?",
+        img: "https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=700&auto=format&fit=crop&q=80",
+        opt: ["Củ khoai lang", "Bắp ngô (ngô nướng)", "Bánh mì", "Con cá"],
+        cor: 1,
+        trap: "Bắp ngô: lột vỏ ngoài rồi nướng hạt bên trong, khi ăn ăn hạt bên ngoài rồi bỏ cùi bên trong."
+      },
+      {
+        id: 17,
+        cat: "ĐỐ THÚ CẦN BẰNG",
+        q: "Chuột nào đi bằng 2 chân?",
+        img: "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=700&auto=format&fit=crop&q=80",
+        opt: ["Chuột túi", "Chuột Mickey", "Chuột cống", "Chuột lang"],
+        cor: 1,
+        trap: "Chuột hoạt hình Mickey luôn đi bằng hai chân."
+      },
+      {
+        id: 18,
+        cat: "BẪY TÂM LÝ LIÊN HOÀN",
+        q: "Vậy vịt nào đi bằng 2 chân?",
+        img: "https://images.unsplash.com/photo-1465153690352-10c1b39535f2?w=700&auto=format&fit=crop&q=80",
+        opt: ["Vịt Donald", "Vịt bầu", "Tất cả các con vịt", "Vịt trời"],
+        cor: 2,
+        trap: "Sau câu chuột Mickey, người ta hay bị bẫy nói 'Vịt Donald', nhưng vịt bình thường con nào chả đi bằng 2 chân!"
+      },
+      {
+        id: 19,
+        cat: "ĐỐ NGHỀ NGHIỆP",
+        q: "Bệnh gì bác sĩ hoàn toàn bó tay?",
+        img: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?w=700&auto=format&fit=crop&q=80",
+        opt: ["Bệnh tim", "Bệnh gãy tay", "Bệnh nan y", "Bệnh đãng trí"],
+        cor: 1,
+        trap: "Bệnh gãy tay thì bác sĩ phải lấy băng bột để 'bó tay' lại!"
+      },
+      {
+        id: 20,
+        cat: "VẬT LÝ XE CỘ",
+        q: "Cầu chịu tải tối đa 10 tấn. Một xe tải chở hàng nặng đúng 10 tấn chạy lên. 1 con chim bay đậu lên xe, cầu có sập không?",
+        img: "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?w=700&auto=format&fit=crop&q=80",
+        opt: ["Sập ngay lập tức", "Không sập vì xăng đã tiêu hao bớt", "Sập vì quá tải", "Chim quá nặng"],
+        cor: 1,
+        trap: "Xe chạy lên cầu đã đốt cháy tiêu hao một lượng xăng dầu, làm trọng lượng tổng nhỏ hơn 10 tấn."
+      },
+      {
+        id: 21,
+        cat: "ĐỘNG VẬT",
+        q: "Một con hổ bị xích vào gốc cây bằng sợi xích dài 3 mét. Bụi cỏ cách gốc cây 4 mét. Làm sao hổ ăn được cỏ?",
+        img: "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?w=700&auto=format&fit=crop&q=80",
+        opt: ["Giật đứt xích", "Hổ không ăn cỏ", "Chờ gió thổi cỏ lại", "Nhờ con khác lấy"],
+        cor: 1,
+        trap: "Hổ là loài ăn thịt, không bao giờ ăn cỏ."
+      },
+      {
+        id: 22,
+        cat: "ĐỊA LÝ MẸO",
+        q: "Nhà xanh ở bên trái đường, nhà đỏ ở bên phải đường. Hỏi nhà trắng ở đâu?",
+        img: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=700&auto=format&fit=crop&q=80",
+        opt: ["Ở giữa", "Ở Mỹ (Washington D.C)", "Ở cuối đường", "Ở đối diện"],
+        cor: 1,
+        trap: "Nhà Trắng (White House) tọa lạc tại thủ đô Washington D.C, Mỹ."
+      },
+      {
+        id: 23,
+        cat: "TRIẾT HỌC MẸO",
+        q: "Cái gì luôn luôn đến nhưng không bao giờ thực sự tới?",
+        img: "https://images.unsplash.com/photo-1508873696983-2df5293cbdaf?w=700&auto=format&fit=crop&q=80",
+        opt: ["Tuổi già", "Ngày mai", "Mùa xuân", "Cái chết"],
+        cor: 1,
+        trap: "Ngày mai - khi nó đến thì nó đã trở thành ngày hôm nay."
+      },
+      {
+        id: 24,
+        cat: "ĐỐ CHỮ ĐỊA PHƯƠNG",
+        q: "Quần gì rộng nhất thế giới?",
+        img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&auto=format&fit=crop&q=80",
+        opt: ["Quần bò", "Quần đảo", "Quần đùi", "Quần thụng"],
+        cor: 1,
+        trap: "Quần đảo (tập hợp nhiều hòn đảo trên biển khơi)."
+      },
+      {
+        id: 25,
+        cat: "ĐỐ CHỮ THỜI GIAN",
+        q: "Lịch gì dài nhất trên đời?",
+        img: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=700&auto=format&fit=crop&q=80",
+        opt: ["Lịch vạn niên", "Lịch sử", "Lịch treo tường", "Lịch âm"],
+        cor: 1,
+        trap: "Lịch sử trải dài từ thời cổ đại đến tận ngày nay."
+      },
+      {
+        id: 26,
+        cat: "ĐỐ CHỮ CUỘC SỐNG",
+        q: "Con đường nào dài nhất mà ai cũng phải đi qua?",
+        img: "https://images.unsplash.com/photo-1470246973918-29a93221c455?w=700&auto=format&fit=crop&q=80",
+        opt: ["Đường cao tốc", "Đường đời", "Đường xích đạo", "Đường sắt"],
+        cor: 1,
+        trap: "Đường đời đi từ lúc sinh ra đến khi mất đi."
+      },
+      {
+        id: 27,
+        cat: "ĐỐ CHỮ ĐỊA DANH",
+        q: "Xã nào đông dân nhất thế giới?",
+        img: "https://images.unsplash.com/photo-1477959858617-67f30bc75b82?w=700&auto=format&fit=crop&q=80",
+        opt: ["Xã hội", "Xã đàn", "Xã nông thôn", "Xã công nghiệp"],
+        cor: 0,
+        trap: "Xã hội bao gồm toàn thể loài người trên Trái Đất."
+      },
+      {
+        id: 28,
+        cat: "NGHỊCH LÝ ĐỜI SỐNG",
+        q: "Cái gì càng rửa thì càng bẩn?",
+        img: "https://images.unsplash.com/photo-1548839140-29a749e1bc4e?w=700&auto=format&fit=crop&q=80",
+        opt: ["Cái khăn lau", "Nước", "Bát đĩa", "Quần áo"],
+        cor: 1,
+        trap: "Nước dùng để rửa đồ thì bản thân nước sẽ bị nhiễm bẩn."
+      },
+      {
+        id: 29,
+        cat: "SINH HỌC MẸO",
+        q: "Con gì đập thì sống, không đập thì chết?",
+        img: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=700&auto=format&fit=crop&q=80",
+        opt: ["Con muỗi", "Trái tim", "Con rết", "Con chuột"],
+        cor: 1,
+        trap: "Quả tim (trái tim ngừng đập là cơ thể chết)."
+      },
+      {
+        id: 30,
+        cat: "ĐỒ VẬT MẸO",
+        q: "Cái gì có mũi mà không có mắt, có mồm mà không có lưỡi?",
+        img: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=700&auto=format&fit=crop&q=80",
+        opt: ["Mũi tên", "Mũi thuyền", "Chiếc kéo", "Chiếc giày"],
+        cor: 1,
+        trap: "Mũi thuyền/tàu thủy."
+      },
+      {
+        id: 31,
+        cat: "TOÁN CHIA MẸO",
+        q: "Làm sao chia 3 quả táo cho 4 người một cách đều nhau tuyệt đối mà không cần cắt nát từng miếng?",
+        img: "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=700&auto=format&fit=crop&q=80",
+        opt: ["Mua thêm 1 quả", "Ép lấy nước sinh tố", "Chia 3/4 quả", "Bốc thăm loại 1 người"],
+        cor: 1,
+        trap: "Ép thành nước táo rồi rót đều vào 4 cốc bằng nhau."
+      },
+      {
+        id: 32,
+        cat: "HÀNH VI MẸO",
+        q: "Cái gì đi lên thì ướt, đi xuống thì khô?",
+        img: "https://images.unsplash.com/photo-1516541196182-6bdb0516ed27?w=700&auto=format&fit=crop&q=80",
+        opt: ["Cây dù", "Cái gàu múc nước giếng", "Thang máy", "Áo mưa"],
+        cor: 1,
+        trap: "Gàu múc nước: thả xuống giếng thì khô, kéo lên thì đầy nước ướt sũng."
+      },
+      {
+        id: 33,
+        cat: "CƠ THỂ MẸO",
+        q: "Cái gì luôn luôn nhận vào mà không bao giờ nhả ra?",
+        img: "https://images.unsplash.com/photo-1516585427167-9f4af9627e6c?w=700&auto=format&fit=crop&q=80",
+        opt: ["Lỗ tai", "Cái miệng", "Cái mũi", "Dạ dày"],
+        cor: 0,
+        trap: "Lỗ tai chỉ thu nhận âm thanh vào chứ không phát ra âm thanh."
+      },
+      {
+        id: 34,
+        cat: "SINH HỌC DÂN GIAN",
+        q: "Trong 12 con giáp, có bao nhiêu con biết bơi?",
+        img: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=700&auto=format&fit=crop&q=80",
+        opt: ["Chỉ có Chuột và Rắn", "Cả 12 con giáp", "Chỉ có Rồng và Cọp", "6 con"],
+        cor: 1,
+        trap: "Cả 12 loài động vật trong 12 con giáp đều có bản năng bơi được dưới nước khi cần."
+      },
+      {
+        id: 35,
+        cat: "THỂ THAO MẸO",
+        q: "Khi sút phạt đền (penalty), cầu thủ bóng đá sẽ sút vào đâu đầu tiên?",
+        img: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=700&auto=format&fit=crop&q=80",
+        opt: ["Góc cao khung thành", "Sút vào quả bóng", "Sút vào lưới", "Chân thủ môn"],
+        cor: 1,
+        trap: "Chân phải đá trúng vào quả bóng đầu tiên thì bóng mới bay được."
+      },
+      {
+        id: 36,
+        cat: "TIẾNG SÚNG MẸO",
+        q: "Trên cành cây có 5 con chim. Thợ săn bắn 'đoàng' trúng 1 con rơi xuống đất. Hỏi trên cành còn mấy con?",
+        img: "https://images.unsplash.com/photo-1444464666168-49d633b86797?w=700&auto=format&fit=crop&q=80",
+        opt: ["Còn 4 con", "Không còn con nào", "Còn 1 con", "Còn 3 con"],
+        cor: 1,
+        trap: "Tiếng súng nổ vang trời khiến 4 con còn lại hoảng sợ bay mất."
+      },
+      {
+        id: 37,
+        cat: "BẪY XẾP HẠNG",
+        q: "Bạn đang chạy đua và vượt qua người đang chạy ở vị trí thứ nhì. Hỏi bạn đang đứng thứ mấy?",
+        img: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=700&auto=format&fit=crop&q=80",
+        opt: ["Thứ nhất", "Thứ nhì", "Thứ ba", "Về đích"],
+        cor: 1,
+        trap: "Bạn vượt qua người thứ nhì thì bạn thay thế vị trí thứ nhì của họ."
+      },
+      {
+        id: 38,
+        cat: "BẪY XẾP HẠNG 2",
+        q: "Nếu bạn vượt qua người đang chạy ở vị trí cuối cùng, bạn đứng thứ mấy?",
+        img: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=700&auto=format&fit=crop&q=80",
+        opt: ["Áp chót", "Thứ nhất", "Không thể xảy ra", "Thứ nhì"],
+        cor: 2,
+        trap: "Làm sao có ai chạy sau người cuối cùng để mà bạn vượt qua họ được!"
+      },
+      {
+        id: 39,
+        cat: "BẪY QUAN SÁT",
+        q: "Bạn bước vào căn phòng tối chỉ có 1 que diêm, 1 bếp củi, 1 cây đèn dầu và 1 ngọn nến. Bạn phải thắp gì trước?",
+        img: "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=700&auto=format&fit=crop&q=80",
+        opt: ["Ngọn nến", "Đèn dầu", "Que diêm", "Bếp củi"],
+        cor: 2,
+        trap: "Phải quẹt que diêm cháy trước thì mới có lửa thắp các thứ khác."
+      },
+      {
+        id: 40,
+        cat: "TOÁN ĐẾM BẪY",
+        q: "Bác Ba có 17 con cừu. Tất cả trừ 9 con cừu bị dịch bệnh chết hết. Hỏi bác Ba còn lại bao nhiêu con?",
+        img: "https://images.unsplash.com/photo-1484557052118-f32bd25b45b5?w=700&auto=format&fit=crop&q=80",
+        opt: ["8 con", "9 con", "0 con", "17 con"],
+        cor: 1,
+        trap: "'Tất cả trừ 9 con bị chết' nghĩa là còn sống sót đúng 9 con cừu."
+      },
+      {
+        id: 41,
+        cat: "TOÁN TÁO",
+        q: "Có 3 quả táo trên bàn, bạn đi tới lấy đi 2 quả. Hỏi BẠN có bao nhiêu quả táo?",
+        img: "https://images.unsplash.com/photo-1570913149827-d2ac84ab3f9a?w=700&auto=format&fit=crop&q=80",
+        opt: ["1 quả", "2 quả", "3 quả", "0 quả"],
+        cor: 1,
+        trap: "Bạn cầm đi 2 quả thì bạn sở hữu 2 quả táo."
+      },
+      {
+        id: 42,
+        cat: "ĐỊA LÝ LỊCH SỬ",
+        q: "Trước khi đỉnh Everest được con người khám phá ra, đỉnh núi nào cao nhất thế giới?",
+        img: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=700&auto=format&fit=crop&q=80",
+        opt: ["Đỉnh K2", "Đỉnh Phú Sĩ", "Vẫn là đỉnh Everest", "Đỉnh Fansipan"],
+        cor: 2,
+        trap: "Dù con người chưa phát hiện ra thì đỉnh Everest nó vẫn là đỉnh cao nhất Trái Đất."
+      },
+      {
+        id: 43,
+        cat: "ẨM THỰC MẸO",
+        q: "Cái gì chỉ khi bị vỡ ra thì người ta mới dùng được?",
+        img: "https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=700&auto=format&fit=crop&q=80",
+        opt: ["Chiếc ly thủy tinh", "Quả trứng", "Gương soi", "Kính mắt"],
+        cor: 1,
+        trap: "Quả trứng phải đập vỡ vỏ ra thì mới nấu ăn được."
+      },
+      {
+        id: 44,
+        cat: "TÀI XẾ MẸO",
+        q: "Trời tối đen không trăng sao, xe tải không bật đèn pha, đèn đường hỏng. Một con mèo đen chạy qua đường, tài xế vẫn đạp phanh dừng kịp. Vì sao?",
+        img: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=700&auto=format&fit=crop&q=80",
+        opt: ["Mắt mèo phát sáng", "Lúc đó là ban ngày", "Tài xế đeo kính nhìn đêm", "Nhờ giác quan thứ 6"],
+        cor: 1,
+        trap: "Lúc đó là ban ngày, có ánh sáng mặt trời soi rõ."
+      },
+      {
+        id: 45,
+        cat: "MẸO GIAO THÔNG",
+        q: "Một tài xế đi ngược chiều trên đường một chiều nhưng cảnh sát giao thông nhìn thấy lại không phạt. Tại sao?",
+        img: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=700&auto=format&fit=crop&q=80",
+        opt: ["Anh ta đút lót", "Anh ta đang đi bộ", "Xe ưu tiên", "Đường đang sửa"],
+        cor: 1,
+        trap: "Người tài xế đó đang đi bộ chứ không lái xe."
+      },
+      {
+        id: 46,
+        cat: "ĐỐ CHỮ ĐỘNG VẬT",
+        q: "Con gì đực không có cái, mà cái lại không có đực?",
+        img: "https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=700&auto=format&fit=crop&q=80",
+        opt: ["Con đực và Con cái", "Con thoi", "Con dao", "Con đường"],
+        cor: 0,
+        trap: "Tên gọi 'con đực' (không có con cái) và 'con cái' (không có con đực)."
+      },
+      {
+        id: 47,
+        cat: "BẪY TƯ DUY NẶNG",
+        q: "Một cân sắt và một cân bông gòn, cái nào nặng hơn?",
+        img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=700&auto=format&fit=crop&q=80",
+        opt: ["Cân sắt nặng hơn", "Cân bông nặng hơn", "Nặng bằng nhau", "Tùy độ ẩm"],
+        cor: 2,
+        trap: "Cả hai đều nặng đúng 1 cân (1 kg)."
+      },
+      {
+        id: 48,
+        cat: "THIÊN VĂN MẸO",
+        q: "Mặt trời mọc ở hướng Đông, lặn ở hướng Tây. Vậy bóng của cột cờ buổi trưa đứng bóng sẽ chỉ về hướng nào?",
+        img: "https://images.unsplash.com/photo-1509114397022-ed747cca3f65?w=700&auto=format&fit=crop&q=80",
+        opt: ["Hướng Bắc", "Hướng Nam", "Không có bóng dưới chân", "Hướng Đông"],
+        cor: 2,
+        trap: "Buổi trưa mặt trời chiếu vuông góc trên đỉnh đầu thì bóng nằm gọn ngay dưới chân cột."
+      },
+      {
+        id: 49,
+        cat: "ĐỐ CHỮ HÀI HƯỚC",
+        q: "Con gì sáng đi 4 chân, trưa đi 2 chân, chiều đi 3 chân?",
+        img: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=700&auto=format&fit=crop&q=80",
+        opt: ["Con khỉ", "Con người", "Con chó", "Con gấu"],
+        cor: 1,
+        trap: "Con người: bé bò 4 chi, lớn đi 2 chân, già chống thêm gậy thành 3 chân."
+      },
+      {
+        id: 50,
+        cat: "ĐỐ CÂU CHỮ",
+        q: "Từ nào trong tiếng Việt có 9 chữ 'H'?",
+        img: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=700&auto=format&fit=crop&q=80",
+        opt: ["Chữ 'Hát'", "Từ 'Chính'", "Từ 'Chính hiệu'", "Từ 'Chín chữ H'"],
+        cor: 2,
+        trap: "Chính (chín) chữ H."
+      },
+      {
+        id: 51,
+        cat: "ĐỐ VẬT THỂ",
+        q: "Cái gì có cổ nhưng không có miệng?",
+        img: "https://images.unsplash.com/photo-1523381294911-8d3cead13475?w=700&auto=format&fit=crop&q=80",
+        opt: ["Cái áo", "Cái chai", "Cái ấm nước", "Cái bàn"],
+        cor: 0,
+        trap: "Cổ áo."
+      },
+      {
+        id: 52,
+        cat: "ĐỐ VẬT DỤNG",
+        q: "Cái gì có răng nhưng không bao giờ nhai thức ăn?",
+        img: "https://images.unsplash.com/photo-1590159763121-7c9ff3149e0a?w=700&auto=format&fit=crop&q=80",
+        opt: ["Cái lược", "Chiếc cưa", "Bánh răng", "Cả 3 đáp án trên"],
+        cor: 3,
+        trap: "Lược, cưa và bánh xe răng đều có răng nhưng không dùng để ăn."
+      },
+      {
+        id: 53,
+        cat: "ĐỐ NƯỚC",
+        q: "Ở đâu mà hôm nay lại đến trước hôm qua?",
+        img: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=700&auto=format&fit=crop&q=80",
+        opt: ["Bắc Cực", "Trong từ điển", "Trên Sao Hỏa", "Trong giấc mơ"],
+        cor: 1,
+        trap: "Trong từ điển tiếng Việt: từ 'Hôm nay' (vần H-o) xếp trước từ 'Hôm qua' (vần H-o-m-q)."
+      },
+      {
+        id: 54,
+        cat: "HIỆN TƯỢNG",
+        q: "Cái gì luôn đi theo bạn khắp nơi dưới ánh sáng, nhưng biến mất ngay khi trời tối?",
+        img: "https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?w=700&auto=format&fit=crop&q=80",
+        opt: ["Điện thoại", "Cái bóng của bạn", "Bộ quần áo", "Dấu chân"],
+        cor: 1,
+        trap: "Cái bóng của chính bạn."
+      },
+      {
+        id: 55,
+        cat: "ĐỐ ĐỘNG VẬT",
+        q: "Con gì đực thì đẻ trứng, con cái thì không?",
+        img: "https://images.unsplash.com/photo-1563281577-a7be47e20db9?w=700&auto=format&fit=crop&q=80",
+        opt: ["Cá ngựa đực", "Con gà trống", "Không có con nào", "Thằn lằn đực"],
+        cor: 2,
+        trap: "Cá ngựa đực chỉ 'ấp trứng' trong túi chứ trứng vẫn do cá ngựa cái sinh ra."
+      },
+      {
+        id: 56,
+        cat: "ĂN UỐNG MẸO",
+        q: "Cái gì càng nấu lâu thì càng cứng lại?",
+        img: "https://images.unsplash.com/photo-1506976785307-8732e854ad03?w=700&auto=format&fit=crop&q=80",
+        opt: ["Cục thịt", "Quả trứng", "Khoai tây", "Rau luộc"],
+        cor: 1,
+        trap: "Quả trứng luộc càng lâu thì lòng đỏ và lòng trắng càng đông cứng lại."
+      },
+      {
+        id: 57,
+        cat: "BẪY TOÁN MẸO",
+        q: "Có 5 quả táo chia cho 5 người bạn, mỗi người được 1 quả, nhưng trong rổ vẫn còn lại 1 quả. Vì sao?",
+        img: "https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=700&auto=format&fit=crop&q=80",
+        opt: ["Người thứ 5 lấy luôn cái rổ có quả táo", "Có quả táo nhựa", "Rổ có 6 quả", "Người chia không lấy"],
+        cor: 0,
+        trap: "Người cuối cùng được đưa nguyên cả chiếc rổ chứa quả táo bên trong."
+      },
+      {
+        id: 58,
+        cat: "ĐỐ CƠ THỂ",
+        q: "Cơ quan nào trong cơ thể con người không phát triển kích thước từ khi sinh ra đến lúc già?",
+        img: "https://images.unsplash.com/photo-1544476915-ed1370594142?w=700&auto=format&fit=crop&q=80",
+        opt: ["Lỗ tai", "Nhãn cầu (mắt)", "Mũi", "Lưỡi"],
+        cor: 1,
+        trap: "Nhãn cầu mắt giữ nguyên kích thước gần như không đổi suốt cuộc đời."
+      },
+      {
+        id: 59,
+        cat: "ĐỐ ĐỜI SỐNG",
+        q: "Cái gì bạn có thể giữ sau khi đã cho người khác?",
+        img: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=700&auto=format&fit=crop&q=80",
+        opt: ["Lời hứa", "Tiền bạc", "Chiếc áo", "Cuốn sách"],
+        cor: 0,
+        trap: "Giữ lời hứa sau khi đã hứa với người khác."
+      },
+      {
+        id: 60,
+        cat: "ĐỐ DÂN GIAN",
+        q: "Cây gì không có lá, không có hoa, nhưng che mưa che nắng cho con người?",
+        img: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=700&auto=format&fit=crop&q=80",
+        opt: ["Cây cầu", "Cây dù (cây ô)", "Cây cột điện", "Cây nến"],
+        cor: 1,
+        trap: "Cây dù (cây ô che nắng mưa)."
+      },
+      {
+        id: 61,
+        cat: "ĐỐ CHỮ ĐỐ MẸO",
+        q: "Loại nước nào chứa canxi và sắt nhiều nhất trên đời?",
+        img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=700&auto=format&fit=crop&q=80",
+        opt: ["Nước khoáng", "Nước cờ", "Nước biển", "Nước hầm xương"],
+        cor: 1,
+        trap: "Nước cờ (vì có quân xe bọc sắt, quân mã bằng đồng canxi!)."
+      },
+      {
+        id: 62,
+        cat: "BẪY TOÁN MẸO",
+        q: "Chia 30 cho 1/2 rồi cộng thêm 10. Kết quả là bao nhiêu?",
+        img: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=700&auto=format&fit=crop&q=80",
+        opt: ["25", "70", "40", "50"],
+        cor: 1,
+        trap: "30 chia cho 1/2 là 30 nhân 2 = 60, cộng thêm 10 = 70 (rất nhiều người nhầm thành 30 chia đôi = 15 + 10 = 25)."
+      },
+      {
+        id: 63,
+        cat: "ĐỐ VẬT DỤNG",
+        q: "Cái gì có 4 chân nhưng không bao giờ bước đi được?",
+        img: "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=700&auto=format&fit=crop&q=80",
+        opt: ["Cái bàn", "Con voi", "Chiếc xe máy", "Con rùa"],
+        cor: 0,
+        trap: "Cái bàn hoặc cái ghế."
+      },
+      {
+        id: 64,
+        cat: "ĐỐ CHỮ MẸO",
+        q: "Bỏ đầu thành tên một loài chim, bỏ đuôi thành tên một loài thú, để nguyên là một loại hoa quả. Đó là chữ gì?",
+        img: "https://images.unsplash.com/photo-1550258987-190a2d41a8ba?w=700&auto=format&fit=crop&q=80",
+        opt: ["Quả Mận", "Quả Nho", "Quả Na", "Quả Cam"],
+        cor: 1,
+        trap: "NHO: bỏ đầu còn HO (họ chim?), hay chữ CÚT, hay chữ ĐÀO?"
+      },
+      {
+        id: 65,
+        cat: "MẸO ĐỜI SỐNG",
+        q: "Bạn có thể nhảy cao hơn một tòa nhà chọc trời không?",
+        img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=700&auto=format&fit=crop&q=80",
+        opt: ["Có thể", "Không thể", "Chỉ khi có dù", "Chỉ trên mặt trăng"],
+        cor: 0,
+        trap: "Có thể! Vì tòa nhà chọc trời làm sao biết nhảy, nó đứng yên với độ cao nhảy bằng 0!"
+      },
+      {
+        id: 66,
+        cat: "BẪY TÂM LÝ",
+        q: "Nếu bạn có 1 que diêm trong đêm đông lạnh giá, gặp 1 cái bếp dầu và 1 bếp than, bạn thắp cái nào trước?",
+        img: "https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?w=700&auto=format&fit=crop&q=80",
+        opt: ["Bếp dầu", "Bếp than", "Que diêm", "Cả 2 bếp"],
+        cor: 2,
+        trap: "Vẫn là que diêm phải được thắp trước tiên."
+      },
+      {
+        id: 67,
+        cat: "ĐỐ CHỮ VUI",
+        q: "Cái gì đen khi mua, đỏ khi dùng và xám xịt khi vứt bỏ?",
+        img: "https://images.unsplash.com/photo-1527061011665-3652c757a4d4?w=700&auto=format&fit=crop&q=80",
+        opt: ["Hòn than củi", "Cây nến", "Chiếc xe máy", "Điếu thuốc"],
+        cor: 0,
+        trap: "Than củi: khi mua có màu đen, khi đốt đỏ rực, khi tàn thành tro màu xám."
+      },
+      {
+        id: 68,
+        cat: "ĐỐ THIÊN NHIÊN",
+        q: "Mưa rơi xuống khắp mặt đất, tại sao con vịt dưới hồ lại không sợ ướt?",
+        img: "https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=700&auto=format&fit=crop&q=80",
+        opt: ["Lông vịt có lớp dầu", "Nó bơi dưới hồ nên đằng nào cũng ướt sẵn", "Vịt có cánh che", "Cả A và B"],
+        cor: 3,
+        trap: "Vịt bơi dưới nước đã ướt sẵn và lông có chất nhờn chống thấm nước."
+      },
+      {
+        id: 69,
+        cat: "ĐỐ HÀNH ĐỘNG",
+        q: "Làm thế nào để một người đàn ông đi dưới mưa mà không ướt một cọng tóc nào?",
+        img: "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=700&auto=format&fit=crop&q=80",
+        opt: ["Đội nón bảo hiểm", "Cầm ô che", "Anh ấy bị hói đầu", "Chạy thật nhanh"],
+        cor: 2,
+        trap: "Người đàn ông hói đầu thì làm gì có cọng tóc nào để mà bị ướt!"
+      },
+      {
+        id: 70,
+        cat: "NGHỊCH LÝ ĐỒ VẬT",
+        q: "Cái gì thuộc về tương lai nhưng luôn được viết ở hiện tại?",
+        img: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=700&auto=format&fit=crop&q=80",
+        opt: ["Kế hoạch", "Di chúc", "Ước mơ", "Mục tiêu"],
+        cor: 1,
+        trap: "Di chúc viết khi còn sống để thực hiện sau khi mất."
+      },
+      {
+        id: 71,
+        cat: "ĐỐ CƠ THỂ BÀN CHÂN",
+        q: "Con gì đi thì nằm, đứng thì nằm, nhưng nằm thì lại đứng?",
+        img: "https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=700&auto=format&fit=crop&q=80",
+        opt: ["Bàn chân", "Con cua", "Con sâu", "Con rắn"],
+        cor: 0,
+        trap: "Bàn chân người: khi ta đi hay đứng thì bàn chân áp nằm ngang xuống đất, khi ta nằm ngủ thì bàn chân lại dựng đứng lên."
+      },
+      {
+        id: 72,
+        cat: "ĐỐ CHỮ MẸO",
+        q: "Có bao nhiêu chữ C trong cụm từ: 'Cơm canh cà cá cua'?",
+        img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=700&auto=format&fit=crop&q=80",
+        opt: ["5 chữ C", "1 chữ C viết hoa", "0 chữ", "4 chữ"],
+        cor: 1,
+        trap: "Chỉ có đúng 1 chữ 'C' viết hoa ở đầu câu, các chữ còn lại là 'c' thường."
+      },
+      {
+        id: 73,
+        cat: "MẸO TỦ LẠNH",
+        q: "Làm thế nào để nhét một con hươu cao cổ vào trong chiếc tủ lạnh qua 3 bước?",
+        img: "https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=700&auto=format&fit=crop&q=80",
+        opt: ["Mở tủ - Nhét hươu vào - Đóng tủ", "Cắt nhỏ con hươu ra", "Mua tủ lạnh cực lớn", "Không thể làm được"],
+        cor: 0,
+        trap: "1. Mở cửa tủ lạnh -> 2. Nhét hươu cao cổ vào -> 3. Đóng cửa tủ lạnh lại."
+      },
+      {
+        id: 74,
+        cat: "MẸO TỦ LẠNH 2",
+        q: "Vậy làm thế nào để nhét con voi vào trong tủ lạnh qua 4 bước?",
+        img: "https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=700&auto=format&fit=crop&q=80",
+        opt: ["Mở tủ - Bỏ hươu ra - Nhét voi vào - Đóng tủ", "Ép voi lại", "Mua thêm 1 tủ lạnh", "Nhét voi vào cạnh hươu"],
+        cor: 0,
+        trap: "Phải mở tủ, lôi con hươu cao cổ ở câu trước ra ngoài trước, rồi mới nhét voi vào và đóng tủ."
+      },
+      {
+        id: 75,
+        cat: "HỘI NGHỊ ĐỘNG VẬT",
+        q: "Chúa sơn lâm mở đại hội muôn loài, tất cả các loài vật đều có mặt đầy đủ. Hỏi con nào vắng mặt?",
+        img: "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=700&auto=format&fit=crop&q=80",
+        opt: ["Con muỗi", "Con voi", "Con kiến", "Con cá sấu"],
+        cor: 1,
+        trap: "Con voi còn đang bị nhốt trong tủ lạnh ở câu 74!"
+      },
+      {
+        id: 76,
+        cat: "BĂNG QUA SÔNG",
+        q: "Có một con sông đầy cá sấu ăn thịt hung dữ, không có cầu hay thuyền. Làm sao một người có thể bơi qua an toàn?",
+        img: "https://images.unsplash.com/photo-1520638023775-6831b31469c7?w=700&auto=format&fit=crop&q=80",
+        opt: ["Cứ nhảy xuống bơi qua bình thường", "Chờ cá sấu ngủ", "Bắn hết cá sấu", "Dùng đuốc xua đuổi"],
+        cor: 0,
+        trap: "Bọn cá sấu đã đi dự đại hội muôn loài ở câu 75 hết rồi!"
+      },
+      {
+        id: 77,
+        cat: "CÁI CHẾT BẤT NGỜ",
+        q: "Người đó bơi qua sông an toàn nhưng vừa lên bờ thì lăn ra chết. Tại sao?",
+        img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=700&auto=format&fit=crop&q=80",
+        opt: ["Bị đau tim", "Bị con hươu cao cổ rơi trúng đầu", "Bị kiệt sức", "Trúng độc"],
+        cor: 1,
+        trap: "Bị con hươu cao cổ bị vứt ra khỏi tủ lạnh ở câu 74 từ trên trời rơi trúng đầu."
+      },
+      {
+        id: 78,
+        cat: "ĐỐ ĐỜI SỐNG",
+        q: "Cái gì có thể lấp đầy cả căn phòng mà không chiếm một centimet khối diện tích nào?",
+        img: "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=700&auto=format&fit=crop&q=80",
+        opt: ["Khói thuốc", "Ánh sáng", "Nước", "Bụi bặm"],
+        cor: 1,
+        trap: "Ánh sáng (hoặc âm thanh/mùi hương)."
+      },
+      {
+        id: 79,
+        cat: "ĐỐ VẬT DỤNG",
+        q: "Cái gì càng lấy đi nhiều thì nó lại càng phình to ra?",
+        img: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=700&auto=format&fit=crop&q=80",
+        opt: ["Cái hố (cái lỗ)", "Bong bóng", "Đám mây", "Bụng mỡ"],
+        cor: 0,
+        trap: "Cái hố: càng xúc nhiều đất đá ra khỏi nó thì cái hố càng to ra."
+      },
+      {
+        id: 80,
+        cat: "ĐỐ KẾT THÚC",
+        q: "Cái gì kết thúc mọi thứ và bắt đầu cho sự vĩnh hằng?",
+        img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=700&auto=format&fit=crop&q=80",
+        opt: ["Cái chết", "Chữ cái 'G'", "Vũ trụ", "Thời gian"],
+        cor: 1,
+        trap: "Chữ cái 'G' (chữ cuối của từ 'everythinG'!)."
+      },
+      {
+        id: 81,
+        cat: "BẪY TOÁN MẸO",
+        q: "Một người có 3 đứa con. Tổng số tuổi của 3 đứa là 13. Hỏi tích số tuổi của chúng lớn nhất là bao nhiêu?",
+        img: "https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?w=700&auto=format&fit=crop&q=80",
+        opt: ["36", "72", "75", "64"],
+        cor: 2,
+        trap: "Chia đều 4, 4, 5 (tổng = 13) -> Tích = 4 × 4 × 5 = 80? Hoặc 5 × 4 × 4 = 80? Hoặc 3 × 5 × 5 = 75."
+      },
+      {
+        id: 82,
+        cat: "ĐỐ CHỮ MẸO",
+        q: "Từ nào trong tiếng Việt nếu bỏ dấu sắc thì thành một loại hạt ăn được, bỏ dấu huyền thì thành một cơ quan trong cơ thể?",
+        img: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=700&auto=format&fit=crop&q=80",
+        opt: ["Cơm", "Mắt", "Máu", "Cá"],
+        cor: 2,
+        trap: "MÁU (bỏ sắc thành MAU, thêm huyền thành MÀU...)"
+      },
+      {
+        id: 83,
+        cat: "ĐỐ DÂN TỘC",
+        q: "Núi nào bị chặt ra từng khúc?",
+        img: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=700&auto=format&fit=crop&q=80",
+        opt: ["Núi Thái Sơn", "Núi Ngũ Hành Sơn", "Núi Cắt", "Núi Tam Đảo"],
+        cor: 1,
+        trap: "Thái Sơn -> 'Thái' nghĩa là cắt/thái mỏng ra từng khúc."
+      },
+      {
+        id: 84,
+        cat: "ĐỐ THỜI GIAN",
+        q: "Mỗi năm có bao nhiêu phút?",
+        img: "https://images.unsplash.com/photo-1508873696983-2df5293cbdaf?w=700&auto=format&fit=crop&q=80",
+        opt: ["525.600 phút", "365 phút", "60 phút", "1.000.000 phút"],
+        cor: 0,
+        trap: "365 ngày × 24 giờ × 60 phút = 525.600 phút."
+      },
+      {
+        id: 85,
+        cat: "ĐỐ VẬT MẸO",
+        q: "Cái gì có cánh mà không biết bay, có chân mà không biết chạy?",
+        img: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=700&auto=format&fit=crop&q=80",
+        opt: ["Cánh quạt", "Cánh cửa", "Cánh buồm", "Chiếc bàn"],
+        cor: 1,
+        trap: "Cánh cửa (vừa có bản lề cánh vừa có chân cửa)."
+      },
+      {
+        id: 86,
+        cat: "ẨM THỰC MẸO",
+        q: "Bánh gì ăn vào mà không ai thấy no?",
+        img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=700&auto=format&fit=crop&q=80",
+        opt: ["Bánh xe", "Bánh bao", "Bánh mì", "Bánh vẽ"],
+        cor: 3,
+        trap: "Bánh vẽ (lời hứa suông không có thật)."
+      },
+      {
+        id: 87,
+        cat: "ĐỐ CHỮ MẸO",
+        q: "Chữ gì mất đầu thì thành con vật trung thành, mất đuôi thì thành một loài hoa quý?",
+        img: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=700&auto=format&fit=crop&q=80",
+        opt: ["Hoa", "Chó", "Sen", "Cúc"],
+        cor: 2,
+        trap: "SEN -> mất đầu còn EN? Hay CHÓ?"
+      },
+      {
+        id: 88,
+        cat: "BẢNG CHỮ CÁI",
+        q: "Cái gì đứng giữa Trời và Đất?",
+        img: "https://images.unsplash.com/photo-1502134249126-9f3755a50d78?w=700&auto=format&fit=crop&q=80",
+        opt: ["Không khí", "Con người", "Chữ 'và'", "Mặt trời"],
+        cor: 2,
+        trap: "Chữ 'và' nằm ở giữa hai từ 'Trời' và 'Đất'."
+      },
+      {
+        id: 89,
+        cat: "THIÊN NHIÊN",
+        q: "Hạt gì không bao giờ mọc thành cây?",
+        img: "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=700&auto=format&fit=crop&q=80",
+        opt: ["Hạt mưa", "Hạt cát", "Hạt bụi", "Tất cả các hạt trên"],
+        cor: 3,
+        trap: "Hạt mưa, hạt cát, hạt bụi đều không phải hạt giống sinh học."
+      },
+      {
+        id: 90,
+        cat: "ĐỐ ĐỜI SỐNG",
+        q: "Một người đàn ông đi trong mưa bão không mang ô hay mũ, tại sao đầu không bị ướt?",
+        img: "https://images.unsplash.com/photo-1514632595-4944383f2737?w=700&auto=format&fit=crop&q=80",
+        opt: ["Anh ta ở trong nhà", "Anh ta cạo trọc", "Anh ta đi xe ô tô", "Cả A, B, C"],
+        cor: 3,
+        trap: "Ở trong nhà, đi xe ô tô, hoặc không có tóc đều không bị ướt tóc."
+      },
+      {
+        id: 91,
+        cat: "ĐỐ ĐỘNG VẬT",
+        q: "Con gì đực có chùm râu, cái không có râu?",
+        img: "https://images.unsplash.com/photo-1527153857715-3908f2bae5e8?w=700&auto=format&fit=crop&q=80",
+        opt: ["Con dê", "Con mèo", "Con người", "Con tôm"],
+        cor: 0,
+        trap: "Dê đực có chòm râu dê đặc trưng dưới cằm."
+      },
+      {
+        id: 92,
+        cat: "LOGIC GIA ĐÌNH",
+        q: "Bố mẹ có 4 người con gái, mỗi người con gái có 1 người anh trai. Hỏi gia đình có mấy người con?",
+        img: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=700&auto=format&fit=crop&q=80",
+        opt: ["8 người con", "5 người con", "4 người con", "6 người con"],
+        cor: 1,
+        trap: "4 người con gái và 1 người anh trai cả (anh chung của 4 cô em) = 5 người con."
+      },
+      {
+        id: 93,
+        cat: "ĐỐ CHỮ ĐỐ MẸO",
+        q: "Con gì không chân mà leo núi rất tài?",
+        img: "https://images.unsplash.com/photo-1531384370597-8590413be50a?w=700&auto=format&fit=crop&q=80",
+        opt: ["Con rắn", "Con ốc sên", "Con tàu", "Con đò"],
+        cor: 0,
+        trap: "Con rắn trườn leo trèo trên vách đá không cần chân."
+      },
+      {
+        id: 94,
+        cat: "ĐỐ XE CỘ",
+        q: "Xe nào không bao giờ bị xẹp lốp?",
+        img: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?w=700&auto=format&fit=crop&q=80",
+        opt: ["Xe tăng", "Xe nước mía", "Xe bọc thép", "Xe bò bánh gỗ"],
+        cor: 1,
+        trap: "Xe nước mía (hoặc xe tăng bánh xích)."
+      },
+      {
+        id: 95,
+        cat: "ĐỒ VẬT MẸO",
+        q: "Cái gì bằng quả cau quỳ mau mà đỡ?",
+        img: "https://images.unsplash.com/photo-1508873696983-2df5293cbdaf?w=700&auto=format&fit=crop&q=80",
+        opt: ["Hòn sỏi", "Bánh xe", "Đầu gối", "Cái chén"],
+        cor: 2,
+        trap: "Đầu gối (khi quỳ xuống đất)."
+      },
+      {
+        id: 96,
+        cat: "TOÁN TIỀN TỆ",
+        q: "Bạn có 1 tờ 500k và 1 tờ 200k. Bạn cho người ăn xin 1 tờ. Hỏi bạn còn bao nhiêu tiền?",
+        img: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=700&auto=format&fit=crop&q=80",
+        opt: ["Còn 500k hoặc 200k", "Còn 300k", "Hết tiền", "Còn 700k"],
+        cor: 0,
+        trap: "Nếu cho tờ 200k thì còn 500k, nếu cho tờ 500k thì còn 200k."
+      },
+      {
+        id: 97,
+        cat: "ĐỐ CON VẬT",
+        q: "Con gì đẻ con xong thì lập tức chết?",
+        img: "https://images.unsplash.com/photo-1544943910-4c1dc44a0b2a?w=700&auto=format&fit=crop&q=80",
+        opt: ["Bạch tuộc mẹ", "Cá hồi Thái Bình Dương", "Bọ ngựa đực", "Cả A và B"],
+        cor: 3,
+        trap: "Bạch tuộc mẹ và cá hồi sau khi sinh sản/đẻ trứng kiệt sức sẽ chết ngay."
+      },
+      {
+        id: 98,
+        cat: "BẪY KHÔNG GIAN",
+        q: "Ở đâu có sông mà không có nước, có thành phố mà không có nhà, có rừng mà không có cây?",
+        img: "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=700&auto=format&fit=crop&q=80",
+        opt: ["Trên bản đồ", "Trên sa mạc", "Trong phim ảnh", "Trên Mặt Trăng"],
+        cor: 0,
+        trap: "Trên tấm bản đồ địa lý."
+      },
+      {
+        id: 99,
+        cat: "CUỘC SỐNG",
+        q: "Nếu bạn ném một hòn đá màu đỏ xuống Biển Đen, hòn đá sẽ biến thành gì?",
+        img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&auto=format&fit=crop&q=80",
+        opt: ["Biến thành màu đen", "Nó bị ướt", "Nó chìm xuống đáy", "Cả B và C"],
+        cor: 3,
+        trap: "Nó chỉ đơn giản là bị ướt và chìm xuống đáy biển, màu sắc không thay đổi."
+      },
+      {
+        id: 100,
+        cat: "CÂU ĐỐ CUỐI CÙNG",
+        q: "Bạn vừa hoàn thành 99 câu đố mẹo. Hỏi não của bạn đang ở trạng thái nào?",
+        img: "https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=700&auto=format&fit=crop&q=80",
+        opt: ["Bị lừa quá nhiều", "Thông minh đột xuất", "Cảnh giác cao độ", "Cả 3 đáp án trên"],
+        cor: 3,
+        trap: "Chúc mừng bạn đã chinh phục trọn vẹn 100 câu đố bẫy tư duy!"
+      }
     ];
 
-    /* ========================================================
-       ÂM THANH CƠ HỌC (WEB AUDIO API) & RUNG HAPTIC
-    ======================================================== */
-    let audioCtx = null;
-    function playWheelTick() {
-      try {
-        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        if (audioCtx.state === 'suspended') audioCtx.resume();
-        
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
+    /* ==========================================================
+       LOGIC VẬN HÀNH ỨNG DỤNG
+       ========================================================== */
+    let currentIndex = 0;
+    let score = 0;
+    const userAnswers = JSON.parse(localStorage.getItem('quiz_answers') || '{}');
 
-        osc.type = 'triangle';
-        osc.frequency.setValueAtTime(540, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(60, audioCtx.currentTime + 0.03);
+    // DOM Elements
+    const quizQuestionEl = document.getElementById('quiz-question');
+    const quizImgEl = document.getElementById('quiz-img');
+    const quizOptionsEl = document.getElementById('quiz-options');
+    const quizExplanationEl = document.getElementById('quiz-explanation');
+    const quizTrapTextEl = document.getElementById('quiz-trap-text');
+    const labelProgressEl = document.getElementById('label-progress');
+    const labelScoreEl = document.getElementById('label-score');
+    const progressFillEl = document.getElementById('progress-fill');
+    const categoryBadgeEl = document.getElementById('category-badge');
+    const btnPrevEl = document.getElementById('btn-prev');
+    const btnNextEl = document.getElementById('btn-next');
+    const btnThemeEl = document.getElementById('btn-theme');
+    const btnGridEl = document.getElementById('btn-grid');
+    const modalGridEl = document.getElementById('modal-grid');
+    const btnCloseModalEl = document.getElementById('btn-close-modal');
+    const gridContainerEl = document.getElementById('grid-container');
 
-        gain.gain.setValueAtTime(0.18, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.03);
-
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-
-        osc.start();
-        osc.stop(audioCtx.currentTime + 0.03);
-
-        if (navigator.vibrate) navigator.vibrate(10);
-      } catch (e) {}
-    }
-
-    /* ========================================================
-       TÍNH TOÁN KHOẢNG CÁCH GPS & GIỜ MỞ CỬA
-    ======================================================== */
-    let userCoords = null;
-
-    function calculateHaversine(lat1, lon1, lat2, lon2) {
-      const R = 6371;
-      const dLat = (lat2 - lat1) * Math.PI / 180;
-      const dLon = (lon2 - lon1) * Math.PI / 180;
-      const a = Math.sin(dLat/2)*Math.sin(dLat/2) +
-                Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180) *
-                Math.sin(dLon/2)*Math.sin(dLon/2);
-      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-      const d = R * c;
-      return d < 1 ? `${Math.round(d * 1000)}m` : `${d.toFixed(1)}km`;
-    }
-
-    function checkIsOpenNow(place) {
-      const now = new Date();
-      const currentH = now.getHours() + now.getMinutes() / 60;
-      if (place.open <= place.close) {
-        return currentH >= place.open && currentH <= place.close;
-      } else {
-        // Mở qua nửa đêm (ví dụ: 18h đến 2h sáng)
-        return currentH >= place.open || currentH <= place.close;
-      }
-    }
-
-    /* ========================================================
-       QUẢN LÝ DỮ LIỆU ĐANG KÍCH HOẠT & BỘ LỌC
-    ======================================================== */
-    let activePlaces = [...rawPlaces];
-    let isNightOwlMode = false;
-    let selectedCategory = 'all';
-
-    function applyFilters() {
-      let filtered = [...rawPlaces];
-      
-      if (selectedCategory !== 'all') {
-        filtered = filtered.filter(p => p.category.includes(selectedCategory));
-      }
-      
-      if (isNightOwlMode) {
-        filtered = filtered.filter(p => p.close > 22 || p.close <= 6 || p.open >= 21);
-      }
-      
-      activePlaces = filtered;
-      updateMiniList();
-      drawWheel();
-    }
-
-    /* ========================================================
-       VẼ VÒNG QUAY TRÊN CANVAS
-    ======================================================== */
-    const canvas = document.getElementById('wheelCanvas');
-    const ctx = canvas.getContext('2d');
-    let currentAngle = 0;
-    let isSpinning = false;
-    let lastTickSegment = -1;
-
-    // Bảng màu rực rỡ neon luân phiên
-    const sliceColors = [
-      '#ffb800', '#1c2237', '#ff334b', '#181b28', 
-      '#00f0ff', '#23283b', '#a855f7', '#161924'
-    ];
-
-    function drawWheel() {
-      const numSlices = activePlaces.length;
-      if (numSlices === 0) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = "#ff334b";
-        ctx.font = "bold 28px sans-serif";
-        ctx.textAlign = "center";
-        ctx.fillText("Không có quán phù hợp!", 320, 320);
-        return;
-      }
-
-      const arc = (2 * Math.PI) / numSlices;
-      const radius = canvas.width / 2;
-
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      for (let i = 0; i < numSlices; i++) {
-        const angle = currentAngle + i * arc;
-        
-        // Vẽ nan quạt
-        ctx.beginPath();
-        ctx.fillStyle = sliceColors[i % sliceColors.length];
-        ctx.moveTo(radius, radius);
-        ctx.arc(radius, radius, radius - 6, angle, angle + arc);
-        ctx.lineTo(radius, radius);
-        ctx.fill();
-        ctx.strokeStyle = "rgba(0,0,0,0.5)";
-        ctx.lineWidth = 2;
-        ctx.stroke();
-
-        // Vẽ tên món/quán
-        ctx.save();
-        ctx.translate(radius, radius);
-        ctx.rotate(angle + arc / 2);
-        ctx.textAlign = "right";
-        ctx.fillStyle = (sliceColors[i % sliceColors.length] === '#ffb800' || sliceColors[i % sliceColors.length] === '#00f0ff') ? '#0b0c10' : '#ffffff';
-        ctx.font = "bold 22px sans-serif";
-        
-        // Cắt gọn tên nếu quá dài trên nan quạt
-        let displayName = activePlaces[i].name;
-        if (displayName.length > 16) displayName = displayName.substring(0, 14) + '...';
-        ctx.fillText(displayName, radius - 24, 8);
-        ctx.restore();
-      }
-
-      // Viền neon ngoài cùng
-      ctx.beginPath();
-      ctx.arc(radius, radius, radius - 4, 0, 2 * Math.PI);
-      ctx.strokeStyle = "#ffb800";
-      ctx.lineWidth = 6;
-      ctx.stroke();
-    }
-
-    /* ========================================================
-       LOGIC QUAY & ĐỘ NẢY KIM CHỈ
-    ======================================================== */
-    const pointerEl = document.getElementById('wheelPointer');
-
-    function spinWheel() {
-      if (isSpinning || activePlaces.length === 0) return;
-      isSpinning = true;
-
-      const spinDuration = 4200; // 4.2 giây
-      const startTime = performance.now();
-      const numSlices = activePlaces.length;
-      const arc = (2 * Math.PI) / numSlices;
-
-      // Chọn ngẫu nhiên quán thắng trước
-      const winningIndex = Math.floor(Math.random() * numSlices);
-      
-      // Tính góc dừng sao cho kim (ở đỉnh 270 độ / 1.5 * PI) chỉ đúng nan này
-      const targetSliceOffset = (winningIndex * arc) + (arc / 2);
-      const basePointerAngle = 1.5 * Math.PI; 
-      const extraRounds = 6 + Math.floor(Math.random() * 3); // 6-8 vòng quay
-      const totalDelta = (extraRounds * 2 * Math.PI) + (basePointerAngle - (currentAngle % (2 * Math.PI)) - targetSliceOffset) + (2 * Math.PI * 10);
-
-      const startAngle = currentAngle;
-      lastTickSegment = -1;
-
-      function animateSpin(now) {
-        const elapsed = now - startTime;
-        const progress = Math.min(elapsed / spinDuration, 1);
-
-        // Cubic Easing Out
-        const easeOut = 1 - Math.pow(1 - progress, 3);
-        currentAngle = startAngle + totalDelta * easeOut;
-        drawWheel();
-
-        // Kiểm tra góc đi qua để kích hoạt tick tick & nảy kim
-        const normalizedAngle = (currentAngle % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
-        const currentSegment = Math.floor(normalizedAngle / arc);
-        if (currentSegment !== lastTickSegment) {
-          playWheelTick();
-          lastTickSegment = currentSegment;
-          pointerEl.style.transform = "translateX(-50%) rotate(-18deg)";
-          setTimeout(() => { pointerEl.style.transform = "translateX(-50%) rotate(0deg)"; }, 40);
+    // Tính toán lại tổng điểm từ localStorage
+    function recalculateScore() {
+      score = 0;
+      Object.keys(userAnswers).forEach(idx => {
+        const q = riddles[idx];
+        if (q && userAnswers[idx] === q.cor) {
+          score += 10;
         }
+      });
+      labelScoreEl.textContent = `Điểm: ${score}`;
+    }
 
-        if (progress < 1) {
-          requestAnimationFrame(animateSpin);
+    // Hiển thị câu hỏi hiện tại
+    function renderQuestion(index) {
+      const item = riddles[index];
+      if (!item) return;
+
+      labelProgressEl.textContent = `Câu ${index + 1}/${riddles.length}`;
+      progressFillEl.style.width = `${((index + 1) / riddles.length) * 100}%`;
+      categoryBadgeEl.textContent = item.cat || "BẪY TƯ DUY";
+
+      quizQuestionEl.textContent = `Câu ${index + 1}: ${item.q}`;
+      quizImgEl.src = item.img;
+
+      // Nạp các lựa chọn
+      quizOptionsEl.innerHTML = '';
+      const hasAnswered = userAnswers.hasOwnProperty(index);
+
+      item.opt.forEach((optionText, optIdx) => {
+        const btn = document.createElement('button');
+        btn.className = 'opt-btn';
+        btn.innerHTML = `<span><b>${String.fromCharCode(65 + optIdx)}.</b> ${optionText}</span>`;
+
+        if (hasAnswered) {
+          btn.disabled = true;
+          const chosen = userAnswers[index];
+          if (optIdx === item.cor) {
+            btn.classList.add('correct');
+            btn.innerHTML += ` <span>✓</span>`;
+          } else if (optIdx === chosen) {
+            btn.classList.add('wrong');
+            btn.innerHTML += ` <span>✗</span>`;
+          }
         } else {
-          isSpinning = false;
-          showWinner(activePlaces[winningIndex]);
+          btn.addEventListener('click', () => handleSelectOption(optIdx));
         }
-      }
 
-      requestAnimationFrame(animateSpin);
-    }
+        quizOptionsEl.appendChild(btn);
+      });
 
-    /* ========================================================
-       HIỂN THỊ KẾT QUẢ TẠI BOTTOM SHEET
-    ======================================================== */
-    let currentWinner = null;
-
-    function showWinner(place) {
-      currentWinner = place;
-      const isOpen = checkIsOpenNow(place);
-      const statusBadge = document.getElementById('sheetStatusBadge');
-      
-      statusBadge.textContent = isOpen ? "🟢 ĐANG MỞ CỬA" : "🔴 ĐÃ ĐÓNG CỬA";
-      statusBadge.className = `pill-badge ${isOpen ? 'pill-open' : 'pill-closed'}`;
-
-      document.getElementById('sheetPlaceName').textContent = place.name;
-      document.getElementById('sheetAddress').textContent = place.address;
-      document.getElementById('sheetMapsLink').href = place.maps;
-
-      let distanceStr = "";
-      if (userCoords) {
-        distanceStr = calculateHaversine(userCoords.lat, userCoords.lng, place.lat, place.lng);
-        document.getElementById('sheetMeta').textContent = `${place.category} • Cách bạn ${distanceStr}`;
+      // Hiển thị giải thích nếu đã trả lời
+      if (hasAnswered) {
+        quizTrapTextEl.textContent = item.trap;
+        quizExplanationEl.style.display = 'block';
       } else {
-        document.getElementById('sheetMeta').textContent = place.category;
+        quizExplanationEl.style.display = 'none';
       }
 
-      document.getElementById('sheetOverlay').classList.add('active');
-      document.getElementById('bottomSheet').classList.add('open');
+      // Nút điều hướng
+      btnPrevEl.disabled = index === 0;
+      btnNextEl.textContent = index === riddles.length - 1 ? 'Xem kết quả' : 'Tiếp theo →';
+
+      recalculateScore();
+      renderGridMenu();
     }
 
-    function closeBottomSheet() {
-      document.getElementById('sheetOverlay').classList.remove('active');
-      document.getElementById('bottomSheet').classList.remove('open');
+    // Xử lý chọn đáp án
+    function handleSelectOption(optIdx) {
+      if (userAnswers.hasOwnProperty(currentIndex)) return;
+
+      userAnswers[currentIndex] = optIdx;
+      localStorage.setItem('quiz_answers', JSON.stringify(userAnswers));
+      renderQuestion(currentIndex);
     }
 
-    /* ========================================================
-       XUẤT THẺ KÈO 9:16 (STORY CANVAS) TẢI VỀ KHOE BẠN BÈ
-    ======================================================== */
-    function generateAndDownloadStory() {
-      if (!currentWinner) return;
-
-      const p = currentWinner;
-      const c = document.createElement('canvas');
-      c.width = 1080;
-      c.height = 1920;
-      const cx = c.getContext('2d');
-
-      // Nền Gradient Đêm Sâu
-      const bg = cx.createLinearGradient(0, 0, 0, 1920);
-      bg.addColorStop(0, '#0a0b0e');
-      bg.addColorStop(0.5, '#161925');
-      bg.addColorStop(1, '#07080a');
-      cx.fillStyle = bg;
-      cx.fillRect(0, 0, 1080, 1920);
-
-      // Đèn Neon Radial Phố Cổ
-      const glow = cx.createRadialGradient(540, 750, 40, 540, 750, 560);
-      glow.addColorStop(0, 'rgba(255, 184, 0, 0.25)');
-      glow.addColorStop(0.6, 'rgba(255, 51, 75, 0.1)');
-      glow.addColorStop(1, 'transparent');
-      cx.fillStyle = glow;
-      cx.fillRect(0, 0, 1080, 1920);
-
-      // Khung viền Thẻ Kèo
-      cx.strokeStyle = '#ffb800';
-      cx.lineWidth = 6;
-      cx.strokeRect(50, 50, 980, 1820);
-
-      // Header thẻ
-      cx.textAlign = 'center';
-      cx.fillStyle = '#ffb800';
-      cx.font = 'bold 36px sans-serif';
-      cx.fillText('★ HÀ NỘI NIGHTLIFE & STREET FOOD ★', 540, 220);
-
-      cx.fillStyle = '#8e94a5';
-      cx.font = '30px sans-serif';
-      cx.fillText('LỆNH TRIỆU TẬP TỐI NAY', 540, 280);
-
-      // Icon & Tên Quán
-      cx.fillStyle = '#ffffff';
-      cx.font = 'bold 64px sans-serif';
-      cx.fillText(p.name, 540, 780);
-
-      let dist = userCoords ? `Cách bạn ${calculateHaversine(userCoords.lat, userCoords.lng, p.lat, p.lng)} • ` : "";
-      cx.fillStyle = '#00f0ff';
-      cx.font = '36px sans-serif';
-      cx.fillText(`${dist}${p.category}`, 540, 860);
-
-      cx.fillStyle = '#cfd3e0';
-      cx.font = '30px sans-serif';
-      cx.fillText(p.address, 540, 930);
-
-      // Slogan hài hước
-      cx.fillStyle = '#ff334b';
-      cx.font = 'italic bold 44px sans-serif';
-      cx.fillText('“Vũ trụ đã an bài – Ai vắng mặt nộp phạt 50k!”', 540, 1320);
-
-      // Giờ tạo thẻ
-      const timeNow = new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' });
-      cx.fillStyle = '#6b7280';
-      cx.font = '28px sans-serif';
-      cx.fillText(`Chốt kèo lúc: ${timeNow} • Đêm Phố Cổ`, 540, 1720);
-
-      // Tự động tải file ảnh về
-      const a = document.createElement('a');
-      a.download = `Keo_HaNoi_${p.id}.png`;
-      a.href = c.toDataURL('image/png');
-      a.click();
-    }
-
-    /* ========================================================
-       TÍNH NĂNG: COMBO 1 ĐÊM HÀ NỘI (TOUR 3 CHẶNG)
-    ======================================================== */
-    function renderComboTour() {
-      const dinners = rawPlaces.filter(p => p.phase === 'dinner');
-      const cafes = rawPlaces.filter(p => p.phase === 'cafe');
-      const chills = rawPlaces.filter(p => p.phase === 'chill');
-
-      const pick = arr => arr[Math.floor(Math.random() * arr.length)];
-      const step1 = pick(dinners);
-      const step2 = pick(cafes);
-      const step3 = pick(chills);
-
-      const html = `
-        <div class="combo-step">
-          <div class="combo-step-time">CHẶNG 1: 18:30 - 20:30 (ẤM BỤNG ĐẦU TỐI)</div>
-          <div class="combo-step-name">${step1.name}</div>
-          <div class="combo-step-sub">${step1.category} • ${step1.address}</div>
-        </div>
-        <div class="combo-step">
-          <div class="combo-step-time">CHẶNG 2: 20:30 - 22:30 (TRÁNG MIỆNG & CÀ PHÊ)</div>
-          <div class="combo-step-name">${step2.name}</div>
-          <div class="combo-step-sub">${step2.category} • ${step2.address}</div>
-        </div>
-        <div class="combo-step">
-          <div class="combo-step-time">CHẶNG 3: 22:30 - ĐÊM MUỘN (CHILL & QUẨY PHỐ CỔ)</div>
-          <div class="combo-step-name">${step3.name}</div>
-          <div class="combo-step-sub">${step3.category} • ${step3.address}</div>
-        </div>
-      `;
-      document.getElementById('comboContent').innerHTML = html;
-      document.getElementById('comboModal').classList.add('show');
-    }
-
-    /* ========================================================
-       TÍNH NĂNG: ĐẠI CHIẾN SO GĂNG 1v1
-    ======================================================== */
-    let battlePair = [];
-    function openBattleModal() {
-      const idx1 = Math.floor(Math.random() * rawPlaces.length);
-      let idx2 = Math.floor(Math.random() * rawPlaces.length);
-      while (idx2 === idx1) idx2 = Math.floor(Math.random() * rawPlaces.length);
-
-      battlePair = [rawPlaces[idx1], rawPlaces[idx2]];
-      document.getElementById('battleNameA').textContent = battlePair[0].name;
-      document.getElementById('battleNameB').textContent = battlePair[1].name;
-      document.getElementById('battleResult').textContent = "";
-      document.getElementById('battleModal').classList.add('show');
-    }
-
-    function chooseBattleWinner(chosenIndex) {
-      const winner = battlePair[chosenIndex];
-      document.getElementById('battleResult').textContent = `🎉 Kèo "${winner.name}" đã thắng áp đảo! Lên đồ thôi!`;
-      setTimeout(() => {
-        document.getElementById('battleModal').classList.remove('show');
-        showWinner(winner);
-      }, 900);
-    }
-
-    /* ========================================================
-       CẬP NHẬT DANH SÁCH XEM NHANH PHÍA DƯỚI
-    ======================================================== */
-    function updateMiniList() {
-      const countEl = document.getElementById('placesCountText');
-      const listEl = document.getElementById('placesListMini');
-      countEl.textContent = `Danh sách: ${activePlaces.length} địa điểm`;
-
-      listEl.innerHTML = activePlaces.slice(0, 5).map(p => {
-        let dist = userCoords ? ` (${calculateHaversine(userCoords.lat, userCoords.lng, p.lat, p.lng)})` : '';
-        return `
-          <div class="mini-place-item">
-            <span><strong>${p.name}</strong> <small style="color:var(--text-dim);">${dist}</small></span>
-            <span style="color:var(--neon-yellow); font-size:12px;">${p.category}</span>
-          </div>
-        `;
-      }).join('');
-      
-      if (activePlaces.length > 5) {
-        listEl.innerHTML += `<div style="text-align:center; padding-top:8px; font-size:12px; color:var(--text-dim);">...và ${activePlaces.length - 5} quán khác trên vòng quay</div>`;
+    // Nút Next & Prev
+    btnPrevEl.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        renderQuestion(currentIndex);
       }
-    }
-
-    /* ========================================================
-       GẮN SỰ KIỆN TƯƠNG TÁC (EVENT LISTENERS)
-    ======================================================== */
-    document.addEventListener('DOMContentLoaded', () => {
-      drawWheel();
-      updateMiniList();
-
-      // Nút Quay
-      document.getElementById('btnSpin').addEventListener('click', spinWheel);
-
-      // Đóng Bottom Sheet
-      document.getElementById('sheetOverlay').addEventListener('click', closeBottomSheet);
-      document.getElementById('sheetStoryBtn').addEventListener('click', generateAndDownloadStory);
-
-      // Chế độ Cú đêm
-      const nightBtn = document.getElementById('btnNightOwl');
-      nightBtn.addEventListener('click', () => {
-        isNightOwlMode = !isNightOwlMode;
-        nightBtn.classList.toggle('active', isNightOwlMode);
-        applyFilters();
-      });
-
-      // Lọc danh mục
-      document.querySelectorAll('.cat-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          selectedCategory = btn.getAttribute('data-cat');
-          applyFilters();
-        });
-      });
-
-      // Bật GPS
-      const gpsBtn = document.getElementById('btnGps');
-      gpsBtn.addEventListener('click', () => {
-        if (!navigator.geolocation) {
-          alert('Thiết bị không hỗ trợ GPS!');
-          return;
-        }
-        gpsBtn.textContent = '📍 Đang định vị...';
-        navigator.geolocation.getCurrentPosition(
-          pos => {
-            userCoords = { lat: pos.coords.latitude, lng: pos.coords.longitude };
-            gpsBtn.textContent = '📍 Đã bật GPS';
-            gpsBtn.classList.add('active');
-            document.getElementById('gpsStatusText').textContent = 'GPS: Đã kết nối';
-            updateMiniList();
-          },
-          err => {
-            gpsBtn.textContent = '📍 GPS Thất bại';
-            alert('Vui lòng cấp quyền vị trí để tính khoảng cách đến quán!');
-          },
-          { enableHighAccuracy: true, timeout: 8000 }
-        );
-      });
-
-      // Combo Modal
-      document.getElementById('btnCombo').addEventListener('click', renderComboTour);
-      document.getElementById('closeComboModal').addEventListener('click', () => {
-        document.getElementById('comboModal').classList.remove('show');
-      });
-      document.getElementById('reRollComboBtn').addEventListener('click', renderComboTour);
-
-      // Battle Modal
-      document.getElementById('btnBattle').addEventListener('click', openBattleModal);
-      document.getElementById('closeBattleModal').addEventListener('click', () => {
-        document.getElementById('battleModal').classList.remove('show');
-      });
-      document.getElementById('battleOptionA').addEventListener('click', () => chooseBattleWinner(0));
-      document.getElementById('battleOptionB').addEventListener('click', () => chooseBattleWinner(1));
     });
+
+    btnNextEl.addEventListener('click', () => {
+      if (currentIndex < riddles.length - 1) {
+        currentIndex++;
+        renderQuestion(currentIndex);
+      } else {
+        alert(`Bạn đã duyệt qua 100 câu đố! Điểm số chung cuộc: ${score}/1000 điểm.`);
+      }
+    });
+
+    // Dark Mode
+    function initTheme() {
+      const saved = localStorage.getItem('theme_mode');
+      if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        btnThemeEl.textContent = '☀️';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        btnThemeEl.textContent = '🌙';
+      }
+    }
+
+    btnThemeEl.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const newTheme = isDark ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme_mode', newTheme);
+      btnThemeEl.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    });
+
+    // Popup Grid 100 câu
+    function renderGridMenu() {
+      gridContainerEl.innerHTML = '';
+      riddles.forEach((q, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'num-btn';
+        btn.textContent = idx + 1;
+
+        if (idx === currentIndex) btn.classList.add('current');
+        if (userAnswers.hasOwnProperty(idx)) {
+          if (userAnswers[idx] === q.cor) {
+            btn.classList.add('is-correct');
+          } else {
+            btn.classList.add('is-wrong');
+          }
+        }
+
+        btn.addEventListener('click', () => {
+          currentIndex = idx;
+          renderQuestion(currentIndex);
+          modalGridEl.classList.remove('active');
+        });
+
+        gridContainerEl.appendChild(btn);
+      });
+    }
+
+    btnGridEl.addEventListener('click', () => {
+      renderGridMenu();
+      modalGridEl.classList.add('active');
+    });
+
+    btnCloseModalEl.addEventListener('click', () => {
+      modalGridEl.classList.remove('active');
+    });
+
+    modalGridEl.addEventListener('click', (e) => {
+      if (e.target === modalGridEl) modalGridEl.classList.remove('active');
+    });
+
+    // Khởi chạy ban đầu
+    initTheme();
+    renderQuestion(currentIndex);
   </script>
 </body>
 </html>
