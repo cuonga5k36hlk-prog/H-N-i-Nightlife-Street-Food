@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>100 Câu Đố Siêu Mẹo - Hack Não 2026</title>
+  <title>100 Câu Đố Siêu Mẹo - Hack Não Cao Cấp</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -64,10 +64,9 @@
       padding: 12px 16px 40px;
     }
 
-    /* --- Header --- */
     .app-header {
       width: 100%;
-      max-width: 600px;
+      max-width: 620px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -116,16 +115,14 @@
       border-color: var(--primary);
     }
 
-    /* --- Main Container --- */
     .quiz-app {
       width: 100%;
-      max-width: 600px;
+      max-width: 620px;
       display: flex;
       flex-direction: column;
       gap: 14px;
     }
 
-    /* Top stats */
     .status-card {
       display: flex;
       justify-content: space-between;
@@ -160,7 +157,6 @@
       transition: width 0.3s ease;
     }
 
-    /* Card Question */
     .quiz-card {
       background-color: var(--bg-card);
       border-radius: var(--radius-lg);
@@ -192,7 +188,7 @@
       position: absolute;
       top: 12px;
       left: 12px;
-      background: rgba(15, 23, 42, 0.75);
+      background: rgba(15, 23, 42, 0.8);
       backdrop-filter: blur(8px);
       color: #ffffff;
       padding: 4px 10px;
@@ -261,7 +257,6 @@
       color: var(--wrong) !important;
     }
 
-    /* Explanation Box */
     .trap-explanation {
       display: none;
       background-color: var(--primary-subtle);
@@ -289,7 +284,6 @@
       color: var(--text-main);
     }
 
-    /* Navigation Footer */
     .card-footer {
       padding: 14px 20px;
       border-top: 1px solid var(--border);
@@ -337,7 +331,6 @@
       background: var(--primary-hover);
     }
 
-    /* Modal Grid Chọn Câu */
     .modal-backdrop {
       display: none;
       position: fixed;
@@ -443,11 +436,11 @@
 
   <header class="app-header">
     <div class="brand">
-      <span class="brand-icon">⚡</span>
-      <h1 class="brand-title">Siêu Mẹo 100</h1>
+      <span class="brand-icon">🧠</span>
+      <h1 class="brand-title">100 Siêu Đố Mẹo</h1>
     </div>
     <div class="header-actions">
-      <button class="icon-btn" id="btn-grid" title="Danh sách 100 câu">☰</button>
+      <button class="icon-btn" id="btn-grid" title="Danh mục 100 câu">☰</button>
       <button class="icon-btn" id="btn-theme" title="Đổi màu nền">🌙</button>
     </div>
   </header>
@@ -468,12 +461,12 @@
       </div>
 
       <div class="card-content">
-        <h2 class="question-title" id="quiz-question">Đang tải nội dung...</h2>
+        <h2 class="question-title" id="quiz-question">Đang nạp câu hỏi...</h2>
 
         <div class="options-list" id="quiz-options"></div>
 
         <div class="trap-explanation" id="quiz-explanation">
-          <div class="trap-header">⚠️ Bẫy ở chỗ này!</div>
+          <div class="trap-header">⚡ Phân tích bẫy tư duy</div>
           <p class="trap-desc" id="quiz-trap-text"></p>
         </div>
       </div>
@@ -485,11 +478,10 @@
     </article>
   </main>
 
-  <!-- Modal Bảng Số Câu Hỏi -->
   <div class="modal-backdrop" id="modal-grid">
     <div class="modal-box">
       <div class="modal-header">
-        <h3 class="modal-title">Danh sách 100 câu</h3>
+        <h3 class="modal-title">100 Câu Đố Hack Não</h3>
         <button class="icon-btn" id="btn-close-modal" style="width:32px;height:32px;font-size:0.9rem;">✕</button>
       </div>
       <div class="modal-body" id="grid-container"></div>
@@ -498,796 +490,796 @@
 
   <script>
     /* ==========================================================
-       DỮ LIỆU ĐẦY ĐỦ 100 CÂU ĐỐ MẸO BẪY TƯ DUY KINH ĐIỂN
+       KHO DỮ LIỆU: 100 CÂU ĐỐ SIÊU MẸO, BẪY TƯ DUY & NGHỊCH LÝ
        ========================================================== */
     const riddles = [
       {
         id: 1,
-        cat: "BẪY TOÁN HỌC",
-        q: "Một con ốc sên rơi xuống giếng sâu 10m. Ban ngày bò lên 3m, ban đêm tụt xuống 2m. Sau bao nhiêu ngày ốc sên lên tới miệng giếng?",
-        img: "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=700&auto=format&fit=crop&q=80",
-        opt: ["10 ngày", "8 ngày", "7 ngày", "9 ngày"],
-        cor: 1,
-        trap: "Mỗi ngày tiến 1m, sau 7 ngày được 7m. Sang ban ngày thứ 8 bò thêm 3m là chạm miệng giếng và thoát ra luôn, không bị tụt xuống nữa."
+        cat: "NGHỊCH LÝ TỬ TÙ",
+        q: "Tù nhân bị vua phán: 'Nói 1 câu duy nhất. Nếu nói ĐÚNG sẽ bị chém đầu, nếu nói SAI sẽ bị treo cổ'. Người này nói câu gì để buộc vua phải tha mạng?",
+        img: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=700&auto=format&fit=crop&q=80",
+        opt: ["'Tôi vô tội hoàn toàn'", "'Tôi sẽ bị chém đầu'", "'Tôi sẽ bị treo cổ'", "'Bệ hạ là minh quân'"],
+        cor: 2,
+        trap: "Nếu vua treo cổ thì câu nói thành ĐÚNG (mà đúng thì phải chém đầu). Nếu chém đầu thì câu nói thành SAI (mà sai thì phải treo cổ). Nghịch lý logic khiến cả 2 án phạt đều tự hủy."
       },
       {
         id: 2,
-        cat: "BẪY VẬT LÝ",
-        q: "Tàu điện chạy về hướng Nam với tốc độ 60 km/h. Gió thổi về hướng Tây 30 km/h. Hỏi khói tàu bay về hướng nào?",
-        img: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=700&auto=format&fit=crop&q=80",
-        opt: ["Hướng Tây", "Hướng Tây Nam", "Không có khói", "Hướng Bắc"],
-        cor: 2,
-        trap: "Tàu điện chạy bằng điện nên hoàn toàn không nhả khói."
+        cat: "ĐỐ MẸO THỜI GIAN",
+        q: "Lúc 3 giờ 15 phút, góc hợp giữa kim giờ và kim phút trên mặt đồng hồ kim truyền thống bằng bao nhiêu độ?",
+        img: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=700&auto=format&fit=crop&q=80",
+        opt: ["0 độ (chập vào nhau)", "7.5 độ", "5 độ", "12.5 độ"],
+        cor: 1,
+        trap: "Bẫy trực giác tưởng 2 kim đè lên nhau. Nhưng sau 15 phút (1/4 giờ), kim giờ đã nhích đi 1/4 quãng đường giữa số 3 và số 4: 30° / 4 = 7.5°."
       },
       {
         id: 3,
-        cat: "BẪY GIA ĐÌNH",
-        q: "Hai người cha và hai người con cùng đi câu cá. Mỗi người câu được đúng 1 con cá. Khi về chỉ có 3 con cá. Vì sao?",
-        img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&auto=format&fit=crop&q=80",
-        opt: ["Rơi mất 1 con", "Có 3 người: Ông nội, Bố và Con", "Người cha không tính", "Một con cá to gấp đôi"],
-        cor: 1,
-        trap: "Chỉ có 3 người: Ông nội, Cha và Con trai. Người cha vừa là con của ông nội vừa là cha của đứa con nhỏ."
+        cat: "BẪY XÁC SUẤT TOÁN",
+        q: "Từ 1 đến 100 có tổng cộng bao nhiêu lần chữ số 9 xuất hiện?",
+        img: "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=700&auto=format&fit=crop&q=80",
+        opt: ["10 lần", "11 lần", "19 lần", "20 lần"],
+        cor: 3,
+        trap: "Mọi người hay quên đếm hàng chục của dãy 90: (9, 19, 29, 39, 49, 59, 69, 79, 89, 99 có 11 chữ số 9) cộng thêm (90, 91, 92, 93, 94, 95, 96, 97, 98 có 9 chữ số 9) = 20 lần."
       },
       {
         id: 4,
-        cat: "BẪY THỜI GIAN",
-        q: "Bác sĩ đưa cho bạn 3 viên thuốc và dặn cứ 30 phút uống 1 viên. Bạn sẽ uống hết số thuốc đó trong bao nhiêu phút?",
-        img: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=700&auto=format&fit=crop&q=80",
-        opt: ["90 phút", "60 phút", "45 phút", "30 phút"],
+        cat: "VỤ ÁN MẸO",
+        q: "Hai người cùng uống một loại trà đá pha sẵn từ cùng một bình. A uống cạn 5 ly trong 2 phút và sống sót. B nhâm nhi 1 ly trong 30 phút thì chết vì độc. Vì sao?",
+        img: "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?w=700&auto=format&fit=crop&q=80",
+        opt: ["A có kháng thể", "Chất độc nằm trong đá viên", "B bị dị ứng trà", "Ly của B bị bôi thuốc"],
         cor: 1,
-        trap: "Viên thứ nhất uống ngay lập tức lúc 0 phút, viên thứ hai sau 30 phút, viên thứ ba sau 60 phút."
+        trap: "Chất độc được đóng băng bên trong các viên đá. A uống nhanh khi đá chưa tan nên thoát chết, B uống chậm để đá tan hết nên trúng độc."
       },
       {
         id: 5,
-        cat: "BẪY KHÔNG GIAN",
-        q: "Làm sao ném quả bóng tennis thật mạnh, nó tự dừng lại rồi bay ngược lại đúng tay bạn mà không chạm bất cứ vật cản nào?",
-        img: "https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?w=700&auto=format&fit=crop&q=80",
-        opt: ["Dùng dây thun", "Ném thẳng lên trời", "Tạo xoáy cực mạnh", "Ném trong phòng kín"],
+        cat: "TOÁN HỌC SINH TỒN",
+        q: "Có 8 đồng xu vàng giống hệt nhau, trong đó có 1 đồng xu giả nhẹ hơn. Dùng cân đĩa thăng bằng, cần ít nhất bao nhiêu lần cân để chắc chắn tìm ra?",
+        img: "https://images.unsplash.com/photo-1610375461246-83df859d849d?w=700&auto=format&fit=crop&q=80",
+        opt: ["1 lần", "2 lần", "3 lần", "4 lần"],
         cor: 1,
-        trap: "Ném thẳng đứng lên trời, trọng lực sẽ kéo quả bóng dừng lại và tự rơi ngược về tay bạn."
+        trap: "Chia 8 đồng thành 3 nhóm: 3 - 3 - 2. Cân lần 1: hai nhóm 3 đồng. Nếu bằng nhau, xu giả ở nhóm 2; nếu lệch, lấy nhóm nhẹ hơn. Cân lần 2 giữa 2 đồng bất kỳ là xác định ngay."
       },
       {
         id: 6,
-        cat: "ĐỐ CHỮ",
-        q: "Từ nào trong từ điển tiếng Việt mà bất kỳ người Việt Nam nào phát âm cũng đều 'sai'?",
-        img: "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=700&auto=format&fit=crop&q=80",
-        opt: ["Từ 'Khuỷu'", "Từ 'Ngoằn ngoèo'", "Từ 'Sai'", "Từ 'Nghiêng'"],
-        cor: 2,
-        trap: "Chính là từ 'Sai'. Dù phát âm chuẩn đến đâu thì từ đó vẫn là từ 'Sai'."
+        cat: "BẪY TÂM LÝ TUỔI",
+        q: "Năm tôi 6 tuổi, em gái tôi bằng nửa tuổi tôi. Nay tôi 70 tuổi, hỏi em gái tôi bao nhiêu tuổi?",
+        img: "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=700&auto=format&fit=crop&q=80",
+        opt: ["35 tuổi", "67 tuổi", "64 tuổi", "68 tuổi"],
+        cor: 1,
+        trap: "Não bộ dễ bị phản xạ chia đôi 70 / 2 = 35. Nhưng lúc đầu anh hơn em 3 tuổi (6 - 3 = 3), thì khi anh 70 tuổi em gái phải là 70 - 3 = 67 tuổi."
       },
       {
         id: 7,
-        cat: "BẪY TƯ TƯỞNG",
-        q: "Một người thợ nhảy xuống từ chiếc thang cao 10 mét nhưng không hề bị xây xát hay đau đớn. Tại sao?",
-        img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=700&auto=format&fit=crop&q=80",
-        opt: ["Có đệm lò xo", "Đang đứng ở bậc dưới cùng", "Thang ngã nghiêng", "Có dù bay"],
+        cat: "NGHI ÁN PHÒNG KÍN",
+        q: "Căn phòng trống khóa kín từ bên trong, người đàn ông treo cổ lơ lửng cách sàn 1m. Bên dưới chân chỉ có một vũng nước lớn. Anh ta đã làm cách nào?",
+        img: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=700&auto=format&fit=crop&q=80",
+        opt: ["Dùng bệ phóng lò xo", "Đứng lên tảng nước đá lớn", "Nhờ tòng phạm dọn ghế", "Đu dây từ trần nhà"],
         cor: 1,
-        trap: "Thang dài 10m nhưng anh ấy đang đứng ở bậc thang sát đất."
+        trap: "Anh ta đứng lên một tảng băng đá lớn để tròng cổ vào dây. Theo thời gian, tảng băng tan hoàn toàn thành vũng nước."
       },
       {
         id: 8,
-        cat: "NGUYÊN LÝ LOGIC",
-        q: "Trong tủ tối có 10 chiếc tất đen và 10 chiếc tất trắng lẫn lộn. Cần lấy ra ít nhất bao nhiêu chiếc để chắc chắn có 1 đôi cùng màu?",
-        img: "https://images.unsplash.com/photo-1586350977771-b3b0abd50c82?w=700&auto=format&fit=crop&q=80",
-        opt: ["11 chiếc", "2 chiếc", "3 chiếc", "10 chiếc"],
-        cor: 2,
-        trap: "Chỉ có 2 loại màu. Lấy 3 chiếc thì theo nguyên lý Dirichlet chắc chắn có ít nhất 2 chiếc cùng màu."
+        cat: "TỶ LỆ BÙNG NỔ",
+        q: "Trong hồ, bèo nhân đôi diện tích mỗi ngày. Sau 48 ngày bèo phủ kín mặt hồ. Hỏi sau bao nhiêu ngày bèo phủ được 1/2 mặt hồ?",
+        img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=700&auto=format&fit=crop&q=80",
+        opt: ["24 ngày", "47 ngày", "12 ngày", "36 ngày"],
+        cor: 1,
+        trap: "Bẫy lấy 48 chia đôi ra 24. Nhưng vì mỗi ngày tăng gấp đôi, nên chỉ cần 1 ngày trước khi đầy (ngày thứ 47) là bèo đã chiếm đúng nửa hồ."
       },
       {
         id: 9,
-        cat: "BẪY TOÁN HỌC",
-        q: "Một gia đình có 6 người con trai. Mỗi người con trai đều có đúng 1 người em gái. Hỏi gia đình có bao nhiêu người?",
-        img: "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=700&auto=format&fit=crop&q=80",
-        opt: ["14 người", "9 người", "12 người", "8 người"],
+        cat: "ĐỐ MẸO THẦN TỐC",
+        q: "Nếu 3 con mèo bắt được 3 con chuột trong 3 phút, thì cần bao nhiêu con mèo để bắt được 100 con chuột trong 100 phút?",
+        img: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=700&auto=format&fit=crop&q=80",
+        opt: ["100 con mèo", "3 con mèo", "30 con mèo", "1 con mèo"],
         cor: 1,
-        trap: "Gồm Bố, Mẹ, 6 người con trai và 1 cô con gái út (em gái chung của cả 6 người anh) = 2 + 6 + 1 = 9 người."
+        trap: "3 con mèo bắt 3 con chuột trong 3 phút, nghĩa là trung bình 3 con mèo này cứ mỗi 1 phút bắt được 1 con chuột. Vậy trong 100 phút chúng bắt được 100 con."
       },
       {
         id: 10,
-        cat: "LỊCH THỜI GIAN",
-        q: "Tháng nào trong năm có 28 ngày?",
-        img: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=700&auto=format&fit=crop&q=80",
-        opt: ["Chỉ tháng 2", "Tháng nhuận", "Tất cả các tháng", "Tháng 2 năm thường"],
-        cor: 2,
-        trap: "Tất cả 12 tháng trong năm đều trải qua ngày thứ 28."
+        cat: "QUAN HỆ HUYẾT THỐNG",
+        q: "Một người đàn ông nhìn ảnh và nói: 'Tôi không có anh chị em, nhưng cha của người trong ảnh là con trai của cha tôi'. Người trong ảnh là ai?",
+        img: "https://images.unsplash.com/photo-1544717305-2782549b5136?w=700&auto=format&fit=crop&q=80",
+        opt: ["Chính người đàn ông đó", "Con trai người đàn ông", "Cha người đàn ông", "Cháu người đàn ông"],
+        cor: 1,
+        trap: "'Con trai của cha tôi' chính là bản thân anh ta (vì không có anh chị em). Vậy 'Cha của người trong ảnh là tôi' => người trong ảnh là con trai anh ta."
       },
       {
         id: 11,
-        cat: "ĐỐ CƠ THỂ",
-        q: "Cái gì của bạn nhưng người khác lại dùng nó nhiều hơn bạn?",
-        img: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=700&auto=format&fit=crop&q=80",
-        opt: ["Tiền bạc", "Tên của bạn", "Điện thoại", "Quần áo"],
-        cor: 1,
-        trap: "Tên của bạn chủ yếu để người khác gọi."
+        cat: "BẪY TOÁN TIỀN TỆ",
+        q: "A mua ngựa 60 triệu, bán 70 triệu. Thấy tiếc mua lại 80 triệu, rồi bán 90 triệu. Tổng cộng A lời hay lỗ bao nhiêu?",
+        img: "https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=700&auto=format&fit=crop&q=80",
+        opt: ["Hòa vốn", "Lời 10 triệu", "Lời 20 triệu", "Lỗ 10 triệu"],
+        cor: 2,
+        trap: "Giao dịch 1 lời: 70 - 60 = 10 triệu. Giao dịch 2 lời: 90 - 80 = 10 triệu. Tổng cộng lời độc lập: 10 + 10 = 20 triệu."
       },
       {
         id: 12,
-        cat: "VẬT DỤNG ĐỜI SỐNG",
-        q: "Cái gì người mua biết, người bán biết, nhưng người dùng không bao giờ biết?",
-        img: "https://images.unsplash.com/photo-1544717305-2782549b5136?w=700&auto=format&fit=crop&q=80",
-        opt: ["Thuốc mê", "Quan tài", "Bánh sinh nhật", "Món quà bí mật"],
+        cat: "BẪY HÀNG HẢI",
+        q: "Thuyền trưởng nhìn qua ống nhòm thấy một chiếc tàu không có lấy một người đơn chiếc nào (not a single person), nhưng tàu không rỗng. Vì sao?",
+        img: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=700&auto=format&fit=crop&q=80",
+        opt: ["Toàn robot lái", "Tất cả mọi người đều đã kết hôn", "Tàu chở thi hài", "Thuyền trưởng nhìn nhầm"],
         cor: 1,
-        trap: "Quan tài - người nằm trong đó đã mất nên không thể biết."
+        trap: "Chơi chữ trong tiếng Anh: 'Not a single person' nghĩa là không có người độc thân (single) nào, toàn bộ hành khách đều đã có đôi có cặp."
       },
       {
         id: 13,
-        cat: "NGHỊCH LÝ",
-        q: "Cái gì càng kéo thì lại càng ngắn lại?",
-        img: "https://images.unsplash.com/photo-1527661591475-527312dd65f5?w=700&auto=format&fit=crop&q=80",
-        opt: ["Dây thun", "Sợi chỉ", "Điếu thuốc lá", "Thời gian"],
-        cor: 2,
-        trap: "Điếu thuốc lá, mỗi lần 'kéo' một hơi là nó cháy ngắn đi một đoạn."
+        cat: "VỤ ÁN BÍ ẨN",
+        q: "Một phụ nữ rút súng bắn chồng, dìm anh ta dưới nước 5 phút, rồi treo cổ anh ta lên. Tối đó hai vợ chồng lại đi ăn tối vui vẻ. Tại sao?",
+        img: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=700&auto=format&fit=crop&q=80",
+        opt: ["Ảo giác của người vợ", "Cô ấy là thợ chụp ảnh tráng phim", "Người chồng bất tử", "Đóng phim hành động"],
+        cor: 1,
+        trap: "Cô chụp bức ảnh của chồng (chụp/bắn - shoot), nhúng tấm ảnh vào bể hóa chất (dìm nước), rồi kẹp phơi khô ảnh (treo lên)."
       },
       {
         id: 14,
-        cat: "ĐỐ CƠ THỂ",
-        q: "Cái gì tay trái cầm được nhưng tay phải không bao giờ cầm được?",
-        img: "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=700&auto=format&fit=crop&q=80",
-        opt: ["Bàn tay trái", "Cùi chỏ tay phải", "Cổ tay trái", "Ngón tay cái"],
-        cor: 1,
-        trap: "Tay phải không thể tự cầm cùi chỏ của chính nó."
+        cat: "ĐỐ CHỮ KINH THÁNH",
+        q: "Môi-se (Moses) đã mang bao nhiêu con vật của mỗi loài lên con thuyền cứu thế của mình?",
+        img: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=700&auto=format&fit=crop&q=80",
+        opt: ["1 cặp (2 con)", "7 cặp", "0 con nào", "Không giới hạn"],
+        cor: 2,
+        trap: "Bẫy kiến thức kinh điển: Người đóng thuyền chở muông thú tránh đại hồng thủy là Nô-ê (Noah), không phải Môi-se."
       },
       {
         id: 15,
-        cat: "TỰ NHIÊN",
-        q: "Cái gì chặt không đứt, bứt không rời, phơi không khô, đốt không cháy?",
-        img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=700&auto=format&fit=crop&q=80",
-        opt: ["Nước", "Không khí", "Kim cương", "Bóng tối"],
-        cor: 0,
-        trap: "Dòng nước không thể chặt hay đốt cháy được."
+        cat: "CĂN PHÒNG TỬ THẦN",
+        q: "Kẻ tử tù buộc phải chọn 1 trong 3 phòng: Phòng 1 ngọn lửa bốc cháy ngùn ngụt; Phòng 2 đầy sát thủ trang bị súng máy; Phòng 3 đàn sư tử nhịn đói 3 năm. Phòng nào an toàn nhất?",
+        img: "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=700&auto=format&fit=crop&q=80",
+        opt: ["Phòng 1", "Phòng 2", "Phòng 3", "Không phòng nào"],
+        cor: 2,
+        trap: "Sư tử nhịn đói suốt 3 năm thì chắc chắn đã chết đói và mục rữa từ lâu rồi."
       },
       {
         id: 16,
-        cat: "ĐỐ MẸO ĐỜI SỐNG",
-        q: "Bỏ ngoài nướng trong, ăn ngoài bỏ trong là gì?",
-        img: "https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=700&auto=format&fit=crop&q=80",
-        opt: ["Củ khoai lang", "Bắp ngô (ngô nướng)", "Bánh mì", "Con cá"],
-        cor: 1,
-        trap: "Bắp ngô: lột vỏ ngoài rồi nướng hạt bên trong, khi ăn ăn hạt bên ngoài rồi bỏ cùi bên trong."
+        cat: "NGHỊCH LÝ BÁC SĨ",
+        q: "Cậu bé bị tai nạn được đưa vào phòng cấp cứu. Bác sĩ phẫu thuật hoảng hốt kêu lên: 'Tôi không thể mổ, đây là con trai tôi!'. Nhưng người đưa cậu bé vào viện không phải cha cậu. Bác sĩ là ai?",
+        img: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?w=700&auto=format&fit=crop&q=80",
+        opt: ["Cha dượng cậu bé", "Bác ruột cậu bé", "Mẹ của cậu bé", "Ông nội cậu bé"],
+        cor: 2,
+        trap: "Định kiến tiềm thức hay mặc định bác sĩ phẫu thuật là nam giới. Vị bác sĩ phẫu thuật chính là mẹ ruột của cậu bé."
       },
       {
         id: 17,
-        cat: "ĐỐ THÚ CẦN BẰNG",
-        q: "Chuột nào đi bằng 2 chân?",
-        img: "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=700&auto=format&fit=crop&q=80",
-        opt: ["Chuột túi", "Chuột Mickey", "Chuột cống", "Chuột lang"],
+        cat: "BẪY TÒA NHÀ",
+        q: "Một người sống trên tầng 10. Vào những ngày mưa, anh ta đi thang máy thẳng lên tầng 10. Nhưng ngày nắng, anh ta chỉ đi lên tầng 7 rồi lội bộ 3 tầng còn lại. Tại sao?",
+        img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=700&auto=format&fit=crop&q=80",
+        opt: ["Tập thể dục ngày nắng", "Anh ta quá lùn", "Thang máy hỏng tầng 10", "Sợ ánh sáng"],
         cor: 1,
-        trap: "Chuột hoạt hình Mickey luôn đi bằng hai chân."
+        trap: "Người này là người lùn. Ngày mưa có mang cây dù nên dùng chóp dù ấn được nút tầng 10; ngày nắng không có dù chỉ với tới nút tầng 7."
       },
       {
         id: 18,
-        cat: "BẪY TÂM LÝ LIÊN HOÀN",
-        q: "Vậy vịt nào đi bằng 2 chân?",
-        img: "https://images.unsplash.com/photo-1465153690352-10c1b39535f2?w=700&auto=format&fit=crop&q=80",
-        opt: ["Vịt Donald", "Vịt bầu", "Tất cả các con vịt", "Vịt trời"],
-        cor: 2,
-        trap: "Sau câu chuột Mickey, người ta hay bị bẫy nói 'Vịt Donald', nhưng vịt bình thường con nào chả đi bằng 2 chân!"
+        cat: "ĐỐ MẸO THẮP SÁNG",
+        q: "10 cây nến đang cháy trong phòng. Gió thổi tắt 2 cây, một lát sau gió thổi tắt thêm 1 cây nữa. Người ta đóng cửa sổ lại. Hỏi cuối cùng còn lại mấy cây nến?",
+        img: "https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?w=700&auto=format&fit=crop&q=80",
+        opt: ["7 cây", "3 cây", "0 cây", "10 cây"],
+        cor: 1,
+        trap: "7 cây nến còn cháy sẽ bị thiêu rụi thành tro sáp không còn gì. 3 cây bị gió thổi tắt sớm sẽ không bị cháy hết và còn nguyên vẹn."
       },
       {
         id: 19,
-        cat: "ĐỐ NGHỀ NGHIỆP",
-        q: "Bệnh gì bác sĩ hoàn toàn bó tay?",
-        img: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?w=700&auto=format&fit=crop&q=80",
-        opt: ["Bệnh tim", "Bệnh gãy tay", "Bệnh nan y", "Bệnh đãng trí"],
+        cat: "ĐỐ CHỮ TIẾNG ANH-VIỆT",
+        q: "Từ nào bắt đầu bằng chữ T, kết thúc bằng chữ T, và bên trong chứa đầy Trà (Tea)?",
+        img: "https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=700&auto=format&fit=crop&q=80",
+        opt: ["Tách trà", "Teapot (Ấm trà)", "Thùng trà", "Toa trà"],
         cor: 1,
-        trap: "Bệnh gãy tay thì bác sĩ phải lấy băng bột để 'bó tay' lại!"
+        trap: "Teapot bắt đầu bằng chữ 'T', kết thúc bằng chữ 'T' và công dụng của nó là chứa đầy trà (Tea)."
       },
       {
         id: 20,
-        cat: "VẬT LÝ XE CỘ",
-        q: "Cầu chịu tải tối đa 10 tấn. Một xe tải chở hàng nặng đúng 10 tấn chạy lên. 1 con chim bay đậu lên xe, cầu có sập không?",
-        img: "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?w=700&auto=format&fit=crop&q=80",
-        opt: ["Sập ngay lập tức", "Không sập vì xăng đã tiêu hao bớt", "Sập vì quá tải", "Chim quá nặng"],
+        cat: "BẪY CỜ BẠC",
+        q: "Một người đàn ông đẩy chiếc ô tô nhỏ của mình tới trước một khách sạn và ngay lập tức hét lên: 'Tôi phá sản rồi!'. Chuyện gì đã xảy ra?",
+        img: "https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?w=700&auto=format&fit=crop&q=80",
+        opt: ["Bị trộm xe", "Đang chơi cờ Tỷ phú (Monopoly)", "Đâm sập cửa khách sạn", "Thua độ bóng đá"],
         cor: 1,
-        trap: "Xe chạy lên cầu đã đốt cháy tiêu hao một lượng xăng dầu, làm trọng lượng tổng nhỏ hơn 10 tấn."
+        trap: "Anh ta đang chơi trò cờ Tỷ phú, đẩy quân xe đi vào ô khách sạn của đối thủ và không đủ tiền trả tiền phòng."
       },
       {
         id: 21,
-        cat: "ĐỘNG VẬT",
-        q: "Một con hổ bị xích vào gốc cây bằng sợi xích dài 3 mét. Bụi cỏ cách gốc cây 4 mét. Làm sao hổ ăn được cỏ?",
-        img: "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?w=700&auto=format&fit=crop&q=80",
-        opt: ["Giật đứt xích", "Hổ không ăn cỏ", "Chờ gió thổi cỏ lại", "Nhờ con khác lấy"],
+        cat: "PHÂN TÍCH VẬN TỐC",
+        q: "Đoàn tàu hỏa dài 1 km chạy với vận tốc 60 km/h đi xuyên qua đường hầm dài 1 km. Mất bao lâu để đoàn tàu đi hoàn toàn ra khỏi đường hầm?",
+        img: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=700&auto=format&fit=crop&q=80",
+        opt: ["1 phút", "2 phút", "1.5 phút", "3 phút"],
         cor: 1,
-        trap: "Hổ là loài ăn thịt, không bao giờ ăn cỏ."
+        trap: "Để tàu ra hoàn toàn, đuôi tàu phải ra khỏi hầm. Quãng đường cần đi = Chiều dài hầm (1km) + Chiều dài tàu (1km) = 2km. Với vận tốc 60km/h (1km/phút) thì mất đúng 2 phút."
       },
       {
         id: 22,
-        cat: "ĐỊA LÝ MẸO",
-        q: "Nhà xanh ở bên trái đường, nhà đỏ ở bên phải đường. Hỏi nhà trắng ở đâu?",
-        img: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=700&auto=format&fit=crop&q=80",
-        opt: ["Ở giữa", "Ở Mỹ (Washington D.C)", "Ở cuối đường", "Ở đối diện"],
+        cat: "BẪY THỪA KẾ 17 LẠC ĐÀ",
+        q: "Cha để lại 17 con lạc đà chia cho 3 con: Con cả 1/2, con nhì 1/3, con út 1/9 (không được xẻ thịt). Một nhà thông thái đã làm thế nào để chia đúng?",
+        img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=700&auto=format&fit=crop&q=80",
+        opt: ["Bán bớt 1 con", "Cho mượn thêm 1 con thành 18 con", "Giết 1 con nấu cỗ", "Từ chối chia"],
         cor: 1,
-        trap: "Nhà Trắng (White House) tọa lạc tại thủ đô Washington D.C, Mỹ."
+        trap: "Cho mượn thêm 1 con: 18 con. Con cả lấy 18/2 = 9 con; con nhì lấy 18/3 = 6 con; con út lấy 18/9 = 2 con. Tổng: 9 + 6 + 2 = 17 con. Trả lại 1 con mượn."
       },
       {
         id: 23,
-        cat: "TRIẾT HỌC MẸO",
-        q: "Cái gì luôn luôn đến nhưng không bao giờ thực sự tới?",
-        img: "https://images.unsplash.com/photo-1508873696983-2df5293cbdaf?w=700&auto=format&fit=crop&q=80",
-        opt: ["Tuổi già", "Ngày mai", "Mùa xuân", "Cái chết"],
-        cor: 1,
-        trap: "Ngày mai - khi nó đến thì nó đã trở thành ngày hôm nay."
+        cat: "ĐỐ CHỮ CHỌN LỌC",
+        q: "Cái gì bạn càng lấy đi nhiều từ nó thì nó lại càng trở nên to lớn hơn?",
+        img: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=700&auto=format&fit=crop&q=80",
+        opt: ["Hố đất", "Khối băng", "Bánh xe", "Túi tiền"],
+        cor: 0,
+        trap: "Cái hố (cái lỗ): bạn càng xúc bớt đất đá ra khỏi nó thì thể tích cái hố càng to ra."
       },
       {
         id: 24,
-        cat: "ĐỐ CHỮ ĐỊA PHƯƠNG",
-        q: "Quần gì rộng nhất thế giới?",
-        img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&auto=format&fit=crop&q=80",
-        opt: ["Quần bò", "Quần đảo", "Quần đùi", "Quần thụng"],
-        cor: 1,
-        trap: "Quần đảo (tập hợp nhiều hòn đảo trên biển khơi)."
+        cat: "ĐỊA LÝ CỰC BẮC",
+        q: "Nhà thám hiểm đi 1 km về phía Nam, rẽ sang Đông đi 1 km, rồi đi 1 km về phía Bắc thì quay về đúng điểm xuất phát. Ông ta thấy một con gấu, con gấu màu gì?",
+        img: "https://images.unsplash.com/photo-1589656966895-2f33e7653819?w=700&auto=format&fit=crop&q=80",
+        opt: ["Màu nâu", "Màu đen", "Màu trắng", "Không xác định"],
+        cor: 2,
+        trap: "Điểm duy nhất thỏa mãn lộ trình khép kín này là Cực Bắc của Trái Đất. Ở Cực Bắc chỉ có gấu Bắc Cực màu trắng."
       },
       {
         id: 25,
-        cat: "ĐỐ CHỮ THỜI GIAN",
-        q: "Lịch gì dài nhất trên đời?",
-        img: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=700&auto=format&fit=crop&q=80",
-        opt: ["Lịch vạn niên", "Lịch sử", "Lịch treo tường", "Lịch âm"],
+        cat: "HỘI THẢO ĐỘNG VẬT",
+        q: "Chúa sơn lâm triệu tập đại hội muôn loài, tất cả sinh vật đều có mặt đầy đủ. Hỏi con vật nào vắng mặt?",
+        img: "https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=700&auto=format&fit=crop&q=80",
+        opt: ["Con muỗi", "Con voi (đang bị nhốt trong tủ lạnh)", "Con khủng long", "Con cá mập"],
         cor: 1,
-        trap: "Lịch sử trải dài từ thời cổ đại đến tận ngày nay."
+        trap: "Liên kết chuỗi câu đố cổ điển: Con voi vẫn còn đang bị nhét trong tủ lạnh sau 4 bước nên không thể đến dự hội."
       },
       {
         id: 26,
-        cat: "ĐỐ CHỮ CUỘC SỐNG",
-        q: "Con đường nào dài nhất mà ai cũng phải đi qua?",
-        img: "https://images.unsplash.com/photo-1470246973918-29a93221c455?w=700&auto=format&fit=crop&q=80",
-        opt: ["Đường cao tốc", "Đường đời", "Đường xích đạo", "Đường sắt"],
+        cat: "SÔNG CÁ SẤU",
+        q: "Một khúc sông nổi tiếng nhiều đàn cá sấu ăn thịt hung tợn, không có thuyền hay cầu. Làm sao một người có thể bơi qua sông an toàn?",
+        img: "https://images.unsplash.com/photo-1520638023775-6831b31469c7?w=700&auto=format&fit=crop&q=80",
+        opt: ["Bôi mỡ động vật", "Cứ nhảy xuống bơi vì cá sấu đã đi họp muôn loài", "Đốt đuốc", "Chờ ban đêm"],
         cor: 1,
-        trap: "Đường đời đi từ lúc sinh ra đến khi mất đi."
+        trap: "Cá sấu đều đã đi dự đại hội muôn loài của chúa sơn lâm ở câu trước nên dưới sông không còn con nào."
       },
       {
         id: 27,
-        cat: "ĐỐ CHỮ ĐỊA DANH",
-        q: "Xã nào đông dân nhất thế giới?",
-        img: "https://images.unsplash.com/photo-1477959858617-67f30bc75b82?w=700&auto=format&fit=crop&q=80",
-        opt: ["Xã hội", "Xã đàn", "Xã nông thôn", "Xã công nghiệp"],
-        cor: 0,
-        trap: "Xã hội bao gồm toàn thể loài người trên Trái Đất."
+        cat: "BẪY TAI NẠN HY HỮU",
+        q: "Sau khi bơi qua sông cá sấu an toàn, người đó vừa đặt chân lên bờ thì lăn ra chết ngay. Nguyên nhân tử vong là gì?",
+        img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=700&auto=format&fit=crop&q=80",
+        opt: ["Kiệt sức ngạt thở", "Con hươu cao cổ văng khỏi tủ lạnh rơi trúng đầu", "Bị rắn cắn", "Trúng gió"],
+        cor: 1,
+        trap: "Bị con hươu cao cổ (bị lôi ra khỏi tủ lạnh để nhét voi vào) từ trên trời rơi trúng đầu."
       },
       {
         id: 28,
-        cat: "NGHỊCH LÝ ĐỜI SỐNG",
-        q: "Cái gì càng rửa thì càng bẩn?",
-        img: "https://images.unsplash.com/photo-1548839140-29a749e1bc4e?w=700&auto=format&fit=crop&q=80",
-        opt: ["Cái khăn lau", "Nước", "Bát đĩa", "Quần áo"],
+        cat: "ĐỐ CHỮ TIẾNG VIỆT",
+        q: "Có bao nhiêu chữ cái 'C' trong câu đố sau: 'Cơm canh cà cá cua ngon quá'?",
+        img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=700&auto=format&fit=crop&q=80",
+        opt: ["5 chữ", "1 chữ C viết hoa", "6 chữ", "0 chữ"],
         cor: 1,
-        trap: "Nước dùng để rửa đồ thì bản thân nước sẽ bị nhiễm bẩn."
+        trap: "Đề hỏi rõ chữ hoa 'C'. Chỉ có duy nhất 1 chữ 'C' viết hoa ở đầu câu, các chữ còn lại là chữ thường 'c'."
       },
       {
         id: 29,
-        cat: "SINH HỌC MẸO",
-        q: "Con gì đập thì sống, không đập thì chết?",
-        img: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=700&auto=format&fit=crop&q=80",
-        opt: ["Con muỗi", "Trái tim", "Con rết", "Con chuột"],
+        cat: "TAY LÁI ĐI BỘ",
+        q: "Một tài xế xe tải đi vào đường cấm một chiều, rẽ trái nơi có biển cấm rẽ ngay trước mặt CSGT nhưng không hề bị tuýt còi. Vì sao?",
+        img: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=700&auto=format&fit=crop&q=80",
+        opt: ["Xe ưu tiên", "Anh ta đang đi bộ", "Đút lót cảnh sát", "Đường đang sửa"],
         cor: 1,
-        trap: "Quả tim (trái tim ngừng đập là cơ thể chết)."
+        trap: "Người này làm nghề tài xế xe tải nhưng lúc đó anh ta đang đi bộ trên vỉa hè."
       },
       {
         id: 30,
-        cat: "ĐỒ VẬT MẸO",
-        q: "Cái gì có mũi mà không có mắt, có mồm mà không có lưỡi?",
-        img: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=700&auto=format&fit=crop&q=80",
-        opt: ["Mũi tên", "Mũi thuyền", "Chiếc kéo", "Chiếc giày"],
+        cat: "ĐỐ MẸO THỊ TRƯỜNG",
+        q: "Thị trấn chỉ có 2 thợ cắt tóc: Tiệm A thợ tóc tai bù xù nham nhở, tiệm bẩn; Tiệm B thợ tóc đẹp lộng lẫy, tiệm sạch bong. Người thông minh sẽ chọn cắt ở đâu?",
+        img: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=700&auto=format&fit=crop&q=80",
+        opt: ["Tiệm B", "Tiệm A", "Tự cắt ở nhà", "Đi thị trấn khác"],
         cor: 1,
-        trap: "Mũi thuyền/tàu thủy."
+        trap: "Vì cả thị trấn chỉ có 2 thợ, nên họ phải cắt tóc cho nhau! Thợ tiệm A cắt cho thợ B nên thợ B mới đẹp; còn thợ B cắt cho thợ A khiến đầu thợ A xấu."
       },
       {
         id: 31,
-        cat: "TOÁN CHIA MẸO",
-        q: "Làm sao chia 3 quả táo cho 4 người một cách đều nhau tuyệt đối mà không cần cắt nát từng miếng?",
-        img: "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=700&auto=format&fit=crop&q=80",
-        opt: ["Mua thêm 1 quả", "Ép lấy nước sinh tố", "Chia 3/4 quả", "Bốc thăm loại 1 người"],
-        cor: 1,
-        trap: "Ép thành nước táo rồi rót đều vào 4 cốc bằng nhau."
-      },
-      {
-        id: 32,
-        cat: "HÀNH VI MẸO",
-        q: "Cái gì đi lên thì ướt, đi xuống thì khô?",
-        img: "https://images.unsplash.com/photo-1516541196182-6bdb0516ed27?w=700&auto=format&fit=crop&q=80",
-        opt: ["Cây dù", "Cái gàu múc nước giếng", "Thang máy", "Áo mưa"],
-        cor: 1,
-        trap: "Gàu múc nước: thả xuống giếng thì khô, kéo lên thì đầy nước ướt sũng."
-      },
-      {
-        id: 33,
-        cat: "CƠ THỂ MẸO",
-        q: "Cái gì luôn luôn nhận vào mà không bao giờ nhả ra?",
-        img: "https://images.unsplash.com/photo-1516585427167-9f4af9627e6c?w=700&auto=format&fit=crop&q=80",
-        opt: ["Lỗ tai", "Cái miệng", "Cái mũi", "Dạ dày"],
-        cor: 0,
-        trap: "Lỗ tai chỉ thu nhận âm thanh vào chứ không phát ra âm thanh."
-      },
-      {
-        id: 34,
-        cat: "SINH HỌC DÂN GIAN",
-        q: "Trong 12 con giáp, có bao nhiêu con biết bơi?",
-        img: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=700&auto=format&fit=crop&q=80",
-        opt: ["Chỉ có Chuột và Rắn", "Cả 12 con giáp", "Chỉ có Rồng và Cọp", "6 con"],
-        cor: 1,
-        trap: "Cả 12 loài động vật trong 12 con giáp đều có bản năng bơi được dưới nước khi cần."
-      },
-      {
-        id: 35,
-        cat: "THỂ THAO MẸO",
-        q: "Khi sút phạt đền (penalty), cầu thủ bóng đá sẽ sút vào đâu đầu tiên?",
-        img: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=700&auto=format&fit=crop&q=80",
-        opt: ["Góc cao khung thành", "Sút vào quả bóng", "Sút vào lưới", "Chân thủ môn"],
-        cor: 1,
-        trap: "Chân phải đá trúng vào quả bóng đầu tiên thì bóng mới bay được."
-      },
-      {
-        id: 36,
-        cat: "TIẾNG SÚNG MẸO",
-        q: "Trên cành cây có 5 con chim. Thợ săn bắn 'đoàng' trúng 1 con rơi xuống đất. Hỏi trên cành còn mấy con?",
-        img: "https://images.unsplash.com/photo-1444464666168-49d633b86797?w=700&auto=format&fit=crop&q=80",
-        opt: ["Còn 4 con", "Không còn con nào", "Còn 1 con", "Còn 3 con"],
-        cor: 1,
-        trap: "Tiếng súng nổ vang trời khiến 4 con còn lại hoảng sợ bay mất."
-      },
-      {
-        id: 37,
-        cat: "BẪY XẾP HẠNG",
-        q: "Bạn đang chạy đua và vượt qua người đang chạy ở vị trí thứ nhì. Hỏi bạn đang đứng thứ mấy?",
+        cat: "BẪY TÂM LÝ CHẠY ĐUA",
+        q: "Bạn tham gia một giải chạy bộ và bứt tốc vượt qua người đang chạy ở vị trí thứ nhì. Hỏi hiện tại bạn đang ở vị trí thứ mấy?",
         img: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=700&auto=format&fit=crop&q=80",
         opt: ["Thứ nhất", "Thứ nhì", "Thứ ba", "Về đích"],
         cor: 1,
-        trap: "Bạn vượt qua người thứ nhì thì bạn thay thế vị trí thứ nhì của họ."
+        trap: "Bạn vượt qua người thứ nhì thì bạn thay thế vị trí của họ, bạn đang đứng thứ nhì (người thứ nhất vẫn chạy phía trước bạn)."
       },
       {
-        id: 38,
-        cat: "BẪY XẾP HẠNG 2",
-        q: "Nếu bạn vượt qua người đang chạy ở vị trí cuối cùng, bạn đứng thứ mấy?",
+        id: 32,
+        cat: "BẪY CHẠY ĐUA 2",
+        q: "Nếu bạn vượt qua người đang chạy ở vị trí cuối cùng trong cuộc đua, bạn đứng thứ mấy?",
         img: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=700&auto=format&fit=crop&q=80",
-        opt: ["Áp chót", "Thứ nhất", "Không thể xảy ra", "Thứ nhì"],
+        opt: ["Áp chót", "Thứ nhất", "Điều này không thể xảy ra", "Thứ nhì"],
         cor: 2,
-        trap: "Làm sao có ai chạy sau người cuối cùng để mà bạn vượt qua họ được!"
+        trap: "Không ai có thể chạy sau người cuối cùng để mà vượt qua người đó cả."
       },
       {
-        id: 39,
-        cat: "BẪY QUAN SÁT",
-        q: "Bạn bước vào căn phòng tối chỉ có 1 que diêm, 1 bếp củi, 1 cây đèn dầu và 1 ngọn nến. Bạn phải thắp gì trước?",
-        img: "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=700&auto=format&fit=crop&q=80",
-        opt: ["Ngọn nến", "Đèn dầu", "Que diêm", "Bếp củi"],
-        cor: 2,
-        trap: "Phải quẹt que diêm cháy trước thì mới có lửa thắp các thứ khác."
-      },
-      {
-        id: 40,
-        cat: "TOÁN ĐẾM BẪY",
-        q: "Bác Ba có 17 con cừu. Tất cả trừ 9 con cừu bị dịch bệnh chết hết. Hỏi bác Ba còn lại bao nhiêu con?",
-        img: "https://images.unsplash.com/photo-1484557052118-f32bd25b45b5?w=700&auto=format&fit=crop&q=80",
-        opt: ["8 con", "9 con", "0 con", "17 con"],
-        cor: 1,
-        trap: "'Tất cả trừ 9 con bị chết' nghĩa là còn sống sót đúng 9 con cừu."
-      },
-      {
-        id: 41,
-        cat: "TOÁN TÁO",
-        q: "Có 3 quả táo trên bàn, bạn đi tới lấy đi 2 quả. Hỏi BẠN có bao nhiêu quả táo?",
+        id: 33,
+        cat: "BẪY ĐẾM ĐỒ VẬT",
+        q: "Có 3 quả táo trên bàn, bạn đi lại và lấy đi 2 quả. Hỏi BẠN có bao nhiêu quả táo?",
         img: "https://images.unsplash.com/photo-1570913149827-d2ac84ab3f9a?w=700&auto=format&fit=crop&q=80",
         opt: ["1 quả", "2 quả", "3 quả", "0 quả"],
         cor: 1,
-        trap: "Bạn cầm đi 2 quả thì bạn sở hữu 2 quả táo."
+        trap: "Đề hỏi 'BẠN có bao nhiêu quả', bạn vừa cầm lấy 2 quả thì bạn có 2 quả táo trong tay."
+      },
+      {
+        id: 34,
+        cat: "TOÁN CHIA TÁO",
+        q: "Có 5 quả táo trong rổ chia đều cho 5 người bạn, nhưng trong rổ vẫn còn lại đúng 1 quả táo. Tại sao?",
+        img: "https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=700&auto=format&fit=crop&q=80",
+        opt: ["Quả táo giả", "Người thứ 5 cầm luôn cái rổ chứa quả táo", "Có 6 quả táo", "Một người từ chối nhận"],
+        cor: 1,
+        trap: "Người bạn cuối cùng được trao cho nguyên cả chiếc rổ chứa quả táo bên trong."
+      },
+      {
+        id: 35,
+        cat: "ĐỐ CHỮ ĐỊA DANH",
+        q: "Quần gì có diện tích rộng nhất trên thế giới?",
+        img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&auto=format&fit=crop&q=80",
+        opt: ["Quần bò", "Quần đảo", "Quần đùi", "Quần ống rộng"],
+        cor: 1,
+        trap: "Quần đảo (tập hợp các hòn đảo trên đại dương) có diện tích hàng triệu km²."
+      },
+      {
+        id: 36,
+        cat: "NGHỊCH LÝ ĐỐI NGHỊCH",
+        q: "Cái gì người mua biết, người bán biết, nhưng người sử dụng nó không bao giờ biết?",
+        img: "https://images.unsplash.com/photo-1544717305-2782549b5136?w=700&auto=format&fit=crop&q=80",
+        opt: ["Thuốc mê", "Quan tài", "Bánh sinh nhật", "Món quà bí mật"],
+        cor: 1,
+        trap: "Quan tài: người nằm bên trong đã qua đời nên không thể biết."
+      },
+      {
+        id: 37,
+        cat: "VẬT LÝ RƠI TỰ DO",
+        q: "Làm thế nào để thả một quả trứng gà sống rơi 2 mét xuống sàn bê tông mà vỏ không hề bị nứt vỡ?",
+        img: "https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=700&auto=format&fit=crop&q=80",
+        opt: ["Bọc bông", "Thả từ độ cao 3 mét", "Luộc chín trứng", "Thả nghiêng"],
+        cor: 1,
+        trap: "Thả từ độ cao 3 mét: trong 2 mét rơi đầu tiên quả trứng vẫn đang ở trên không trung chưa chạm sàn nên chưa thể vỡ."
+      },
+      {
+        id: 38,
+        cat: "NGHI ÁN BẮT CÓC",
+        q: "Người mù, người câm và người điếc cùng vào tiệm tạp hóa. Người câm làm động tác chải răng để mua bàn chải. Người mù muốn mua kính râm thì làm thế nào?",
+        img: "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=700&auto=format&fit=crop&q=80",
+        opt: ["Đeo kính tượng trưng", "Nói: 'Bán cho tôi kính râm'", "Sờ vào mắt", "Viết giấy"],
+        cor: 1,
+        trap: "Người đó chỉ bị mù chứ không bị câm, cứ mở miệng ra nói bình thường."
+      },
+      {
+        id: 39,
+        cat: "BẪY KHẢ NĂNG NHẢY",
+        q: "Bạn có thể nhảy cao hơn một tòa nhà chọc trời 81 tầng không?",
+        img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=700&auto=format&fit=crop&q=80",
+        opt: ["Có thể", "Không thể", "Chỉ khi có dù", "Chỉ nhảy trên máy bay"],
+        cor: 0,
+        trap: "Có thể! Tòa nhà chọc trời hoàn toàn không biết nhảy (mức nhảy của nó bằng 0cm), bạn chỉ cần nhảy lên 5cm là đã cao hơn nó rồi."
+      },
+      {
+        id: 40,
+        cat: "ĐỐ CHỮ CUỘC ĐỜI",
+        q: "Con đường nào dài nhất mà bất cứ ai cũng buộc phải đi qua hết đời mình?",
+        img: "https://images.unsplash.com/photo-1470246973918-29a93221c455?w=700&auto=format&fit=crop&q=80",
+        opt: ["Đường cao tốc", "Đường xích đạo", "Đường đời", "Đường sắt Bắc Nam"],
+        cor: 2,
+        trap: "Đường đời trải dài từ khi sinh ra đến khi nhắm mắt xuôi tay."
+      },
+      {
+        id: 41,
+        cat: "TOÁN ĐẾM CỪU",
+        q: "Một đàn cừu có 20 con. Tất cả trừ 11 con bị sói ăn thịt hết. Hỏi bác nông dân còn lại bao nhiêu con cừu sống?",
+        img: "https://images.unsplash.com/photo-1484557052118-f32bd25b45b5?w=700&auto=format&fit=crop&q=80",
+        opt: ["9 con", "11 con", "0 con", "20 con"],
+        cor: 1,
+        trap: "'Tất cả trừ 11 con' nghĩa là có 11 con sống sót không bị sói ăn thịt."
       },
       {
         id: 42,
-        cat: "ĐỊA LÝ LỊCH SỬ",
-        q: "Trước khi đỉnh Everest được con người khám phá ra, đỉnh núi nào cao nhất thế giới?",
+        cat: "KHOA HỌC TỔNG QUAN",
+        q: "Trước khi đỉnh Everest được con người đo đạc và khám phá ra, đỉnh núi nào cao nhất trên Trái Đất?",
         img: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=700&auto=format&fit=crop&q=80",
-        opt: ["Đỉnh K2", "Đỉnh Phú Sĩ", "Vẫn là đỉnh Everest", "Đỉnh Fansipan"],
+        opt: ["Đỉnh K2", "Đỉnh Fansipan", "Vẫn là đỉnh Everest", "Đỉnh Phú Sĩ"],
         cor: 2,
-        trap: "Dù con người chưa phát hiện ra thì đỉnh Everest nó vẫn là đỉnh cao nhất Trái Đất."
+        trap: "Cho dù loài người chưa khám phá ra thì đỉnh Everest trên thực tế vẫn luôn là đỉnh núi cao nhất Trái Đất."
       },
       {
         id: 43,
-        cat: "ẨM THỰC MẸO",
-        q: "Cái gì chỉ khi bị vỡ ra thì người ta mới dùng được?",
-        img: "https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=700&auto=format&fit=crop&q=80",
-        opt: ["Chiếc ly thủy tinh", "Quả trứng", "Gương soi", "Kính mắt"],
+        cat: "NGHỊCH LÝ ĐỜI SỐNG",
+        q: "Cái gì càng lau chùi, càng cọ rửa thì lại càng biến thành thứ dơ bẩn?",
+        img: "https://images.unsplash.com/photo-1548839140-29a749e1bc4e?w=700&auto=format&fit=crop&q=80",
+        opt: ["Cái khăn lau", "Nước dùng để rửa", "Bồn rửa chén", "Cục xà phòng"],
         cor: 1,
-        trap: "Quả trứng phải đập vỡ vỏ ra thì mới nấu ăn được."
+        trap: "Nước: khi bạn dùng nó để rửa đồ vật bẩn thì chính nguồn nước đó sẽ bị bẩn đục."
       },
       {
         id: 44,
-        cat: "TÀI XẾ MẸO",
-        q: "Trời tối đen không trăng sao, xe tải không bật đèn pha, đèn đường hỏng. Một con mèo đen chạy qua đường, tài xế vẫn đạp phanh dừng kịp. Vì sao?",
+        cat: "HIỆN TƯỢNG BAN NGÀY",
+        q: "Đêm đen không đèn đường, xe ô tô tắt ngấm đèn pha. Một chú mèo đen băng qua đường nhưng tài xế vẫn phanh kịp không đâm trúng. Vì sao?",
         img: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=700&auto=format&fit=crop&q=80",
-        opt: ["Mắt mèo phát sáng", "Lúc đó là ban ngày", "Tài xế đeo kính nhìn đêm", "Nhờ giác quan thứ 6"],
+        opt: ["Mắt mèo phát sáng", "Lúc đó là ban ngày trời nắng", "Tài xế nhìn đêm", "Linh cảm mách bảo"],
         cor: 1,
-        trap: "Lúc đó là ban ngày, có ánh sáng mặt trời soi rõ."
+        trap: "Vụ việc diễn ra vào ban ngày trời sáng rõ, tài xế nhìn thấy rõ con mèo từ xa."
       },
       {
         id: 45,
-        cat: "MẸO GIAO THÔNG",
-        q: "Một tài xế đi ngược chiều trên đường một chiều nhưng cảnh sát giao thông nhìn thấy lại không phạt. Tại sao?",
-        img: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=700&auto=format&fit=crop&q=80",
-        opt: ["Anh ta đút lót", "Anh ta đang đi bộ", "Xe ưu tiên", "Đường đang sửa"],
-        cor: 1,
-        trap: "Người tài xế đó đang đi bộ chứ không lái xe."
-      },
-      {
-        id: 46,
-        cat: "ĐỐ CHỮ ĐỘNG VẬT",
-        q: "Con gì đực không có cái, mà cái lại không có đực?",
-        img: "https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=700&auto=format&fit=crop&q=80",
-        opt: ["Con đực và Con cái", "Con thoi", "Con dao", "Con đường"],
-        cor: 0,
-        trap: "Tên gọi 'con đực' (không có con cái) và 'con cái' (không có con đực)."
-      },
-      {
-        id: 47,
-        cat: "BẪY TƯ DUY NẶNG",
-        q: "Một cân sắt và một cân bông gòn, cái nào nặng hơn?",
-        img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=700&auto=format&fit=crop&q=80",
-        opt: ["Cân sắt nặng hơn", "Cân bông nặng hơn", "Nặng bằng nhau", "Tùy độ ẩm"],
-        cor: 2,
-        trap: "Cả hai đều nặng đúng 1 cân (1 kg)."
-      },
-      {
-        id: 48,
-        cat: "THIÊN VĂN MẸO",
-        q: "Mặt trời mọc ở hướng Đông, lặn ở hướng Tây. Vậy bóng của cột cờ buổi trưa đứng bóng sẽ chỉ về hướng nào?",
-        img: "https://images.unsplash.com/photo-1509114397022-ed747cca3f65?w=700&auto=format&fit=crop&q=80",
-        opt: ["Hướng Bắc", "Hướng Nam", "Không có bóng dưới chân", "Hướng Đông"],
-        cor: 2,
-        trap: "Buổi trưa mặt trời chiếu vuông góc trên đỉnh đầu thì bóng nằm gọn ngay dưới chân cột."
-      },
-      {
-        id: 49,
-        cat: "ĐỐ CHỮ HÀI HƯỚC",
-        q: "Con gì sáng đi 4 chân, trưa đi 2 chân, chiều đi 3 chân?",
-        img: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=700&auto=format&fit=crop&q=80",
-        opt: ["Con khỉ", "Con người", "Con chó", "Con gấu"],
-        cor: 1,
-        trap: "Con người: bé bò 4 chi, lớn đi 2 chân, già chống thêm gậy thành 3 chân."
-      },
-      {
-        id: 50,
-        cat: "ĐỐ CÂU CHỮ",
-        q: "Từ nào trong tiếng Việt có 9 chữ 'H'?",
-        img: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=700&auto=format&fit=crop&q=80",
-        opt: ["Chữ 'Hát'", "Từ 'Chính'", "Từ 'Chính hiệu'", "Từ 'Chín chữ H'"],
-        cor: 2,
-        trap: "Chính (chín) chữ H."
-      },
-      {
-        id: 51,
-        cat: "ĐỐ VẬT THỂ",
-        q: "Cái gì có cổ nhưng không có miệng?",
-        img: "https://images.unsplash.com/photo-1523381294911-8d3cead13475?w=700&auto=format&fit=crop&q=80",
-        opt: ["Cái áo", "Cái chai", "Cái ấm nước", "Cái bàn"],
-        cor: 0,
-        trap: "Cổ áo."
-      },
-      {
-        id: 52,
-        cat: "ĐỐ VẬT DỤNG",
-        q: "Cái gì có răng nhưng không bao giờ nhai thức ăn?",
-        img: "https://images.unsplash.com/photo-1590159763121-7c9ff3149e0a?w=700&auto=format&fit=crop&q=80",
-        opt: ["Cái lược", "Chiếc cưa", "Bánh răng", "Cả 3 đáp án trên"],
-        cor: 3,
-        trap: "Lược, cưa và bánh xe răng đều có răng nhưng không dùng để ăn."
-      },
-      {
-        id: 53,
-        cat: "ĐỐ NƯỚC",
-        q: "Ở đâu mà hôm nay lại đến trước hôm qua?",
-        img: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=700&auto=format&fit=crop&q=80",
-        opt: ["Bắc Cực", "Trong từ điển", "Trên Sao Hỏa", "Trong giấc mơ"],
-        cor: 1,
-        trap: "Trong từ điển tiếng Việt: từ 'Hôm nay' (vần H-o) xếp trước từ 'Hôm qua' (vần H-o-m-q)."
-      },
-      {
-        id: 54,
-        cat: "HIỆN TƯỢNG",
-        q: "Cái gì luôn đi theo bạn khắp nơi dưới ánh sáng, nhưng biến mất ngay khi trời tối?",
-        img: "https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?w=700&auto=format&fit=crop&q=80",
-        opt: ["Điện thoại", "Cái bóng của bạn", "Bộ quần áo", "Dấu chân"],
-        cor: 1,
-        trap: "Cái bóng của chính bạn."
-      },
-      {
-        id: 55,
-        cat: "ĐỐ ĐỘNG VẬT",
-        q: "Con gì đực thì đẻ trứng, con cái thì không?",
-        img: "https://images.unsplash.com/photo-1563281577-a7be47e20db9?w=700&auto=format&fit=crop&q=80",
-        opt: ["Cá ngựa đực", "Con gà trống", "Không có con nào", "Thằn lằn đực"],
-        cor: 2,
-        trap: "Cá ngựa đực chỉ 'ấp trứng' trong túi chứ trứng vẫn do cá ngựa cái sinh ra."
-      },
-      {
-        id: 56,
-        cat: "ĂN UỐNG MẸO",
-        q: "Cái gì càng nấu lâu thì càng cứng lại?",
-        img: "https://images.unsplash.com/photo-1506976785307-8732e854ad03?w=700&auto=format&fit=crop&q=80",
-        opt: ["Cục thịt", "Quả trứng", "Khoai tây", "Rau luộc"],
-        cor: 1,
-        trap: "Quả trứng luộc càng lâu thì lòng đỏ và lòng trắng càng đông cứng lại."
-      },
-      {
-        id: 57,
-        cat: "BẪY TOÁN MẸO",
-        q: "Có 5 quả táo chia cho 5 người bạn, mỗi người được 1 quả, nhưng trong rổ vẫn còn lại 1 quả. Vì sao?",
-        img: "https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=700&auto=format&fit=crop&q=80",
-        opt: ["Người thứ 5 lấy luôn cái rổ có quả táo", "Có quả táo nhựa", "Rổ có 6 quả", "Người chia không lấy"],
-        cor: 0,
-        trap: "Người cuối cùng được đưa nguyên cả chiếc rổ chứa quả táo bên trong."
-      },
-      {
-        id: 58,
-        cat: "ĐỐ CƠ THỂ",
-        q: "Cơ quan nào trong cơ thể con người không phát triển kích thước từ khi sinh ra đến lúc già?",
-        img: "https://images.unsplash.com/photo-1544476915-ed1370594142?w=700&auto=format&fit=crop&q=80",
-        opt: ["Lỗ tai", "Nhãn cầu (mắt)", "Mũi", "Lưỡi"],
-        cor: 1,
-        trap: "Nhãn cầu mắt giữ nguyên kích thước gần như không đổi suốt cuộc đời."
-      },
-      {
-        id: 59,
-        cat: "ĐỐ ĐỜI SỐNG",
-        q: "Cái gì bạn có thể giữ sau khi đã cho người khác?",
-        img: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=700&auto=format&fit=crop&q=80",
-        opt: ["Lời hứa", "Tiền bạc", "Chiếc áo", "Cuốn sách"],
-        cor: 0,
-        trap: "Giữ lời hứa sau khi đã hứa với người khác."
-      },
-      {
-        id: 60,
-        cat: "ĐỐ DÂN GIAN",
-        q: "Cây gì không có lá, không có hoa, nhưng che mưa che nắng cho con người?",
-        img: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=700&auto=format&fit=crop&q=80",
-        opt: ["Cây cầu", "Cây dù (cây ô)", "Cây cột điện", "Cây nến"],
-        cor: 1,
-        trap: "Cây dù (cây ô che nắng mưa)."
-      },
-      {
-        id: 61,
-        cat: "ĐỐ CHỮ ĐỐ MẸO",
-        q: "Loại nước nào chứa canxi và sắt nhiều nhất trên đời?",
-        img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=700&auto=format&fit=crop&q=80",
-        opt: ["Nước khoáng", "Nước cờ", "Nước biển", "Nước hầm xương"],
-        cor: 1,
-        trap: "Nước cờ (vì có quân xe bọc sắt, quân mã bằng đồng canxi!)."
-      },
-      {
-        id: 62,
-        cat: "BẪY TOÁN MẸO",
-        q: "Chia 30 cho 1/2 rồi cộng thêm 10. Kết quả là bao nhiêu?",
+        cat: "BẪY TOÁN CHIA PHÂN SỐ",
+        q: "Lấy 30 chia cho 1/2 rồi cộng thêm 10. Đáp án chính xác là bao nhiêu?",
         img: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=700&auto=format&fit=crop&q=80",
         opt: ["25", "70", "40", "50"],
         cor: 1,
-        trap: "30 chia cho 1/2 là 30 nhân 2 = 60, cộng thêm 10 = 70 (rất nhiều người nhầm thành 30 chia đôi = 15 + 10 = 25)."
+        trap: "Nhiều người nhầm chia cho 1/2 là chia đôi (30 / 2 = 15 + 10 = 25). Nhưng phép tính đúng là 30 ÷ 0.5 = 60; 60 + 10 = 70."
+      },
+      {
+        id: 46,
+        cat: "ĐỐ CHỮ ĐỐ MẸO",
+        q: "Trong từ điển tiếng Việt, từ nào mà toàn bộ 100 triệu người dân Việt Nam khi đọc lên đều phát âm là 'sai'?",
+        img: "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=700&auto=format&fit=crop&q=80",
+        opt: ["Từ 'Khuỷu tay'", "Từ 'Sai'", "Từ 'Ngoằn ngoèo'", "Từ 'Trắc trở'"],
+        cor: 1,
+        trap: "Chính là từ 'Sai'. Bất kể đọc đúng chuẩn ngữ âm đến đâu thì từ đó vẫn phát âm là 'Sai'."
+      },
+      {
+        id: 47,
+        cat: "BẪY ĐỐ KÉO DÀI",
+        q: "Vật gì mà bạn càng kéo nó thì nó lại càng bị ngắn đi?",
+        img: "https://images.unsplash.com/photo-1527661591475-527312dd65f5?w=700&auto=format&fit=crop&q=80",
+        opt: ["Dây chun", "Điếu thuốc lá", "Sợi dây chỉ", "Cái lò xo"],
+        cor: 1,
+        trap: "Điếu thuốc lá: mỗi lần người hút 'kéo' một hơi khói là điếu thuốc bị cháy ngắn lại."
+      },
+      {
+        id: 48,
+        cat: "ĐỐ CƠ THỂ",
+        q: "Cái gì tay trái của bạn có thể cầm nắm được nhưng tay phải không bao giờ cầm được?",
+        img: "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=700&auto=format&fit=crop&q=80",
+        opt: ["Cổ tay trái", "Cùi chỏ tay phải", "Ngón tay cái bàn tay trái", "Bàn tay phải"],
+        cor: 1,
+        trap: "Cùi chỏ (khuỷu tay) bên phải: bàn tay phải không thể tự vòng lại cầm cùi chỏ của chính nó."
+      },
+      {
+        id: 49,
+        cat: "ĐỐ VẬT MẸO",
+        q: "Cái gì có thể đi vòng quanh thế giới nhưng suốt đời chỉ chịu nằm yên ở một góc nhỏ?",
+        img: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=700&auto=format&fit=crop&q=80",
+        opt: ["La bàn", "Con tem thư", "Tấm hộ chiếu", "Vệ tinh"],
+        cor: 1,
+        trap: "Con tem thư: được dán dính vào một góc của phong bì thư và chu du khắp năm châu."
+      },
+      {
+        id: 50,
+        cat: "ĐỐ MẸO THẦN KINH",
+        q: "Cái gì bạn không thể giữ được quá 10 phút, mặc dù nó nhẹ hơn cả một sợi lông chim?",
+        img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=700&auto=format&fit=crop&q=80",
+        opt: ["Bong bóng xà phòng", "Hơi thở của bạn", "Bí mật", "Đồng tiền lẻ"],
+        cor: 1,
+        trap: "Hơi thở: con người không thể nín thở liên tục quá 10 phút."
+      },
+      {
+        id: 51,
+        cat: "SINH HỌC DÂN GIAN",
+        q: "Con gì đập thì sống mà không đập thì chết chắc?",
+        img: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=700&auto=format&fit=crop&q=80",
+        opt: ["Con muỗi", "Trái tim", "Con rết", "Con sâu"],
+        cor: 1,
+        trap: "Trái tim: trái tim còn đập thì còn sống, tim ngừng đập là chết."
+      },
+      {
+        id: 52,
+        cat: "BẪY ĐỐ CHỮ GIA ĐÌNH",
+        q: "Một gia đình có 6 anh em trai. Mỗi người anh em trai đều có duy nhất 1 cô em gái. Hỏi gia đình có tất cả bao nhiêu người?",
+        img: "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=700&auto=format&fit=crop&q=80",
+        opt: ["14 người", "9 người", "12 người", "8 người"],
+        cor: 1,
+        trap: "Có bố, mẹ, 6 người con trai và 1 cô con gái út (cô bé là em gái chung của cả 6 người anh) = 2 + 6 + 1 = 9 người."
+      },
+      {
+        id: 53,
+        cat: "ĐỐ CHỮ ĐỘC ĐÁO",
+        q: "Ở đâu mà ngày 'Hôm Nay' lại xuất hiện trước ngày 'Hôm Qua'?",
+        img: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=700&auto=format&fit=crop&q=80",
+        opt: ["Bắc Cực", "Trong từ điển", "Trên sao Hỏa", "Trong cỗ máy thời gian"],
+        cor: 1,
+        trap: "Trong cuốn từ điển: từ 'Hôm nay' (vần H-o-m-n) được xếp trước từ 'Hôm qua' (vần H-o-m-q)."
+      },
+      {
+        id: 54,
+        cat: "BẪY TÂM LÝ CHÓ SÓI",
+        q: "Một con sói bị xích vào gốc cây bằng sợi dây dài 2 mét. Miếng thịt cách gốc cây 3 mét. Làm sao con sói ăn được miếng thịt?",
+        img: "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?w=700&auto=format&fit=crop&q=80",
+        opt: ["Cắn đứt xích", "Đầu dây xích không buộc chặt vào gốc cây", "Sói không ăn thịt", "Chờ gió thổi"],
+        cor: 1,
+        trap: "Đề chỉ nói 'sói bị xích', nhưng không hề nói đầu dây xích kia có bị cột chặt vào gốc cây hay không!"
+      },
+      {
+        id: 55,
+        cat: "ĐỐ VẬT MẸO",
+        q: "Cái gì có cổ nhưng lại không có miệng, có thân nhưng lại không có tay chân?",
+        img: "https://images.unsplash.com/photo-1523381294911-8d3cead13475?w=700&auto=format&fit=crop&q=80",
+        opt: ["Cái áo", "Cái chai", "Cái ấm nước", "Cả A và B"],
+        cor: 3,
+        trap: "Cái chai có cổ chai, thân chai; cái áo có cổ áo, thân áo. Cả hai đều không có miệng ăn."
+      },
+      {
+        id: 56,
+        cat: "BẪY NÉM BÓNG",
+        q: "Làm thế nào để ném một quả bóng tennis thật mạnh, quả bóng tự dừng lại rồi bay ngược lại đúng tay bạn mà không va vào tường hay dùng dây cột?",
+        img: "https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?w=700&auto=format&fit=crop&q=80",
+        opt: ["Xoáy bóng cực mạnh", "Ném thẳng đứng lên trời", "Ném trong ống hút gió", "Ném dưới nước"],
+        cor: 1,
+        trap: "Ném thẳng đứng lên trời: lực hấp dẫn sẽ kéo quả bóng dừng lại ở điểm cao nhất và rơi thẳng ngược về tay bạn."
+      },
+      {
+        id: 57,
+        cat: "MẸO GIAO THƯƠNG",
+        q: "Làm sao chia đều 3 quả táo cho 4 đứa trẻ mà không để đứa nào cảm thấy miếng táo của mình bị cắt vụn hơn?",
+        img: "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=700&auto=format&fit=crop&q=80",
+        opt: ["Mua thêm 1 quả", "Ép thành nước táo chia đều 4 ly", "Chia 3/4 quả mỗi đứa", "Bốc thăm loại 1 đứa"],
+        cor: 1,
+        trap: "Ép 3 quả táo thành nước sinh tố và rót đều vào 4 chiếc ly có vạch mức bằng nhau tuyệt đối."
+      },
+      {
+        id: 58,
+        cat: "ĐỐ CHỮ ĐỊA HÌNH",
+        q: "Núi nào ở Việt Nam mà tên gọi nghe như bị chặt thái ra từng khúc mỏng?",
+        img: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=700&auto=format&fit=crop&q=80",
+        opt: ["Núi Tam Đảo", "Núi Thái Sơn", "Núi Ngũ Hành Sơn", "Núi Bà Đen"],
+        cor: 1,
+        trap: "Thái Sơn: từ 'Thái' trong tiếng Việt có nghĩa là dùng dao thái mỏng thức ăn ra từng lát."
+      },
+      {
+        id: 59,
+        cat: "CÂU CHUYỆN SINH ĐÔI",
+        q: "Hai đứa trẻ sinh ra cùng một mẹ, cùng một ngày, cùng một giờ, cùng năm nhưng không phải là một cặp sinh đôi. Tại sao?",
+        img: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=700&auto=format&fit=crop&q=80",
+        opt: ["Sinh con nuôi", "Chúng là ca sinh 3 (hoặc sinh 4)", "Sai lệch múi giờ", "Mang thai hộ"],
+        cor: 1,
+        trap: "Người mẹ sinh ba (hoặc sinh tư), hai đứa trẻ này nằm trong ca sinh ba đó."
+      },
+      {
+        id: 60,
+        cat: "TOÁN TỔ HỢP TẤT",
+        q: "Trong ngăn kéo tối đen có 10 chiếc tất đen và 10 chiếc tất trắng lẫn lộn. Phải rút ra ít nhất bao nhiêu chiếc để chắc chắn có 1 đôi cùng màu?",
+        img: "https://images.unsplash.com/photo-1586350977771-b3b0abd50c82?w=700&auto=format&fit=crop&q=80",
+        opt: ["11 chiếc", "3 chiếc", "2 chiếc", "10 chiếc"],
+        cor: 1,
+        trap: "Nguyên lý Dirichlet: chỉ có 2 màu (đen và trắng). Lấy 3 chiếc thì chắc chắn phải có ít nhất 2 chiếc cùng màu với nhau."
+      },
+      {
+        id: 61,
+        cat: "MẸO HÀNH KHÁCH",
+        q: "Một người phụ nữ lên xe buýt đông nghẹt người, tài xế không thu tiền của cô và hành khách cũng không ai nhường ghế hay bắt chuyện. Cô ấy là ai?",
+        img: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=700&auto=format&fit=crop&q=80",
+        opt: ["Người tàng hình", "Cô ấy chính là tài xế lái chiếc xe buýt đó", "Người khuyết tật", "Người soát vé"],
+        cor: 1,
+        trap: "Cô ấy chính là người lái xe buýt đang ngồi ở vị trí buồng lái."
+      },
+      {
+        id: 62,
+        cat: "BẪY TÂM LÝ BÀN CỜ",
+        q: "Hai kiện tướng cờ vua thi đấu với nhau cả buổi chiều, chơi tổng cộng 5 ván, mỗi người đều thắng 3 ván mà không có ván nào hòa. Vì sao?",
+        img: "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?w=700&auto=format&fit=crop&q=80",
+        opt: ["Trọng tài xử ép", "Họ không chơi cờ với nhau (chơi với đối thủ khác)", "Cả hai gian lận", "Tính cả ván phụ"],
+        cor: 1,
+        trap: "Đề bài chỉ nói hai người chơi cờ vua, chứ không nói họ ngồi đối đầu với nhau trong cùng một bàn cờ."
       },
       {
         id: 63,
-        cat: "ĐỐ VẬT DỤNG",
-        q: "Cái gì có 4 chân nhưng không bao giờ bước đi được?",
-        img: "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=700&auto=format&fit=crop&q=80",
-        opt: ["Cái bàn", "Con voi", "Chiếc xe máy", "Con rùa"],
-        cor: 0,
-        trap: "Cái bàn hoặc cái ghế."
+        cat: "QUY LUẬT THỜI GIAN",
+        q: "Chuyến bay từ Hà Nội vào TP.HCM mất 1 giờ 20 phút, nhưng chuyến bay ngược lại chỉ mất đúng 80 phút. Tại sao có sự chênh lệch này?",
+        img: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=700&auto=format&fit=crop&q=80",
+        opt: ["Ngược chiều gió", "Không hề chênh lệch (1 giờ 20 phút = 80 phút)", "Trái đất tự quay", "Đường bay vòng"],
+        cor: 1,
+        trap: "1 giờ = 60 phút, cộng thêm 20 phút là đúng 80 phút. Thời gian hai chiều là như nhau."
       },
       {
         id: 64,
-        cat: "ĐỐ CHỮ MẸO",
-        q: "Bỏ đầu thành tên một loài chim, bỏ đuôi thành tên một loài thú, để nguyên là một loại hoa quả. Đó là chữ gì?",
-        img: "https://images.unsplash.com/photo-1550258987-190a2d41a8ba?w=700&auto=format&fit=crop&q=80",
-        opt: ["Quả Mận", "Quả Nho", "Quả Na", "Quả Cam"],
-        cor: 1,
-        trap: "NHO: bỏ đầu còn HO (họ chim?), hay chữ CÚT, hay chữ ĐÀO?"
+        cat: "ĐỐ CHỮ CƠ THỂ",
+        q: "Cái gì thuộc về cơ thể bạn nhưng bạn chỉ có thể nhìn thấy nó qua gương hoặc ảnh chụp mà mắt thường nhìn trực tiếp không bao giờ thấy?",
+        img: "https://images.unsplash.com/photo-1508873696983-2df5293cbdaf?w=700&auto=format&fit=crop&q=80",
+        opt: ["Khuôn mặt của bạn", "Gáy của bạn", "Đôi mắt của bạn", "Cả A, B, C"],
+        cor: 3,
+        trap: "Mắt bạn không thể tự nhảy ra khỏi hốc mắt để nhìn trực tiếp khuôn mặt, đôi mắt hay phía sau gáy của chính bạn."
       },
       {
         id: 65,
-        cat: "MẸO ĐỜI SỐNG",
-        q: "Bạn có thể nhảy cao hơn một tòa nhà chọc trời không?",
-        img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=700&auto=format&fit=crop&q=80",
-        opt: ["Có thể", "Không thể", "Chỉ khi có dù", "Chỉ trên mặt trăng"],
+        cat: "ĐỐ ĐỜI SỐNG",
+        q: "Cái gì bạn có thể chia sẻ cho người khác, nhưng khoảnh khắc bạn chia sẻ nó cho người thứ hai thì bạn đã đánh mất nó?",
+        img: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=700&auto=format&fit=crop&q=80",
+        opt: ["Bí mật", "Tiền bạc", "Tình yêu", "Chiếc áo"],
         cor: 0,
-        trap: "Có thể! Vì tòa nhà chọc trời làm sao biết nhảy, nó đứng yên với độ cao nhảy bằng 0!"
+        trap: "Bí mật: một khi đã có nhiều người cùng biết thì nó không còn là bí mật nữa."
       },
       {
         id: 66,
-        cat: "BẪY TÂM LÝ",
-        q: "Nếu bạn có 1 que diêm trong đêm đông lạnh giá, gặp 1 cái bếp dầu và 1 bếp than, bạn thắp cái nào trước?",
-        img: "https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?w=700&auto=format&fit=crop&q=80",
-        opt: ["Bếp dầu", "Bếp than", "Que diêm", "Cả 2 bếp"],
-        cor: 2,
-        trap: "Vẫn là que diêm phải được thắp trước tiên."
+        cat: "VẬT DỤNG NHÀ BẾP",
+        q: "Cái gì chứa đầy những lỗ thủng li ti nhưng vẫn có thể giữ được nước bên trong?",
+        img: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=700&auto=format&fit=crop&q=80",
+        opt: ["Miếng bọt biển (miếng xốp)", "Cái rổ nhựa", "Tấm vải màn", "Chiếc lưới"],
+        cor: 0,
+        trap: "Miếng bọt biển xốp có vô số lỗ hổng nhưng lại thấm hút và giữ nước rất tốt."
       },
       {
         id: 67,
-        cat: "ĐỐ CHỮ VUI",
-        q: "Cái gì đen khi mua, đỏ khi dùng và xám xịt khi vứt bỏ?",
-        img: "https://images.unsplash.com/photo-1527061011665-3652c757a4d4?w=700&auto=format&fit=crop&q=80",
-        opt: ["Hòn than củi", "Cây nến", "Chiếc xe máy", "Điếu thuốc"],
-        cor: 0,
-        trap: "Than củi: khi mua có màu đen, khi đốt đỏ rực, khi tàn thành tro màu xám."
+        cat: "TOÁN HỌC ĐẢO NGƯỢC",
+        q: "Con số nào khi lộn ngược đầu lại thì giá trị của nó sẽ bị giảm đi đúng 3 đơn vị?",
+        img: "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=700&auto=format&fit=crop&q=80",
+        opt: ["Số 6", "Số 9", "Số 8", "Số 1"],
+        cor: 1,
+        trap: "Số 9 khi lộn ngược 180 độ sẽ trở thành số 6. Giá trị giảm: 9 - 6 = 3 đơn vị."
       },
       {
         id: 68,
-        cat: "ĐỐ THIÊN NHIÊN",
-        q: "Mưa rơi xuống khắp mặt đất, tại sao con vịt dưới hồ lại không sợ ướt?",
-        img: "https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=700&auto=format&fit=crop&q=80",
-        opt: ["Lông vịt có lớp dầu", "Nó bơi dưới hồ nên đằng nào cũng ướt sẵn", "Vịt có cánh che", "Cả A và B"],
-        cor: 3,
-        trap: "Vịt bơi dưới nước đã ướt sẵn và lông có chất nhờn chống thấm nước."
+        cat: "ĐỐ VẬT THỂ",
+        q: "Cái gì có răng nhưng không có miệng, có lưỡi nhưng không có họng, có sống mà không có sự sống?",
+        img: "https://images.unsplash.com/photo-1590159763121-7c9ff3149e0a?w=700&auto=format&fit=crop&q=80",
+        opt: ["Lưỡi cưa", "Cái kéo", "Chiếc dao rựa", "Cái bào gỗ"],
+        cor: 0,
+        trap: "Lưỡi cưa: có răng cưa, có lưỡi cưa, có phần sống cưa nhưng là vật vô tri vô giác."
       },
       {
         id: 69,
-        cat: "ĐỐ HÀNH ĐỘNG",
-        q: "Làm thế nào để một người đàn ông đi dưới mưa mà không ướt một cọng tóc nào?",
-        img: "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=700&auto=format&fit=crop&q=80",
-        opt: ["Đội nón bảo hiểm", "Cầm ô che", "Anh ấy bị hói đầu", "Chạy thật nhanh"],
-        cor: 2,
-        trap: "Người đàn ông hói đầu thì làm gì có cọng tóc nào để mà bị ướt!"
+        cat: "CÂU CHUYỆN SỐNG CÒN",
+        q: "Một người đàn ông nhảy ra khỏi trực thăng ở độ cao 3.000m mà không đeo dù, rơi xuống đất bê tông nhưng không hề bị gãy xương hay thương tật. Vì sao?",
+        img: "https://images.unsplash.com/photo-1508873696983-2df5293cbdaf?w=700&auto=format&fit=crop&q=80",
+        opt: ["Rơi vào đống rơm", "Chiếc trực thăng đang đậu trên sân bay", "Anh ta có phép thuật", "Rơi xuống nước sâu"],
+        cor: 1,
+        trap: "Trực thăng đang đỗ trên mặt đất trong bãi đáp sân bay."
       },
       {
         id: 70,
-        cat: "NGHỊCH LÝ ĐỒ VẬT",
-        q: "Cái gì thuộc về tương lai nhưng luôn được viết ở hiện tại?",
-        img: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=700&auto=format&fit=crop&q=80",
-        opt: ["Kế hoạch", "Di chúc", "Ước mơ", "Mục tiêu"],
+        cat: "BẢNG CHỮ CÁI",
+        q: "Có bao nhiêu chữ cái xuất hiện trong cụm từ 'Bảng chữ cái'?",
+        img: "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=700&auto=format&fit=crop&q=80",
+        opt: ["29 chữ", "11 chữ cái", "24 chữ", "8 chữ"],
         cor: 1,
-        trap: "Di chúc viết khi còn sống để thực hiện sau khi mất."
+        trap: "Đếm số ký tự chữ cái trong cụm từ 'b-ả-n-g-c-h-ữ-c-á-i' = 11 chữ cái."
       },
       {
         id: 71,
-        cat: "ĐỐ CƠ THỂ BÀN CHÂN",
-        q: "Con gì đi thì nằm, đứng thì nằm, nhưng nằm thì lại đứng?",
-        img: "https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=700&auto=format&fit=crop&q=80",
-        opt: ["Bàn chân", "Con cua", "Con sâu", "Con rắn"],
-        cor: 0,
-        trap: "Bàn chân người: khi ta đi hay đứng thì bàn chân áp nằm ngang xuống đất, khi ta nằm ngủ thì bàn chân lại dựng đứng lên."
+        cat: "ĐỐ CHỮ ĐỐ MẸO",
+        q: "Bỏ ngoài nướng trong, ăn ngoài bỏ trong là củ quả gì?",
+        img: "https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=700&auto=format&fit=crop&q=80",
+        opt: ["Củ khoai lang", "Bắp ngô (ngô nướng)", "Quả chuối", "Hạt dưa"],
+        cor: 1,
+        trap: "Bắp ngô: lột bỏ vỏ ngoài rồi nướng hạt bên trong; khi ăn thì gặm hạt bên ngoài rồi vứt bỏ lõi cùi bên trong."
       },
       {
         id: 72,
-        cat: "ĐỐ CHỮ MẸO",
-        q: "Có bao nhiêu chữ C trong cụm từ: 'Cơm canh cà cá cua'?",
-        img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=700&auto=format&fit=crop&q=80",
-        opt: ["5 chữ C", "1 chữ C viết hoa", "0 chữ", "4 chữ"],
-        cor: 1,
-        trap: "Chỉ có đúng 1 chữ 'C' viết hoa ở đầu câu, các chữ còn lại là 'c' thường."
+        cat: "BẪY TOÁN MẸO",
+        q: "Nếu bạn có một que diêm trong đêm đông giá rét, bước vào phòng có 1 bếp dầu, 1 bếp củi và 1 ngọn nến. Bạn phải thắp cái gì lên đầu tiên?",
+        img: "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=700&auto=format&fit=crop&q=80",
+        opt: ["Bếp dầu", "Bếp củi", "Que diêm", "Ngọn nến"],
+        cor: 2,
+        trap: "Phải quẹt que diêm cháy trước thì mới có ngọn lửa để mồi cho các vật dụng khác."
       },
       {
         id: 73,
-        cat: "MẸO TỦ LẠNH",
-        q: "Làm thế nào để nhét một con hươu cao cổ vào trong chiếc tủ lạnh qua 3 bước?",
-        img: "https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=700&auto=format&fit=crop&q=80",
-        opt: ["Mở tủ - Nhét hươu vào - Đóng tủ", "Cắt nhỏ con hươu ra", "Mua tủ lạnh cực lớn", "Không thể làm được"],
-        cor: 0,
-        trap: "1. Mở cửa tủ lạnh -> 2. Nhét hươu cao cổ vào -> 3. Đóng cửa tủ lạnh lại."
+        cat: "ĐỐ CHỮ TIẾNG VIỆT",
+        q: "Từ nào trong tiếng Việt có chứa tới 9 chữ 'H'?",
+        img: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=700&auto=format&fit=crop&q=80",
+        opt: ["Chữ 'Hát'", "Từ 'Chính'", "Từ 'Chín chữ H'", "Từ 'Chính hiệu'"],
+        cor: 1,
+        trap: "Từ 'Chính' đọc chệch âm là 'chín' (số 9) chữ H."
       },
       {
         id: 74,
-        cat: "MẸO TỦ LẠNH 2",
-        q: "Vậy làm thế nào để nhét con voi vào trong tủ lạnh qua 4 bước?",
-        img: "https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=700&auto=format&fit=crop&q=80",
-        opt: ["Mở tủ - Bỏ hươu ra - Nhét voi vào - Đóng tủ", "Ép voi lại", "Mua thêm 1 tủ lạnh", "Nhét voi vào cạnh hươu"],
-        cor: 0,
-        trap: "Phải mở tủ, lôi con hươu cao cổ ở câu trước ra ngoài trước, rồi mới nhét voi vào và đóng tủ."
+        cat: "MẸO TRÁI ĐẤT",
+        q: "Nếu bạn ném một viên đá màu xanh ngọc bích xuống Biển Đen, viên đá đó sẽ trở thành gì?",
+        img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&auto=format&fit=crop&q=80",
+        opt: ["Biến thành màu đen", "Nó bị ướt và chìm", "Nổi lên mặt nước", "Tan biến"],
+        cor: 1,
+        trap: "Nó chỉ đơn thuần bị ướt và chìm xuống đáy biển, màu nước biển không làm đổi màu viên đá."
       },
       {
         id: 75,
-        cat: "HỘI NGHỊ ĐỘNG VẬT",
-        q: "Chúa sơn lâm mở đại hội muôn loài, tất cả các loài vật đều có mặt đầy đủ. Hỏi con nào vắng mặt?",
-        img: "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=700&auto=format&fit=crop&q=80",
-        opt: ["Con muỗi", "Con voi", "Con kiến", "Con cá sấu"],
+        cat: "TRIẾT HỌC THỜI GIAN",
+        q: "Cái gì luôn luôn ở phía trước mặt bạn nhưng mắt bạn không thể nào nhìn thấy được?",
+        img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=700&auto=format&fit=crop&q=80",
+        opt: ["Không khí", "Tương lai", "Cái bóng", "Bụi bẩn"],
         cor: 1,
-        trap: "Con voi còn đang bị nhốt trong tủ lạnh ở câu 74!"
+        trap: "Tương lai: luôn nằm ở phía trước thời gian nhưng không ai nhìn thấy được trước."
       },
       {
         id: 76,
-        cat: "BĂNG QUA SÔNG",
-        q: "Có một con sông đầy cá sấu ăn thịt hung dữ, không có cầu hay thuyền. Làm sao một người có thể bơi qua an toàn?",
-        img: "https://images.unsplash.com/photo-1520638023775-6831b31469c7?w=700&auto=format&fit=crop&q=80",
-        opt: ["Cứ nhảy xuống bơi qua bình thường", "Chờ cá sấu ngủ", "Bắn hết cá sấu", "Dùng đuốc xua đuổi"],
+        cat: "ĐỐ CHỮ ĐỘNG VẬT",
+        q: "Con gì sáng đi bằng 4 chân, trưa đi bằng 2 chân, chiều đi bằng 3 chân?",
+        img: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=700&auto=format&fit=crop&q=80",
+        opt: ["Con người", "Con khỉ", "Con chó", "Con gấu"],
         cor: 0,
-        trap: "Bọn cá sấu đã đi dự đại hội muôn loài ở câu 75 hết rồi!"
+        trap: "Con người: thuở bé bò 4 chi, lớn lên đi 2 chân, tuổi già chống gậy thành 3 chân."
       },
       {
         id: 77,
-        cat: "CÁI CHẾT BẤT NGỜ",
-        q: "Người đó bơi qua sông an toàn nhưng vừa lên bờ thì lăn ra chết. Tại sao?",
-        img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=700&auto=format&fit=crop&q=80",
-        opt: ["Bị đau tim", "Bị con hươu cao cổ rơi trúng đầu", "Bị kiệt sức", "Trúng độc"],
+        cat: "CÂU CHUYỆN SÚP NHÀ HÀNG",
+        q: "Thực khách thấy ruồi trong bát súp liền yêu cầu đổi bát mới. Bát mới mang ra, anh nếm 1 thìa rồi đập bàn mắng nhân viên gian dối. Sao anh biết đây là bát cũ?",
+        img: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=700&auto=format&fit=crop&q=80",
+        opt: ["Súp bị nguội", "Anh đã rắc muối/tiêu vào bát trước khi đổi", "Bát bị mẻ", "Con ruồi vẫn còn"],
         cor: 1,
-        trap: "Bị con hươu cao cổ bị vứt ra khỏi tủ lạnh ở câu 74 từ trên trời rơi trúng đầu."
+        trap: "Anh đã nêm một lượng muối/tiêu vào bát cũ trước đó. Bát mang ra vẫn mặn chát chứng tỏ nhà bếp chỉ vớt con ruồi ra rồi bưng lại."
       },
       {
         id: 78,
-        cat: "ĐỐ ĐỜI SỐNG",
-        q: "Cái gì có thể lấp đầy cả căn phòng mà không chiếm một centimet khối diện tích nào?",
-        img: "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=700&auto=format&fit=crop&q=80",
-        opt: ["Khói thuốc", "Ánh sáng", "Nước", "Bụi bặm"],
-        cor: 1,
-        trap: "Ánh sáng (hoặc âm thanh/mùi hương)."
+        cat: "THÁNG TRONG NĂM",
+        q: "Tháng nào trong năm theo lịch dương có 28 ngày?",
+        img: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=700&auto=format&fit=crop&q=80",
+        opt: ["Chỉ tháng 2", "Tháng nhuận", "Tất cả 12 tháng", "Tháng 2 năm không nhuận"],
+        cor: 2,
+        trap: "Tất cả các tháng trong năm đều có ngày thứ 28 (các tháng 30, 31 ngày vẫn phải trải qua ngày 28)."
       },
       {
         id: 79,
-        cat: "ĐỐ VẬT DỤNG",
-        q: "Cái gì càng lấy đi nhiều thì nó lại càng phình to ra?",
-        img: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=700&auto=format&fit=crop&q=80",
-        opt: ["Cái hố (cái lỗ)", "Bong bóng", "Đám mây", "Bụng mỡ"],
-        cor: 0,
-        trap: "Cái hố: càng xúc nhiều đất đá ra khỏi nó thì cái hố càng to ra."
+        cat: "BẪY GIA ĐÌNH TOM",
+        q: "Bố mẹ của Tom sinh được 4 người con: người thứ nhất tên Xuân, người thứ nhì tên Hạ, người thứ ba tên Thu. Hỏi người thứ tư tên gì?",
+        img: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=700&auto=format&fit=crop&q=80",
+        opt: ["Đông", "Tom", "Bắc", "Nam"],
+        cor: 1,
+        trap: "Đề bài đã mở đầu bằng: 'Bố mẹ của Tom...', vậy người con thứ tư chính là Tom."
       },
       {
         id: 80,
-        cat: "ĐỐ KẾT THÚC",
-        q: "Cái gì kết thúc mọi thứ và bắt đầu cho sự vĩnh hằng?",
-        img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=700&auto=format&fit=crop&q=80",
-        opt: ["Cái chết", "Chữ cái 'G'", "Vũ trụ", "Thời gian"],
+        cat: "HIỆN TƯỢNG ĐI MƯA",
+        q: "Một người đàn ông đi dưới cơn mưa rào tầm tã không có ô, không đội mũ, áo quần ướt sũng nhưng không có một sợi tóc nào bị ướt. Tại sao?",
+        img: "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=700&auto=format&fit=crop&q=80",
+        opt: ["Mặc áo mưa kín đầu", "Anh ta bị hói đầu (không có tóc)", "Chạy quá nhanh", "Đội tóc giả"],
         cor: 1,
-        trap: "Chữ cái 'G' (chữ cuối của từ 'everythinG'!)."
+        trap: "Người này bị hói đầu hoàn toàn, làm gì có sợi tóc nào để mà bị ướt!"
       },
       {
         id: 81,
-        cat: "BẪY TOÁN MẸO",
-        q: "Một người có 3 đứa con. Tổng số tuổi của 3 đứa là 13. Hỏi tích số tuổi của chúng lớn nhất là bao nhiêu?",
-        img: "https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?w=700&auto=format&fit=crop&q=80",
-        opt: ["36", "72", "75", "64"],
-        cor: 2,
-        trap: "Chia đều 4, 4, 5 (tổng = 13) -> Tích = 4 × 4 × 5 = 80? Hoặc 5 × 4 × 4 = 80? Hoặc 3 × 5 × 5 = 75."
+        cat: "QUẢ TÁO VÀ NGƯỜI",
+        q: "Làm sao chia 5 quả táo cho 6 người mà không được cắt nát quả táo thành từng miếng nhỏ?",
+        img: "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=700&auto=format&fit=crop&q=80",
+        opt: ["Vắt ép lấy nước táo chia đều", "Mua thêm 1 quả", "Bỏ đói 1 người", "Để dành"],
+        cor: 0,
+        trap: "Đem 5 quả táo đi ép lấy nước sinh tố rồi chia đều vào 6 ly nước."
       },
       {
         id: 82,
-        cat: "ĐỐ CHỮ MẸO",
-        q: "Từ nào trong tiếng Việt nếu bỏ dấu sắc thì thành một loại hạt ăn được, bỏ dấu huyền thì thành một cơ quan trong cơ thể?",
-        img: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=700&auto=format&fit=crop&q=80",
-        opt: ["Cơm", "Mắt", "Máu", "Cá"],
-        cor: 2,
-        trap: "MÁU (bỏ sắc thành MAU, thêm huyền thành MÀU...)"
+        cat: "ĐỐ CHỮ ĐỐ TÊN",
+        q: "Cái gì thuộc quyền sở hữu của bạn, mang tên bạn, nhưng những người xung quanh lại dùng nó nhiều hơn bạn?",
+        img: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=700&auto=format&fit=crop&q=80",
+        opt: ["Tiền trong ví", "Tên gọi của bạn", "Số điện thoại", "Ngôi nhà"],
+        cor: 1,
+        trap: "Tên của bạn: chủ yếu để mọi người xung quanh gọi và nhắc đến."
       },
       {
         id: 83,
-        cat: "ĐỐ DÂN TỘC",
-        q: "Núi nào bị chặt ra từng khúc?",
-        img: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=700&auto=format&fit=crop&q=80",
-        opt: ["Núi Thái Sơn", "Núi Ngũ Hành Sơn", "Núi Cắt", "Núi Tam Đảo"],
+        cat: "ĐỐ CHỮ THỂ THAO",
+        q: "Trong một trận đá bóng, cầu thủ sút phạt đền sẽ sút trúng vào đâu đầu tiên?",
+        img: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=700&auto=format&fit=crop&q=80",
+        opt: ["Khung thành", "Quả bóng", "Lưới", "Góc chữ A"],
         cor: 1,
-        trap: "Thái Sơn -> 'Thái' nghĩa là cắt/thái mỏng ra từng khúc."
+        trap: "Chân cầu thủ phải đá trúng quả bóng trước thì bóng mới bay đi được."
       },
       {
         id: 84,
-        cat: "ĐỐ THỜI GIAN",
-        q: "Mỗi năm có bao nhiêu phút?",
-        img: "https://images.unsplash.com/photo-1508873696983-2df5293cbdaf?w=700&auto=format&fit=crop&q=80",
-        opt: ["525.600 phút", "365 phút", "60 phút", "1.000.000 phút"],
-        cor: 0,
-        trap: "365 ngày × 24 giờ × 60 phút = 525.600 phút."
+        cat: "BẮN CHIM TRÊN CÂY",
+        q: "Trên cành cây có 5 con chim. Thợ săn giương súng bắn 'Đoàng' trúng chết 1 con rơi xuống đất. Hỏi trên cành còn lại mấy con?",
+        img: "https://images.unsplash.com/photo-1444464666168-49d633b86797?w=700&auto=format&fit=crop&q=80",
+        opt: ["4 con", "0 con nào", "1 con", "3 con"],
+        cor: 1,
+        trap: "Tiếng súng nổ vang trời làm 4 con chim còn lại hoảng sợ bay mất sạch."
       },
       {
         id: 85,
-        cat: "ĐỐ VẬT MẸO",
-        q: "Cái gì có cánh mà không biết bay, có chân mà không biết chạy?",
-        img: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=700&auto=format&fit=crop&q=80",
-        opt: ["Cánh quạt", "Cánh cửa", "Cánh buồm", "Chiếc bàn"],
+        cat: "NGHỊCH LÝ ĐỒNG BẰNG",
+        q: "Ở đâu có thành phố mà không có nhà, có rừng mà không có cây, có sông suối biển cả mà không có một giọt nước?",
+        img: "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=700&auto=format&fit=crop&q=80",
+        opt: ["Sa mạc", "Tấm bản đồ địa lý", "Mặt trăng", "Trong giấc mơ"],
         cor: 1,
-        trap: "Cánh cửa (vừa có bản lề cánh vừa có chân cửa)."
+        trap: "Trên tấm bản đồ (hoặc quả địa cầu): mọi địa danh đều được vẽ ký hiệu."
       },
       {
         id: 86,
-        cat: "ẨM THỰC MẸO",
-        q: "Bánh gì ăn vào mà không ai thấy no?",
-        img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=700&auto=format&fit=crop&q=80",
-        opt: ["Bánh xe", "Bánh bao", "Bánh mì", "Bánh vẽ"],
-        cor: 3,
-        trap: "Bánh vẽ (lời hứa suông không có thật)."
+        cat: "ĐỐ VẬT MẸO",
+        q: "Cái gì có cánh mà không biết bay, có chân mà không biết chạy, đứng che chở cho ngôi nhà?",
+        img: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=700&auto=format&fit=crop&q=80",
+        opt: ["Cánh quạt", "Cánh cửa", "Cánh buồm", "Mái hiên"],
+        cor: 1,
+        trap: "Cánh cửa: có các cánh cửa khép mở và phần chân cửa sát nền nhà."
       },
       {
         id: 87,
-        cat: "ĐỐ CHỮ MẸO",
-        q: "Chữ gì mất đầu thì thành con vật trung thành, mất đuôi thì thành một loài hoa quý?",
-        img: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=700&auto=format&fit=crop&q=80",
-        opt: ["Hoa", "Chó", "Sen", "Cúc"],
-        cor: 2,
-        trap: "SEN -> mất đầu còn EN? Hay CHÓ?"
+        cat: "ĐỐ ẨM THỰC HÀI",
+        q: "Bánh gì ăn vào mà không ai cảm thấy no bụng, chỉ thấy cay đắng thất vọng?",
+        img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=700&auto=format&fit=crop&q=80",
+        opt: ["Bánh bao", "Bánh vẽ (lời hứa suông)", "Bánh mì", "Bánh xe"],
+        cor: 1,
+        trap: "Bánh vẽ: ẩn dụ cho những lời hứa hão huyền không bao giờ thành hiện thực."
       },
       {
         id: 88,
-        cat: "BẢNG CHỮ CÁI",
-        q: "Cái gì đứng giữa Trời và Đất?",
+        cat: "ĐỐ MẸO TỔNG QUAN",
+        q: "Cái gì đứng ở chính giữa chữ 'Trời' và chữ 'Đất'?",
         img: "https://images.unsplash.com/photo-1502134249126-9f3755a50d78?w=700&auto=format&fit=crop&q=80",
         opt: ["Không khí", "Con người", "Chữ 'và'", "Mặt trời"],
         cor: 2,
@@ -1295,120 +1287,120 @@
       },
       {
         id: 89,
-        cat: "THIÊN NHIÊN",
-        q: "Hạt gì không bao giờ mọc thành cây?",
+        cat: "ĐỐ THIÊN NHIÊN",
+        q: "Hạt gì gieo xuống đất ẩm mà vĩnh viễn không bao giờ nảy mầm thành cây?",
         img: "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=700&auto=format&fit=crop&q=80",
-        opt: ["Hạt mưa", "Hạt cát", "Hạt bụi", "Tất cả các hạt trên"],
+        opt: ["Hạt mưa", "Hạt cát", "Hạt bụi", "Cả 3 loại hạt trên"],
         cor: 3,
-        trap: "Hạt mưa, hạt cát, hạt bụi đều không phải hạt giống sinh học."
+        trap: "Hạt mưa, hạt cát, hạt bụi đều là hạt vô cơ, không phải hạt giống thực vật."
       },
       {
         id: 90,
-        cat: "ĐỐ ĐỜI SỐNG",
-        q: "Một người đàn ông đi trong mưa bão không mang ô hay mũ, tại sao đầu không bị ướt?",
-        img: "https://images.unsplash.com/photo-1514632595-4944383f2737?w=700&auto=format&fit=crop&q=80",
-        opt: ["Anh ta ở trong nhà", "Anh ta cạo trọc", "Anh ta đi xe ô tô", "Cả A, B, C"],
+        cat: "MẸO XE CỘ",
+        q: "Loại xe nào chạy quanh năm suốt tháng trên đường mà lốp không bao giờ bị xẹp thủng?",
+        img: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?w=700&auto=format&fit=crop&q=80",
+        opt: ["Xe bọc thép", "Xe nước mía", "Xe tăng", "Cả B và C"],
         cor: 3,
-        trap: "Ở trong nhà, đi xe ô tô, hoặc không có tóc đều không bị ướt tóc."
+        trap: "Xe tăng (chạy bằng xích thép) và xe nước mía (bánh sắt cố định)."
       },
       {
         id: 91,
-        cat: "ĐỐ ĐỘNG VẬT",
-        q: "Con gì đực có chùm râu, cái không có râu?",
-        img: "https://images.unsplash.com/photo-1527153857715-3908f2bae5e8?w=700&auto=format&fit=crop&q=80",
-        opt: ["Con dê", "Con mèo", "Con người", "Con tôm"],
-        cor: 0,
-        trap: "Dê đực có chòm râu dê đặc trưng dưới cằm."
-      },
-      {
-        id: 92,
-        cat: "LOGIC GIA ĐÌNH",
-        q: "Bố mẹ có 4 người con gái, mỗi người con gái có 1 người anh trai. Hỏi gia đình có mấy người con?",
-        img: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=700&auto=format&fit=crop&q=80",
-        opt: ["8 người con", "5 người con", "4 người con", "6 người con"],
-        cor: 1,
-        trap: "4 người con gái và 1 người anh trai cả (anh chung của 4 cô em) = 5 người con."
-      },
-      {
-        id: 93,
-        cat: "ĐỐ CHỮ ĐỐ MẸO",
-        q: "Con gì không chân mà leo núi rất tài?",
-        img: "https://images.unsplash.com/photo-1531384370597-8590413be50a?w=700&auto=format&fit=crop&q=80",
-        opt: ["Con rắn", "Con ốc sên", "Con tàu", "Con đò"],
-        cor: 0,
-        trap: "Con rắn trườn leo trèo trên vách đá không cần chân."
-      },
-      {
-        id: 94,
-        cat: "ĐỐ XE CỘ",
-        q: "Xe nào không bao giờ bị xẹp lốp?",
-        img: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?w=700&auto=format&fit=crop&q=80",
-        opt: ["Xe tăng", "Xe nước mía", "Xe bọc thép", "Xe bò bánh gỗ"],
-        cor: 1,
-        trap: "Xe nước mía (hoặc xe tăng bánh xích)."
-      },
-      {
-        id: 95,
-        cat: "ĐỒ VẬT MẸO",
-        q: "Cái gì bằng quả cau quỳ mau mà đỡ?",
-        img: "https://images.unsplash.com/photo-1508873696983-2df5293cbdaf?w=700&auto=format&fit=crop&q=80",
-        opt: ["Hòn sỏi", "Bánh xe", "Đầu gối", "Cái chén"],
-        cor: 2,
-        trap: "Đầu gối (khi quỳ xuống đất)."
-      },
-      {
-        id: 96,
-        cat: "TOÁN TIỀN TỆ",
-        q: "Bạn có 1 tờ 500k và 1 tờ 200k. Bạn cho người ăn xin 1 tờ. Hỏi bạn còn bao nhiêu tiền?",
+        cat: "BẪY TOÁN TIỀN",
+        q: "Bạn có 1 tờ 500k và 1 tờ 200k. Bạn vô tình làm rơi mất 1 tờ. Hỏi bạn chắc chắn còn lại bao nhiêu tiền?",
         img: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=700&auto=format&fit=crop&q=80",
         opt: ["Còn 500k hoặc 200k", "Còn 300k", "Hết tiền", "Còn 700k"],
         cor: 0,
-        trap: "Nếu cho tờ 200k thì còn 500k, nếu cho tờ 500k thì còn 200k."
+        trap: "Rơi 1 tờ thì chỉ còn lại tờ kia: hoặc là còn 500k, hoặc là còn 200k."
+      },
+      {
+        id: 92,
+        cat: "SINH HỌC BIỂN CẢ",
+        q: "Loài sinh vật biển nào mà con mẹ sau khi sinh trứng/ấp con xong thì cơ thể kiệt sức và chết ngay lập tức?",
+        img: "https://images.unsplash.com/photo-1544943910-4c1dc44a0b2a?w=700&auto=format&fit=crop&q=80",
+        opt: ["Bạch tuộc mẹ", "Cá voi xanh", "Hải cẩu", "Cá mập"],
+        cor: 0,
+        trap: "Bạch tuộc mẹ nhịn ăn canh giữ trứng suốt nhiều tháng, khi trứng nở cũng là lúc bạch tuộc mẹ kiệt sức chết."
+      },
+      {
+        id: 93,
+        cat: "NGHỊCH LÝ NƯỚC SÔI",
+        q: "Thứ gì càng nấu trong nồi nước sôi sùng sục thì kết cấu lại càng đông cứng lại?",
+        img: "https://images.unsplash.com/photo-1506976785307-8732e854ad03?w=700&auto=format&fit=crop&q=80",
+        opt: ["Miếng thịt bò", "Quả trứng gà", "Củ khoai tây", "Rau muống"],
+        cor: 1,
+        trap: "Quả trứng: protein bị biến tính dưới nhiệt độ cao làm lòng trắng và lòng đỏ đông cứng lại."
+      },
+      {
+        id: 94,
+        cat: "ĐỐ CHỮ ĐỊA LÝ",
+        q: "Xã nào có quy mô dân số đông đúc nhất hành tinh?",
+        img: "https://images.unsplash.com/photo-1477959858617-67f30bc75b82?w=700&auto=format&fit=crop&q=80",
+        opt: ["Xã hội", "Xã Đàn", "Xã nông thôn", "Xã biên giới"],
+        cor: 0,
+        trap: "Xã hội: bao gồm toàn bộ hơn 8 tỷ dân trên Trái Đất."
+      },
+      {
+        id: 95,
+        cat: "BẪY TOÁN TUỔI TÁC",
+        q: "Khi tôi 4 tuổi thì anh trai gấp đôi tuổi tôi. Nay tôi 40 tuổi, hỏi anh trai tôi bao nhiêu tuổi?",
+        img: "https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?w=700&auto=format&fit=crop&q=80",
+        opt: ["80 tuổi", "44 tuổi", "48 tuổi", "50 tuổi"],
+        cor: 1,
+        trap: "Lúc nhỏ anh 8 tuổi (gấp đôi 4 tuổi), nghĩa là anh hơn em 4 tuổi. Khi em 40 tuổi thì anh 44 tuổi."
+      },
+      {
+        id: 96,
+        cat: "ĐỐ ĐỜI SỐNG HÀI",
+        q: "Bệnh nhân bị gãy cả 2 tay. Bác sĩ chuyên khoa chẩn đoán đây là ca bệnh mà bác sĩ phải làm gì?",
+        img: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?w=700&auto=format&fit=crop&q=80",
+        opt: ["Bó tay", "Bó chân", "Đầu hàng", "Chuyển viện"],
+        cor: 0,
+        trap: "Bó tay: nghĩa đen là lấy băng bột cố định cánh tay của bệnh nhân."
       },
       {
         id: 97,
-        cat: "ĐỐ CON VẬT",
-        q: "Con gì đẻ con xong thì lập tức chết?",
-        img: "https://images.unsplash.com/photo-1544943910-4c1dc44a0b2a?w=700&auto=format&fit=crop&q=80",
-        opt: ["Bạch tuộc mẹ", "Cá hồi Thái Bình Dương", "Bọ ngựa đực", "Cả A và B"],
-        cor: 3,
-        trap: "Bạch tuộc mẹ và cá hồi sau khi sinh sản/đẻ trứng kiệt sức sẽ chết ngay."
+        cat: "CÂU HỎI THÁNG NGẮN",
+        q: "Tháng nào trong năm theo cách viết tiếng Việt là ngắn nhất?",
+        img: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=700&auto=format&fit=crop&q=80",
+        opt: ["Tháng 2", "Tháng 5 (Tháng Ba/Năm)", "Tháng 4", "Tháng Chạp"],
+        cor: 1,
+        trap: "'Tháng Ba' hoặc 'Tháng Năm' chỉ có số chữ cái rất ngắn; hoặc 'Tháng 5' nếu viết số."
       },
       {
         id: 98,
-        cat: "BẪY KHÔNG GIAN",
-        q: "Ở đâu có sông mà không có nước, có thành phố mà không có nhà, có rừng mà không có cây?",
-        img: "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=700&auto=format&fit=crop&q=80",
-        opt: ["Trên bản đồ", "Trên sa mạc", "Trong phim ảnh", "Trên Mặt Trăng"],
-        cor: 0,
-        trap: "Trên tấm bản đồ địa lý."
+        cat: "MẸO KỂ TÊN NGÀY",
+        q: "Làm sao kể tên 3 ngày liên tiếp nhau mà không dùng các từ: Thứ Hai, Thứ Ba, Thứ Tư, Thứ Năm, Thứ Sáu, Thứ Bảy, Chủ Nhật?",
+        img: "https://images.unsplash.com/photo-1508873696983-2df5293cbdaf?w=700&auto=format&fit=crop&q=80",
+        opt: ["Không thể làm được", "Hôm qua, Hôm nay, Ngày mai", "Ngày đầu, Ngày giữa, Ngày cuối", "Sáng, Trưa, Tối"],
+        cor: 1,
+        trap: "Ba ngày liên tiếp nhau chính là: Hôm qua, Hôm nay, Ngày mai."
       },
       {
         id: 99,
-        cat: "CUỘC SỐNG",
-        q: "Nếu bạn ném một hòn đá màu đỏ xuống Biển Đen, hòn đá sẽ biến thành gì?",
-        img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&auto=format&fit=crop&q=80",
-        opt: ["Biến thành màu đen", "Nó bị ướt", "Nó chìm xuống đáy", "Cả B và C"],
-        cor: 3,
-        trap: "Nó chỉ đơn giản là bị ướt và chìm xuống đáy biển, màu sắc không thay đổi."
+        cat: "ĐỐ CHỮ SỰ SỐNG",
+        q: "Cái gì lúc ăn thì sống, lúc cho vào lửa nướng nấu thì lại chết?",
+        img: "https://images.unsplash.com/photo-1548839140-29a749e1bc4e?w=700&auto=format&fit=crop&q=80",
+        opt: ["Con tôm", "Cục nước đá", "Rau sống", "Con ốc"],
+        cor: 1,
+        trap: "Cục nước đá: ăn sống (ngậm mát), cho vào lửa là tan chảy biến mất (chết)."
       },
       {
         id: 100,
-        cat: "CÂU ĐỐ CUỐI CÙNG",
-        q: "Bạn vừa hoàn thành 99 câu đố mẹo. Hỏi não của bạn đang ở trạng thái nào?",
+        cat: "CÂU ĐỐ TỔNG KẾT",
+        q: "Sau khi hoàn thành 99 câu đố mẹo hóc búa, bạn thấy bài học lớn nhất để không bị lừa là gì?",
         img: "https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=700&auto=format&fit=crop&q=80",
-        opt: ["Bị lừa quá nhiều", "Thông minh đột xuất", "Cảnh giác cao độ", "Cả 3 đáp án trên"],
+        opt: ["Đừng tin vào phản xạ đầu tiên", "Luôn nghi ngờ câu hỏi chữ nghĩa", "Tư duy đa chiều ngoài chiếc hộp", "Cả 3 đáp án trên"],
         cor: 3,
-        trap: "Chúc mừng bạn đã chinh phục trọn vẹn 100 câu đố bẫy tư duy!"
+        trap: "Chúc mừng bạn đã chinh phục trọn vẹn 100 câu đố bẫy não đỉnh cao!"
       }
     ];
 
     /* ==========================================================
-       LOGIC VẬN HÀNH ỨNG DỤNG
+       LOGIC ĐIỀU KHIỂN & LƯU TRỮ TRẠNG THÁI (LOCALSTORAGE)
        ========================================================== */
     let currentIndex = 0;
     let score = 0;
-    const userAnswers = JSON.parse(localStorage.getItem('quiz_answers') || '{}');
+    const userAnswers = JSON.parse(localStorage.getItem('hacknao_quiz_answers') || '{}');
 
     // DOM Elements
     const quizQuestionEl = document.getElementById('quiz-question');
@@ -1428,8 +1420,7 @@
     const btnCloseModalEl = document.getElementById('btn-close-modal');
     const gridContainerEl = document.getElementById('grid-container');
 
-    // Tính toán lại tổng điểm từ localStorage
-    function recalculateScore() {
+    function calculateScore() {
       score = 0;
       Object.keys(userAnswers).forEach(idx => {
         const q = riddles[idx];
@@ -1440,19 +1431,17 @@
       labelScoreEl.textContent = `Điểm: ${score}`;
     }
 
-    // Hiển thị câu hỏi hiện tại
     function renderQuestion(index) {
       const item = riddles[index];
       if (!item) return;
 
       labelProgressEl.textContent = `Câu ${index + 1}/${riddles.length}`;
       progressFillEl.style.width = `${((index + 1) / riddles.length) * 100}%`;
-      categoryBadgeEl.textContent = item.cat || "BẪY TƯ DUY";
+      categoryBadgeEl.textContent = item.cat || "BẪY LOGIC";
 
       quizQuestionEl.textContent = `Câu ${index + 1}: ${item.q}`;
       quizImgEl.src = item.img;
 
-      // Nạp các lựa chọn
       quizOptionsEl.innerHTML = '';
       const hasAnswered = userAnswers.hasOwnProperty(index);
 
@@ -1478,7 +1467,6 @@
         quizOptionsEl.appendChild(btn);
       });
 
-      // Hiển thị giải thích nếu đã trả lời
       if (hasAnswered) {
         quizTrapTextEl.textContent = item.trap;
         quizExplanationEl.style.display = 'block';
@@ -1486,24 +1474,21 @@
         quizExplanationEl.style.display = 'none';
       }
 
-      // Nút điều hướng
       btnPrevEl.disabled = index === 0;
       btnNextEl.textContent = index === riddles.length - 1 ? 'Xem kết quả' : 'Tiếp theo →';
 
-      recalculateScore();
+      calculateScore();
       renderGridMenu();
     }
 
-    // Xử lý chọn đáp án
     function handleSelectOption(optIdx) {
       if (userAnswers.hasOwnProperty(currentIndex)) return;
 
       userAnswers[currentIndex] = optIdx;
-      localStorage.setItem('quiz_answers', JSON.stringify(userAnswers));
+      localStorage.setItem('hacknao_quiz_answers', JSON.stringify(userAnswers));
       renderQuestion(currentIndex);
     }
 
-    // Nút Next & Prev
     btnPrevEl.addEventListener('click', () => {
       if (currentIndex > 0) {
         currentIndex--;
@@ -1516,13 +1501,12 @@
         currentIndex++;
         renderQuestion(currentIndex);
       } else {
-        alert(`Bạn đã duyệt qua 100 câu đố! Điểm số chung cuộc: ${score}/1000 điểm.`);
+        alert(`Bạn đã hoàn thành 100 câu đố bẫy tư duy! Tổng điểm đạt được: ${score}/1000 điểm.`);
       }
     });
 
-    // Dark Mode
     function initTheme() {
-      const saved = localStorage.getItem('theme_mode');
+      const saved = localStorage.getItem('hacknao_theme');
       if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.documentElement.setAttribute('data-theme', 'dark');
         btnThemeEl.textContent = '☀️';
@@ -1536,11 +1520,10 @@
       const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
       const newTheme = isDark ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme_mode', newTheme);
+      localStorage.setItem('hacknao_theme', newTheme);
       btnThemeEl.textContent = newTheme === 'dark' ? '☀️' : '🌙';
     });
 
-    // Popup Grid 100 câu
     function renderGridMenu() {
       gridContainerEl.innerHTML = '';
       riddles.forEach((q, idx) => {
@@ -1580,7 +1563,6 @@
       if (e.target === modalGridEl) modalGridEl.classList.remove('active');
     });
 
-    // Khởi chạy ban đầu
     initTheme();
     renderQuestion(currentIndex);
   </script>
